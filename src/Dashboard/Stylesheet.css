@@ -1,3 +1,39 @@
 .search{
     -fx-background-radius : 5px
 }
+
+.menu-button{
+    -fx-background-color : #fff;
+    -fx-background-radius : 5px
+    
+}
+
+.menu-button:hover{
+    -fx-background-color : #fff2e8
+}
+
+.menu-button:focused{
+    -fx-background-color : #fff2e8;
+    -fx-border-color : #fc8019;
+    -fx-border-radius : 5px;
+    -fx-border-width:2px
+}
+
+.main-butoon{
+    -fx-background-color : #fc8019;
+    -fx-background-radius : 5px;
+}
+
+.main-butoon:hover{
+    -fx-background-color : #dc6300;
+}
+
+.sub-button{
+    -fx-background-color : #f5f5f5;
+    -fx-background-radius : 5px;
+}
+
+.sub-button:hover{
+    -fx-background-color : #dcdcdc;
+    -fx-background-radius : 5px;
+}
