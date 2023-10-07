@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e3e3e3;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderdPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e3e3e3;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -84,9 +84,9 @@
    <left>
       <AnchorPane prefHeight="707.0" prefWidth="90.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="493.0" prefWidth="90.0" spacing="5.0" AnchorPane.bottomAnchor="204.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+            <VBox alignment="TOP_CENTER" minHeight="400.0" prefHeight="493.0" prefWidth="90.0" spacing="5.0" AnchorPane.bottomAnchor="204.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Button contentDisplay="TOP" defaultButton="true" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Home">
+                  <Button fx:id="homeBtn" contentDisplay="TOP" defaultButton="true" ellipsisString="" mnemonicParsing="false" onAction="#HomeButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Home">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -101,7 +101,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Customers">
+                  <Button fx:id="customerBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#CustomersButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Customers">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -113,7 +113,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Tables">
+                  <Button fx:id="tableBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#TablesButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Tables">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Cashier">
+                  <Button fx:id="cashierBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#CashierButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Cashier">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -137,7 +137,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Order">
+                  <Button fx:id="orderBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#OrdersButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Order">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -149,7 +149,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Report">
+                  <Button fx:id="reportBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#ReportsButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Report">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -161,7 +161,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Settings">
+                  <Button fx:id="settingsBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#SettingsButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

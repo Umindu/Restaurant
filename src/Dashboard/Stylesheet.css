@@ -4,8 +4,9 @@
 
 .menu-button{
     -fx-background-color : #fff;
-    -fx-background-radius : 5px
-    
+    -fx-background-radius : 5px ;
+    -fx-border-radius : 5px;
+    -fx-border-width:2px;
 }
 
 .menu-button:hover{
@@ -15,8 +16,6 @@
 .menu-button:focused{
     -fx-background-color : #fff2e8;
     -fx-border-color : #fc8019;
-    -fx-border-radius : 5px;
-    -fx-border-width:2px
 }
 
 .main-butoon{
