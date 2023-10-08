@@ -14,7 +14,7 @@
 
 <BorderPane fx:id="borderdPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" style="-fx-background-color: #e3e3e3;" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dashboard.DashboardController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <StackPane prefHeight="150.0" prefWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/table.png" />
+                        <Image url="@../../img/table.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -58,7 +58,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/notification.png" />
+                        <Image url="@../../img/notification.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -73,7 +73,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/refresh.png" />
+                        <Image url="@../../img/refresh.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -90,7 +90,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/home.png" />
+                              <Image url="@../../img/home.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -105,7 +105,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/user.png" />
+                              <Image url="@../../img/user.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -117,7 +117,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/table.png" />
+                              <Image url="@../../img/table.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -129,7 +129,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/cashier.png" />
+                              <Image url="@../../img/cashier.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -141,7 +141,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/order.png" />
+                              <Image url="@../../img/order.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -153,7 +153,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/report.png" />
+                              <Image url="@../../img/report.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -165,7 +165,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/settings.png" />
+                              <Image url="@../../img/settings.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -175,11 +175,11 @@
                   </Button>
                </children>
             </VBox>
-            <Button contentDisplay="TOP" ellipsisString="" layoutY="613.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Logout" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <Button contentDisplay="TOP" ellipsisString="" layoutY="613.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0" styleClass="sub-button" text="Logout" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/signout.png" />
+                        <Image url="@../../img/signout.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -193,4 +193,7 @@
          </BorderPane.margin>
       </AnchorPane>
    </left>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

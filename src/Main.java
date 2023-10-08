@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-//import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -20,8 +19,6 @@ public class Main extends Application {
 
         // Load the FXML file.
         Parent root = (Parent) loader.load();
-
-        //stage.initStyle(StageStyle.UNDECORATED);
 
         // Set the scene on the stage.
         stage.setScene(new Scene(root));
