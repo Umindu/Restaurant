@@ -11,16 +11,25 @@ public class HomeController {
 
     @FXML
     public void initialize() {
-        Button busLabel = new Button("Bus");
-        Button carLabel = new Button("Car");
-        Button vanLabel = new Button("Van");
-    
-        // Apply the "label" style to each label
-        busLabel.getStyleClass().add("label");
-        carLabel.getStyleClass().add("label");
-        vanLabel.getStyleClass().add("label");
-    
-        categoryHBox.getChildren().addAll(busLabel, carLabel, vanLabel);
+    String[] array = {"Bus", "Car", "Van", "Bike"};
+
+    for (String labelString : array) {
+        Button button = new Button(labelString);
+        button.setId(labelString);
+        button.setMinWidth(Button.USE_PREF_SIZE);
+        button.setPrefWidth(Button.USE_COMPUTED_SIZE); 
+        button.setMaxWidth(Double.MAX_VALUE); 
+        button.getStyleClass().add("categoryButton");
+        categoryHBox.getChildren().add(button);
+
+        button.setOnAction(event -> {
+            // Your action for the button here
+            String clickedLabel = button.getId();
+            System.out.println(clickedLabel + " button clicked!");
+        });
     }
+    }
+
+    
 
 }

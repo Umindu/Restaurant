@@ -4,3 +4,22 @@
     -fx-text-fill: #0070E0; /* Change the text color to blue */
     -fx-padding: 5px; /* Add some padding around the labels */
 }
+
+.categoryScrollPane{
+
+}
+
+.categoryButton{
+    -fx-background-color : transparent;
+    -fx-background-radius : 10px ;
+    -fx-border-radius : 10px;
+    -fx-border-width:2px;
+}
+
+.categoryButton:hover{
+    -fx-background-color : #fff2e8 !important;
+}
+
+.categoryButton:focused {
+    -fx-background-color : #000;
+}
