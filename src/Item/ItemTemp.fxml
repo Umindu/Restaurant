@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="box" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" style="-fx-background-color: #fff; -fx-background-radius: 10px; -fx-border-radius: 10px;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Item.ItemController">
+   <children>
+      <ImageView fx:id="itemImg" fitHeight="112.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../items_img/Chicken-Biryani.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="itemName" text="Rice" />
+      <Label fx:id="itemPrice" text="Rs. 1400.00" />
+   </children>
+</VBox>
