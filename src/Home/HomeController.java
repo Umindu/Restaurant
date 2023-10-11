@@ -68,13 +68,13 @@ public class HomeController implements Initializable{
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(items.get(i));
 
-                if(column == 5){
+                if(column == 6){
                     column=0;
                     ++row;
                 }
 
                 itemGridPane.add(box, column++, row);
-                GridPane.setMargin(box, new Insets(10));
+                GridPane.setMargin(box, new Insets(-30, 10, 50, 10));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,18 +82,20 @@ public class HomeController implements Initializable{
 
         // Set up responsive constraints for the GridPane
         ColumnConstraints colConstraints = new ColumnConstraints();
-        colConstraints.setPercentWidth(20); // 20% width for each column
-        for (int i = 0; i < 5; i++) {
+        colConstraints.setPercentWidth(20);
+        for (int i = 0; i < 6; i++) {
             itemGridPane.getColumnConstraints().add(colConstraints);
         }
         
+        
+ 
     }
 
 
     private List<Item> items(){
         List<Item> ls = new ArrayList<>();
 
-        for(int a=0; a<50; a++){
+        for(int a=0; a<30; a++){
             Item item = new Item();
             item.setImg("../items_img/Chicken-Biryani.png");
             item.setName("Rice");
