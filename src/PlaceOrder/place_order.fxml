@@ -10,12 +10,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@PlaceOrderStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlaceOrder.PlacOrderController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -88,11 +90,18 @@
             <Separator prefWidth="200.0" />
             <AnchorPane prefHeight="444.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="365.0" prefWidth="430.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="365.0" prefWidth="430.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="edge-to-edge" />
                         <String fx:value="scroll-pane" />
-                     </styleClass></ScrollPane>
+                     </styleClass>
+                     <content>
+                        <GridPane fx:id="cartGridPane">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content></ScrollPane>
                   <HBox alignment="CENTER_LEFT" prefHeight="45.0" styleClass="spe-background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
                         <Label text="Add" HBox.hgrow="ALWAYS">
@@ -137,46 +146,46 @@
                <children>
                   <HBox prefHeight="26.0" prefWidth="430.0">
                      <children>
-                        <Label text="Subtotal" HBox.hgrow="ALWAYS">
+                        <Label text="Subtotal" textFill="#464646" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 1500.00" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="26.0" prefWidth="430.0">
                      <children>
-                        <Label text="Discount" HBox.hgrow="ALWAYS">
+                        <Label text="Discount" textFill="#464646" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 15.00">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
                   <HBox prefHeight="26.0" prefWidth="430.0">
                      <children>
-                        <Label text="Coupon Code" HBox.hgrow="ALWAYS">
+                        <Label text="Coupon Code" textFill="#464646" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" />
                         <Label text="#453457">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>

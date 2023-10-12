@@ -30,6 +30,9 @@ public class ItemController {
         vbox.setOnMouseClicked(event -> {
             // Handle the click event here
             System.out.println("VBox clicked for " + item.getName());
+
+            // PlacOrderController itemAdd = new PlacOrderController();
+            // itemAdd.AddItemCart(item.getName(), item.getPrice());
         });
     }
 

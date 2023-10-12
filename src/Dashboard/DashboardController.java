@@ -37,6 +37,8 @@ public class DashboardController {
     @FXML
     private Button tableBtn;
 
+    private boolean checkVisibleRightPane = false;
+
     @FXML
     void ResetButtonStyle(){
         homeBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
@@ -52,8 +54,14 @@ public class DashboardController {
     public void HomeButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Home/Home.fxml"));
         borderdPane.setCenter(view);
-        AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
-        borderdPane.setRight(sideview);
+
+        // right pane
+        if (checkVisibleRightPane == false) {
+            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            borderdPane.setRight(sideview);
+            checkVisibleRightPane = true;
+        } 
+        
         ResetButtonStyle();
         homeBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
@@ -62,14 +70,30 @@ public class DashboardController {
     void CustomersButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Customers/Customers.fxml"));
         borderdPane.setCenter(view);
-        ResetButtonStyle();
-        customerBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+
+        // right pane
+        if (checkVisibleRightPane == false) {
+            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            borderdPane.setRight(sideview);
+            checkVisibleRightPane = true;
+        } 
+
+        ResetButtonStyle();  
+        customerBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");      
     }
 
     @FXML
     void TablesButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Tables/Tables.fxml"));
         borderdPane.setCenter(view);
+
+        // right pane
+        if (checkVisibleRightPane == false) {
+            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            borderdPane.setRight(sideview);
+            checkVisibleRightPane = true;
+        }  
+
         ResetButtonStyle();
         tableBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
@@ -81,6 +105,7 @@ public class DashboardController {
         ResetButtonStyle();
         cashierBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
+        checkVisibleRightPane = false;
     }
 
     @FXML
@@ -89,6 +114,8 @@ public class DashboardController {
         borderdPane.setCenter(view);
         ResetButtonStyle();
         orderBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        borderdPane.setRight(null);
+        checkVisibleRightPane = false;
     }
 
     @FXML
@@ -98,6 +125,7 @@ public class DashboardController {
         ResetButtonStyle();
         reportBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
+        checkVisibleRightPane = false;
     }
 
     @FXML
@@ -107,6 +135,7 @@ public class DashboardController {
         ResetButtonStyle();
         settingsBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
+        checkVisibleRightPane = false;
     }
     
 

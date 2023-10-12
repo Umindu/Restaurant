@@ -1,0 +1,20 @@
+#qnt{
+    -fx-text-fill: #000;
+}
+
+#name{
+    -fx-text-fill: #000;
+}
+
+#price{
+    -fx-text-fill: #000;
+}
+
+.background{
+    -fx-background-color: #d6d6d6;
+    -fx-background-radius : 10px;
+}
+
+.button{
+    -fx-background-color: transparent;
+}
