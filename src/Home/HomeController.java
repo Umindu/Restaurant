@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -46,6 +47,7 @@ public class HomeController implements Initializable{
             button.setPrefWidth(Button.USE_COMPUTED_SIZE); 
             button.setMaxWidth(Double.MAX_VALUE); 
             button.getStyleClass().add("categoryButton");
+            button.setCursor(Cursor.HAND);
             categoryHBox.getChildren().add(button);
 
             button.setOnAction(event -> {
@@ -83,12 +85,11 @@ public class HomeController implements Initializable{
         // Set up responsive constraints for the GridPane
         ColumnConstraints colConstraints = new ColumnConstraints();
         colConstraints.setPercentWidth(20);
+
+        
         for (int i = 0; i < 6; i++) {
             itemGridPane.getColumnConstraints().add(colConstraints);
         }
-        
-        
- 
     }
 
 

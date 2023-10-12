@@ -11,6 +11,9 @@ import javafx.scene.layout.BorderPane;
 public class DashboardController {
 
     @FXML
+    private AnchorPane aaa;
+
+    @FXML
     private BorderPane borderdPane;
 
     @FXML
@@ -49,6 +52,8 @@ public class DashboardController {
     public void HomeButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Home/Home.fxml"));
         borderdPane.setCenter(view);
+        AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+        borderdPane.setRight(sideview);
         ResetButtonStyle();
         homeBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
@@ -62,11 +67,20 @@ public class DashboardController {
     }
 
     @FXML
+    void TablesButtonClick(ActionEvent event) throws IOException {
+        AnchorPane view = FXMLLoader.load(getClass().getResource("../Tables/Tables.fxml"));
+        borderdPane.setCenter(view);
+        ResetButtonStyle();
+        tableBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+    }
+
+    @FXML
     void CashierButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Cashier/Cashier.fxml"));
         borderdPane.setCenter(view);
         ResetButtonStyle();
         cashierBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        borderdPane.setRight(null);
     }
 
     @FXML
@@ -83,6 +97,7 @@ public class DashboardController {
         borderdPane.setCenter(view);
         ResetButtonStyle();
         reportBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        borderdPane.setRight(null);
     }
 
     @FXML
@@ -91,13 +106,9 @@ public class DashboardController {
         borderdPane.setCenter(view);
         ResetButtonStyle();
         settingsBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        borderdPane.setRight(null);
     }
+    
 
-    @FXML
-    void TablesButtonClick(ActionEvent event) throws IOException {
-        AnchorPane view = FXMLLoader.load(getClass().getResource("../Tables/Tables.fxml"));
-        borderdPane.setCenter(view);
-        ResetButtonStyle();
-        tableBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
-    }
+
 }
