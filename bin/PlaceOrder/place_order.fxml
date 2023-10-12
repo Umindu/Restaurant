@@ -43,7 +43,7 @@
                      </cursor>
                   </Button>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
+                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" onAction="#Refresh" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
                      <font>
                         <Font size="14.0" />
                      </font>

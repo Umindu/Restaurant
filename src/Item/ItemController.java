@@ -1,5 +1,6 @@
 package Item;
 
+import PlaceOrder.PlacOrderController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -28,12 +29,13 @@ public class ItemController {
         itemPrice.setText(item.getPrice());
 
         vbox.setOnMouseClicked(event -> {
-            // Handle the click event here
             System.out.println("VBox clicked for " + item.getName());
-
-            // PlacOrderController itemAdd = new PlacOrderController();
-            // itemAdd.AddItemCart(item.getName(), item.getPrice());
+            PlacOrderController yy = new PlacOrderController();
+            yy.Refresh();
         });
+
+
+        
     }
 
     
