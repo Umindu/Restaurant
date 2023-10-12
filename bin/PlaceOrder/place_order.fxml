@@ -19,9 +19,10 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Separator prefWidth="200.0" />
             <HBox prefHeight="40.0" prefWidth="374.0">
                <children>
-                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="209.0" styleClass="sub-button" text="Add Coustomer" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="209.0" styleClass="sub-button" text=" Add Coustomer" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -29,9 +30,9 @@
                         <Insets />
                      </opaqueInsets>
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/table.png" />
+                              <Image url="@../../img/add.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -205,7 +206,7 @@
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="450.0" spacing="10.0" styleClass="other-backgrouns">
                <children>
-                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="main-butoon" text="Hold Cart" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="main-button" text="  Hold Cart" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -215,7 +216,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/table.png" />
+                              <Image url="@../../img/hold.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -223,7 +224,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="proceed-button" text="Proceed" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="proceed-button" text="  Proceed" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -233,7 +234,7 @@
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/table.png" />
+                              <Image url="@../../img/proceed.png" />
                            </image>
                         </ImageView>
                      </graphic>

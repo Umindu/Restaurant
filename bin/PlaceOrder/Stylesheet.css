@@ -1,9 +1,9 @@
-.main-butoon{
+.main-button{
     -fx-background-color : #fc8019;
     -fx-background-radius : 10px;
 }
 
-.main-butoon:hover{
+.main-button:hover{
     -fx-background-color : #dc6300;
 }
 
@@ -20,6 +20,10 @@
 .proceed-button{
     -fx-background-color : #09aa29;
     -fx-background-radius : 10px;
+}
+
+.proceed-button:hover{
+    -fx-background-color : #007a18;
 }
 
 .spe-background{

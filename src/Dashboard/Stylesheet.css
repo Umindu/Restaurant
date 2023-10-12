@@ -23,12 +23,12 @@
 }
 
 
-.main-butoon{
+.main-button{
     -fx-background-color : #fc8019;
     -fx-background-radius : 10px;
 }
 
-.main-butoon:hover{
+.main-button:hover{
     -fx-background-color : #dc6300;
 }
 

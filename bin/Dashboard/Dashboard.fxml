@@ -52,7 +52,7 @@
                   </HBox>
                </children>
             </Pane>
-            <Button alignment="CENTER" cache="true" layoutX="1081.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" styleClass="main-butoon" text="Select Table" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button alignment="CENTER" cache="true" layoutX="1081.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" styleClass="main-button" text=" Select Table" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -62,7 +62,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../img/table.png" />
+                        <Image url="@../../img/table-white.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -249,6 +249,9 @@
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <AnchorPane fx:id="aaa" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="aaa" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #000;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="1.0" />
+         </BorderPane.margin></AnchorPane>
    </right>
 </BorderPane>
