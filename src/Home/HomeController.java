@@ -95,18 +95,19 @@ public class HomeController implements Initializable{
     private List<Item> items(){
         List<Item> ls = new ArrayList<>();
 
-        for(int a=0; a<30; a++){
-            Item item = new Item();
-            item.setImg("../items_img/Chicken-Biryani.png");
-            item.setName("Rice");
-            item.setPrice("Rs. 1400.00");
-            ls.add(item);
-        }
+        Item item = new Item();
+        item.setImg("../items_img/Chicken-Biryani.png");
+        item.setName("Rice");
+        item.setPrice("Rs. 1400.00");
+        ls.add(item);
 
+        Item item2 = new Item();
+        item2.setImg("../items_img/Chicken-Biryani.png");
+        item2.setName("Rolls");
+        item2.setPrice("Rs. 100.00");
+        ls.add(item2);
 
         return ls;
     }
-
-
 
 }

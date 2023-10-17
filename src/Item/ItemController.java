@@ -9,7 +9,6 @@ import javafx.scene.layout.VBox;
 import model.Item;
 
 public class ItemController {
-    
     @FXML
     private Label itemPrice;
 
@@ -22,6 +21,13 @@ public class ItemController {
     @FXML
     private VBox vbox;
 
+    @FXML
+    private static VBox rightSceneVBox ;
+
+    public static void setRightSceneVBox(VBox VBox) {
+        rightSceneVBox = VBox;
+    }
+
     public void setData(Item item){
         Image image = new Image(getClass().getResourceAsStream(item.getImg()));
         itemImg.setImage(image);
@@ -29,16 +35,14 @@ public class ItemController {
         itemPrice.setText(item.getPrice());
 
         vbox.setOnMouseClicked(event -> {
-            System.out.println("VBox clicked for " + item.getName());
-            PlacOrderController yy = new PlacOrderController();
-            yy.Refresh();
-        });
+            
+            String name = item.getName();
+            String price = item.getPrice();
+            String qnt = "5";
+            
+            PlacOrderController itemObj = new PlacOrderController();
+            itemObj.setItem(name, price, qnt, rightSceneVBox);
 
-
-        
-    }
-
-    
-
-    
+        }); 
+    } 
 }

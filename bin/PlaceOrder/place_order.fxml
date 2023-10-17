@@ -10,8 +10,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -43,7 +41,7 @@
                      </cursor>
                   </Button>
                   <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" onAction="#Refresh" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
+                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -96,11 +94,7 @@
                         <String fx:value="scroll-pane" />
                      </styleClass>
                      <content>
-                        <GridPane fx:id="cartGridPane">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                        </GridPane>
+                        <VBox fx:id="rightSceneVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" />
                      </content></ScrollPane>
                   <HBox alignment="CENTER_LEFT" prefHeight="45.0" styleClass="spe-background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                      <children>
