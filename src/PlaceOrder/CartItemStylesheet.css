@@ -1,3 +1,12 @@
+#anchorPane{
+    /* -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 15); */
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    /* -fx-border-color: linear-gradient(to right, #09aa29 0%, transparent 2%); */
+    -fx-border-color: transparent;
+}
+
 #qnt{
     -fx-text-fill: #000;
 }
@@ -8,6 +17,25 @@
 
 #price{
     -fx-text-fill: #000;
+}
+
+#qntLabel, #disLabel{
+    -fx-text-fill: #4f4f4f;
+}
+
+#qntTextField, #disTextField{
+    -fx-border-color: #4f4f4f;
+    -fx-background-radius : 6px ;
+    -fx-border-radius : 6px;
+}
+
+#expandBtn, #narrowDownBtn, #removeBtn{
+    -fx-background-radius : 50px ;
+    -fx-border-radius : 50px;
+}
+
+#expandBtn:hover, #narrowDownBtn:hover, #removeBtn:hover{
+    -fx-background-color: #7f7f7f8a;
 }
 
 .background{

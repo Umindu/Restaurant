@@ -26,6 +26,8 @@ public class PlacOrderController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ItemController.setRightSceneVBox(rightSceneVBox);
+        CartItemController.setRightSceneVBox(rightSceneVBox);
+        rightSceneVBox.getChildren().clear();
     }
 
 
@@ -42,16 +44,29 @@ public class PlacOrderController implements Initializable {
                 vBox.getChildren().add(anchorPane);
                 VBox.setMargin(anchorPane, new Insets(5));
             }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setItem(String name, String price, String qnt, VBox vBox){
+    public void setItem(int id, String name, String price, String qnt, VBox vBox){
+        item.setID(id);
         item.setName(name);
         item.setPrice(price);
         item.setQnt(qnt);
         cartItemList.add(item);
         Refresh(vBox);
     }
+
+    public void deleteItem(int id, VBox vbox) {
+        for (int i = 0; i < cartItemList.size(); i++) {
+            if (cartItemList.get(i).getID() == id) {
+                cartItemList.remove(i);
+                break; 
+            }
+        }
+        Refresh(vbox);
+    }
+    
 }

@@ -35,13 +35,13 @@ public class ItemController {
         itemPrice.setText(item.getPrice());
 
         vbox.setOnMouseClicked(event -> {
-            
+            int id = item.getID();
             String name = item.getName();
             String price = item.getPrice();
             String qnt = "5";
             
             PlacOrderController itemObj = new PlacOrderController();
-            itemObj.setItem(name, price, qnt, rightSceneVBox);
+            itemObj.setItem(id, name, price, qnt, rightSceneVBox);
 
         }); 
     } 
