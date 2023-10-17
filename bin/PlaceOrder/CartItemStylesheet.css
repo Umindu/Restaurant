@@ -1,9 +1,9 @@
 #anchorPane{
-    /* -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 15); */
+    /* -fx-border-color: linear-gradient(to right, #09aa29 0%, transparent 2%); */
+    -fx-effect: dropshadow(three-pass-box, #f5f5f5, 0, 0, -4, 0);
     -fx-border-style: solid;
     -fx-border-width: 3px;
     -fx-border-radius: 10px;
-    /* -fx-border-color: linear-gradient(to right, #09aa29 0%, transparent 2%); */
     -fx-border-color: transparent;
 }
 
@@ -35,11 +35,11 @@
 }
 
 #expandBtn:hover, #narrowDownBtn:hover, #removeBtn:hover{
-    -fx-background-color: #7f7f7f8a;
+    -fx-background-color: #7f7f7f69;
 }
 
 .background{
-    -fx-background-color: #d6d6d6;
+    -fx-background-color: #f5f5f5;
     -fx-background-radius : 10px;
 }
 

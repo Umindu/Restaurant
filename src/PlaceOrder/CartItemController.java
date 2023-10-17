@@ -61,7 +61,7 @@ public class CartItemController {
         this.disTextField.setVisible(true);
         this.expandBtn.setVisible(false);
         this.narrowDownBtn.setVisible(true);
-        this.anchorPane.setStyle("-fx-border-color: linear-gradient(to right, #09aa29 0%, transparent 2%);");
+        this.anchorPane.setStyle("-fx-effect: dropshadow(three-pass-box, #09aa29, 0, 0, -4, 0);");
     }
 
     @FXML
