@@ -1,14 +1,18 @@
 package Dashboard;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import PlaceOrder.PlacOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class DashboardController {
+public class DashboardController implements Initializable{
 
     @FXML
     private AnchorPane aaa;
@@ -39,6 +43,11 @@ public class DashboardController {
 
     private boolean checkVisibleRightPane = false;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        PlacOrderController.setDashboardBorderdPane(borderdPane);
+    }
+
     @FXML
     void ResetButtonStyle(){
         homeBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
@@ -67,7 +76,7 @@ public class DashboardController {
     }
 
     @FXML
-    void CustomersButtonClick(ActionEvent event) throws IOException {
+    public void CustomersButtonClick(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("../Customers/Customers.fxml"));
         borderdPane.setCenter(view);
 

@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import Item.ItemController;
 import PlaceOrder.Coupon.CouponpopupController;
 import PlaceOrder.Discount.DiscountpopupController;
@@ -20,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -29,7 +29,17 @@ import model.Cart_list;
 
 public class PlacOrderController implements Initializable {
     @FXML
+    private static BorderPane DashboardBorderdPane;
+
+    public static void setDashboardBorderdPane(BorderPane dashboardBorderdPane) {
+        DashboardBorderdPane = dashboardBorderdPane;
+    }
+
+    @FXML
     private Button addDiscountBtn;
+
+    @FXML
+    private Button addCouponBtn;
 
     @FXML
     private Button couponEnableBtn;
@@ -55,6 +65,18 @@ public class PlacOrderController implements Initializable {
         ItemController.setRightSceneVBox(rightSceneVBox);
         CartItemController.setRightSceneVBox(rightSceneVBox);
         rightSceneVBox.getChildren().clear();
+    }
+
+    @FXML
+    void AddCustomer(ActionEvent event) {
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("../Customers/Customers.fxml"));
+            DashboardBorderdPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+
     }
 
     @FXML
@@ -122,13 +144,13 @@ public class PlacOrderController implements Initializable {
             controller.setStage(popupStage);
 
             //set position
-            Node node = addDiscountBtn; 
+            Node node = addCouponBtn; 
             Point2D screenCoords = node.localToScreen(-240, -130);
             popupStage.setX(screenCoords.getX());
             popupStage.setY(screenCoords.getY());
 
             popupStage.show();
-        } catch (IOException e) {
+        } catch (IOException e) { 
             e.printStackTrace();
             return;
         }

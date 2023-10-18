@@ -22,7 +22,7 @@
             <Separator prefWidth="200.0" />
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="374.0">
                <children>
-                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="209.0" styleClass="sub-button" text=" Add Coustomer" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="40.0" prefWidth="209.0" styleClass="sub-button" text=" Add Coustomer" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -221,7 +221,7 @@
                   </HBox>
                   <HBox fx:id="couponLine" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" visible="false">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#AddCoupon" styleClass="text-button" text="Coupon Code" textFill="#dc6300">
+                        <Button fx:id="addCouponBtn" mnemonicParsing="false" onAction="#AddCoupon" styleClass="text-button" text="Coupon Code" textFill="#dc6300">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
