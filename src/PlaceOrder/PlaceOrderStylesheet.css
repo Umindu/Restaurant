@@ -53,3 +53,22 @@
 .other-backgrouns{
     -fx-background-color: #f5f5f5;
 }
+
+.text-button{
+    -fx-background-color : transparent;
+    -fx-background-radius : 10px;
+}
+
+.text-button:hover{
+    -fx-underline: true;
+}
+
+.cancel-button{
+    -fx-background-color: transparent; 
+    -fx-background-radius : 50px ;
+    -fx-border-radius : 50px;
+}
+
+.cancel-button:hover{
+    -fx-background-color: #7f7f7f69;
+}

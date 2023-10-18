@@ -1,0 +1,35 @@
+.background {
+    -fx-background-color: transparent;
+    -fx-background-radius : 10px;
+    -fx-border-radius: 10px;
+}
+
+.sub-button {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 10px;
+}
+
+.sub-button:hover {
+    -fx-background-color: #dcdcdc;
+    -fx-background-radius: 10px;
+}
+
+.orenge-button {
+    -fx-background-color: #fc8019;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #fff;
+}
+
+.orenge-button:hover {
+    -fx-background-color: #dc6300;
+}
+
+.green-button {
+    -fx-background-color: #09aa29;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #fff;
+}
+
+.green-button:hover {
+    -fx-background-color: #007a18;
+}
