@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import Customers.Customer_list_temp.CustomerListTempController;
+import PlaceOrder.PlacOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.Customer_list;
 
@@ -35,6 +38,17 @@ public class CustomerController implements Initializable {
 
     @FXML
     private VBox vBox;
+
+    //Place order compenent variables
+    @FXML
+    private static Pane cusOrderPane; 
+    @FXML
+    private static Label cusOrderName; 
+    @FXML
+    private static Label cusOrderID; 
+    @FXML
+    private static Button cusAddBtn;
+
 
     private List<Customer_list> customers;
 
@@ -101,6 +115,13 @@ public class CustomerController implements Initializable {
         return ls;
     }
 
+    public static void setPlaceOrderComponent(Pane orderCusPane, Label orderCusName, Label orderCusID, Button addCusBtn){
+        cusOrderPane = orderCusPane;
+        cusOrderName = orderCusName;
+        cusOrderID = orderCusID;
+        cusAddBtn = addCusBtn;
+    }
+
     public void CustomerDetailsPaneSet(Label cname, Label cid, Label cemail, Label cphone, String name, int id, String email, String phone, HBox customerDetailsPane){
         customerDetailsPane.setVisible(true);
         customerDetailsPane.setPrefHeight(160);
@@ -109,6 +130,9 @@ public class CustomerController implements Initializable {
         cid.setText("#"+String.valueOf(id));
         cemail.setText(email);
         cphone.setText(phone);
+
+        PlacOrderController orderCustomer = new PlacOrderController();
+        orderCustomer.setCustomer(cusOrderPane, cusOrderName, cusOrderID, cusAddBtn, id, name);
     }
 
    

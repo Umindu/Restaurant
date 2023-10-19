@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import Customers.CustomerController;
 import Item.ItemController;
 import PlaceOrder.Coupon.CouponpopupController;
 import PlaceOrder.Discount.DiscountpopupController;
@@ -18,9 +20,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,6 +38,18 @@ public class PlacOrderController implements Initializable {
     public static void setDashboardBorderdPane(BorderPane dashboardBorderdPane) {
         DashboardBorderdPane = dashboardBorderdPane;
     }
+
+    @FXML
+    private Pane orderCusPane;
+
+    @FXML
+    private Label orderCusID;
+
+    @FXML
+    private Label orderCusName;
+
+    @FXML
+    private Button addCusBtn;
 
     @FXML
     private Button addDiscountBtn;
@@ -64,7 +80,16 @@ public class PlacOrderController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ItemController.setRightSceneVBox(rightSceneVBox);
         CartItemController.setRightSceneVBox(rightSceneVBox);
+        CustomerController.setPlaceOrderComponent(orderCusPane, orderCusName, orderCusID, addCusBtn);
         rightSceneVBox.getChildren().clear();
+    }
+
+    public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, int id, String name) {
+        cusAddBtn.setPrefWidth(0);
+        cusAddBtn.setVisible(false);
+        cusOrderPane.setVisible(true);
+        cusOrderID.setText(String.valueOf(id));
+        cusOrderName.setText(name);
     }
 
     @FXML
