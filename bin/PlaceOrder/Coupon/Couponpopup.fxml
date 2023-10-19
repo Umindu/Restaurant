@@ -10,22 +10,22 @@
    <children>
       <Label layoutX="9.0" layoutY="14.0" text="Add Coupon" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="Arial Bold" size="13.0" />
          </font>
       </Label>
       <Button layoutX="10.0" layoutY="89.0" mnemonicParsing="false" onAction="#PopupClose" prefHeight="40.0" prefWidth="95.0" styleClass="orenge-button" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Button>
       <Button layoutX="114.8" layoutY="89.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" styleClass="green-button" text="Add" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Button>
       <TextField layoutX="98.8" layoutY="35.0" prefHeight="40.0" prefWidth="111.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </TextField>
    </children>

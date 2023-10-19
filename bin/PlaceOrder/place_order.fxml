@@ -24,7 +24,7 @@
                <children>
                   <Button alignment="CENTER" cache="true" mnemonicParsing="false" onAction="#AddCustomer" prefHeight="40.0" prefWidth="209.0" styleClass="sub-button" text=" Add Coustomer" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Arial Bold" size="14.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />
@@ -100,7 +100,7 @@
                      <children>
                         <Label text="Add" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets left="10.0" />
@@ -109,14 +109,14 @@
                         <Pane prefHeight="40.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="discountEnableBtn" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddDiscountSection" styleClass="spe-botton" text="Discount" textFill="#dc6300">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="Arial Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
                         <Button fx:id="couponEnableBtn" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#AddCouponSection" styleClass="spe-botton" text="Coupon Code" textFill="#dc6300">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="Arial Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -126,7 +126,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="Arial Bold" size="12.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -142,7 +142,7 @@
                      <children>
                         <Label text="Subtotal" textFill="#464646" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
@@ -151,7 +151,7 @@
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 1500.00" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" right="35.0" top="5.0" />
@@ -163,7 +163,7 @@
                      <children>
                         <Label text="Service charge" textFill="#464646" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
@@ -172,7 +172,7 @@
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 15.00">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" right="35.0" top="5.0" />
@@ -184,7 +184,7 @@
                      <children>
                         <Button fx:id="addDiscountBtn" mnemonicParsing="false" onAction="#AddDiscount" styleClass="text-button" text="Discount" textFill="#dc6300">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -199,7 +199,7 @@
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 15.00">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" right="5.0" top="5.0" />
@@ -223,7 +223,7 @@
                      <children>
                         <Button fx:id="addCouponBtn" mnemonicParsing="false" onAction="#AddCoupon" styleClass="text-button" text="Coupon Code" textFill="#dc6300">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -241,7 +241,7 @@
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="#453457">
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" right="5.0" top="5.0" />
@@ -265,7 +265,7 @@
                      <children>
                         <Label text="Payable Amount" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="Arial Bold" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" top="5.0" />
@@ -274,7 +274,7 @@
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
                         <Label text="Rs. 1500.00" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="Arial Bold" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="5.0" right="35.0" top="5.0" />
@@ -294,7 +294,7 @@
                <children>
                   <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="main-button" text="  Hold Cart" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Arial Bold" size="14.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />
@@ -312,7 +312,7 @@
                   </Button>
                   <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="proceed-button" text="  Proceed" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="Arial Bold" size="14.0" />
                      </font>
                      <opaqueInsets>
                         <Insets />

@@ -26,9 +26,9 @@
    <top>
       <AnchorPane prefHeight="60.0" prefWidth="1280.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="32.0" layoutY="2.0" prefHeight="50.0" prefWidth="170.0" text="Resto POS" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+            <Label layoutX="32.0" layoutY="2.0" prefHeight="50.0" prefWidth="178.0" text="Resto POS" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                <font>
-                  <Font name="System Bold" size="34.0" />
+                  <Font name="Arial Bold" size="34.0" />
                </font>
             </Label>
             <Pane layoutX="186.0" layoutY="10.0" prefHeight="40.0" prefWidth="370.0" styleClass="searchPane" AnchorPane.leftAnchor="200.0">
@@ -37,7 +37,7 @@
                      <children>
                         <TextField focusTraversable="false" prefHeight="40.0" prefWidth="358.0" promptText="Search products....." styleClass="search" stylesheets="@Stylesheet.css">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="Arial" size="14.0" />
                            </font>
                         </TextField>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -52,9 +52,9 @@
                   </HBox>
                </children>
             </Pane>
-            <Button alignment="CENTER" cache="true" layoutX="1081.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="126.0" styleClass="main-button" text=" Select Table" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <Button alignment="CENTER" cache="true" layoutX="1081.0" layoutY="6.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="132.0" styleClass="main-button" text=" Select Table" textFill="WHITE" textOverrun="CLIP" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -70,7 +70,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="CENTER" cache="true" layoutX="1093.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="10.0">
+            <Button alignment="CENTER" cache="true" layoutX="1093.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -123,7 +123,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <VBox.margin>
                         <Insets />
@@ -141,7 +141,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -156,7 +156,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -171,7 +171,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -186,7 +186,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -201,7 +201,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -216,7 +216,7 @@
                         </ImageView>
                      </graphic>
                      <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="Arial Bold" size="11.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
