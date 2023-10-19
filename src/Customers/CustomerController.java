@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Customer_list;
@@ -33,9 +32,6 @@ public class CustomerController implements Initializable {
 
     @FXML
     private HBox customerDetailsPane;
-
-    @FXML
-    private ScrollPane customerScrollPane;
 
     @FXML
     private VBox vBox;
@@ -59,11 +55,11 @@ public class CustomerController implements Initializable {
 
     @FXML
     void RemoveCustomer(ActionEvent event) {
-
     }
 
      @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        CustomerListTempController.GetCustomerDetialsPaneID(cusName, cusID, cusEmail, CusPhone, customerDetailsPane);
 
         customers = new ArrayList<>(CustomerList());
 
@@ -73,11 +69,10 @@ public class CustomerController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("Customer_list_temp/CustomerListTemp.fxml"));
                 HBox box = fxmlLoader.load();
                 CustomerListTempController customerListTempController = fxmlLoader.getController();
-                customerListTempController.setData(customers.get(i));
+                customerListTempController.setData(customers.get(i), box);
 
                 vBox.getChildren().add(box);
-                VBox.setMargin(box, new Insets(5));
-                
+                VBox.setMargin(box, new Insets(2));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,9 +80,8 @@ public class CustomerController implements Initializable {
     }
 
     private List<Customer_list> CustomerList(){
-        
         List<Customer_list> ls = new ArrayList<>();
-        for(int i = 0 ; i < 20; i++){
+
         Customer_list customer = new Customer_list();
         customer.setCusID(1);
         customer.setCusName("Dilesh");
@@ -103,8 +97,18 @@ public class CustomerController implements Initializable {
         customer2.setCusPhone("0773365467");
         customer2.setDate("2023/12/23");
         ls.add(customer2);
-        }
+        
         return ls;
+    }
+
+    public void CustomerDetailsPaneSet(Label cname, Label cid, Label cemail, Label cphone, String name, int id, String email, String phone, HBox customerDetailsPane){
+        customerDetailsPane.setVisible(true);
+        customerDetailsPane.setPrefHeight(160);
+        VBox.setMargin(customerDetailsPane, new Insets(30, 10, 0, 10));
+        cname.setText(name);
+        cid.setText("#"+String.valueOf(id));
+        cemail.setText(email);
+        cphone.setText(phone);
     }
 
    
