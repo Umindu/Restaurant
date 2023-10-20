@@ -101,7 +101,7 @@
             <Separator prefWidth="200.0" />
             <AnchorPane prefHeight="444.0" prefWidth="380.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="365.0" prefWidth="430.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="365.0" prefWidth="430.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <styleClass>
                         <String fx:value="edge-to-edge" />
                         <String fx:value="scroll-pane" />

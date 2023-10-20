@@ -12,11 +12,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Customer_list;
 
 public class CustomerController implements Initializable {
@@ -52,26 +58,7 @@ public class CustomerController implements Initializable {
 
     private List<Customer_list> customers;
 
-    @FXML
-    void AddNewCustomer(ActionEvent event) {
-
-    }
-
-    @FXML
-    void CustomerDelete(ActionEvent event) {
-
-    }
-
-    @FXML
-    void CustomerEdit(ActionEvent event) {
-
-    }
-
-    @FXML
-    void RemoveCustomer(ActionEvent event) {
-    }
-
-     @Override
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusName, cusID, cusEmail, CusPhone, customerDetailsPane);
 
@@ -113,6 +100,54 @@ public class CustomerController implements Initializable {
         ls.add(customer2);
         
         return ls;
+    }
+
+    @FXML
+    void AddNewCustomer(ActionEvent event) {
+        Stage addCustomerStage = new Stage();
+        addCustomerStage.initModality(Modality.APPLICATION_MODAL);
+        addCustomerStage.initStyle(StageStyle.UNDECORATED);
+        addCustomerStage.initStyle(StageStyle.TRANSPARENT);
+
+
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        addCustomerStage.setWidth(screenWidth);
+        addCustomerStage.setHeight(screenHeight);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Add_customer/Add_customer.fxml"));  
+            HBox popupPane = loader.load();
+
+            Scene popupScene = new Scene(popupPane);
+            popupScene.setFill(Color.TRANSPARENT);
+            addCustomerStage.setScene(popupScene);
+            addCustomerStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    @FXML
+    void CustomerDelete(ActionEvent event) {
+
+    }
+
+    @FXML
+    void CustomerEdit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void RemoveCustomer(ActionEvent event) {
+        customerDetailsPane.setVisible(false);
+        customerDetailsPane.setPrefHeight(0);
+        VBox.setMargin(customerDetailsPane, new Insets(0, 10, 0, 10));
+
+        PlacOrderController orderCustomer = new PlacOrderController();
+        orderCustomer.removeSetCustomer(cusOrderPane,cusAddBtn);
     }
 
     public static void setPlaceOrderComponent(Pane orderCusPane, Label orderCusName, Label orderCusID, Button addCusBtn){

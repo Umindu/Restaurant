@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 
 import Customers.CustomerController;
 import Item.ItemController;
-import PlaceOrder.Coupon.CouponpopupController;
-import PlaceOrder.Discount.DiscountpopupController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -92,6 +90,12 @@ public class PlacOrderController implements Initializable {
         cusOrderName.setText(name);
     }
 
+    public void removeSetCustomer(Pane cusOrderPane, Button cusAddBtn){
+        cusOrderPane.setVisible(false);
+        cusAddBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
+        cusAddBtn.setVisible(true);
+    }
+
     @FXML
     void AddCustomer(ActionEvent event) {
         try {
@@ -130,11 +134,10 @@ public class PlacOrderController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Discount/Discountpopup.fxml"));  
             AnchorPane popupPane = loader.load();
-            DiscountpopupController controller = loader.getController();
+            // DiscountpopupController controller = loader.getController();
 
             Scene popupScene = new Scene(popupPane);
             popupStage.setScene(popupScene);
-            controller.setStage(popupStage);
 
             //set position
             Node node = addDiscountBtn; 
@@ -160,11 +163,10 @@ public class PlacOrderController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Coupon/Couponpopup.fxml"));  
             AnchorPane popupPane = loader.load();
-            CouponpopupController controller = loader.getController();
+            // CouponpopupController controller = loader.getController();
 
             Scene popupScene = new Scene(popupPane);
             popupStage.setScene(popupScene);
-            controller.setStage(popupStage);
 
             //set position
             Node node = addCouponBtn; 

@@ -78,8 +78,8 @@ public class CartItemController {
 
     @FXML
     void removeItem(ActionEvent event) {
-        PlacOrderController yy = new PlacOrderController();
-        yy.deleteItem(this.ID, rightSceneVBox);
+        PlacOrderController remove = new PlacOrderController();
+        remove.deleteItem(this.ID, rightSceneVBox);
     }
 
     public void setData(Cart_list Cart_list_item){
