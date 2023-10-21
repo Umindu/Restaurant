@@ -33,7 +33,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Button>
-      <TextField layoutX="98.8" layoutY="35.0" prefHeight="40.0" prefWidth="111.0" AnchorPane.rightAnchor="10.0">
+      <TextField layoutX="98.8" layoutY="35.0" prefHeight="40.0" prefWidth="111.0" styleClass="text-field" AnchorPane.rightAnchor="10.0">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>

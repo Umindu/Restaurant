@@ -54,7 +54,7 @@ public class CartItemController {
 
     @FXML
     void ExpandAnchorpane(ActionEvent event) {
-        this.anchorPane.setPrefHeight(100);
+        this.anchorPane.setPrefHeight(120);
         this.qntLabel.setVisible(true);
         this.qntTextField.setVisible(true);
         this.disLabel.setVisible(true);

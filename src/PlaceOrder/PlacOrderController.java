@@ -24,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -130,6 +131,7 @@ public class PlacOrderController implements Initializable {
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.initStyle(StageStyle.UNDECORATED);
+        popupStage.initStyle(StageStyle.TRANSPARENT);
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Discount/Discountpopup.fxml"));  
@@ -137,6 +139,7 @@ public class PlacOrderController implements Initializable {
             // DiscountpopupController controller = loader.getController();
 
             Scene popupScene = new Scene(popupPane);
+            popupScene.setFill(Color.TRANSPARENT);
             popupStage.setScene(popupScene);
 
             //set position
@@ -159,6 +162,7 @@ public class PlacOrderController implements Initializable {
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.initStyle(StageStyle.UNDECORATED);
+        popupStage.initStyle(StageStyle.TRANSPARENT);
         
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Coupon/Couponpopup.fxml"));  
@@ -166,6 +170,7 @@ public class PlacOrderController implements Initializable {
             // CouponpopupController controller = loader.getController();
 
             Scene popupScene = new Scene(popupPane);
+            popupScene.setFill(Color.TRANSPARENT);
             popupStage.setScene(popupScene);
 
             //set position

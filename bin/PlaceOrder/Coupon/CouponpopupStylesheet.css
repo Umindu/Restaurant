@@ -1,17 +1,15 @@
 .background {
-    -fx-background-color: transparent;
+    -fx-background-color: #fff;
     -fx-background-radius : 10px;
     -fx-border-radius: 10px;
 }
 
-.sub-button {
+.text-field{
     -fx-background-color: #f5f5f5;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
     -fx-background-radius: 10px;
-}
-
-.sub-button:hover {
-    -fx-background-color: #dcdcdc;
-    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
 }
 
 .orenge-button {

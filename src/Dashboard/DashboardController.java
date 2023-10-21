@@ -49,7 +49,7 @@ public class DashboardController implements Initializable{
     }
 
     @FXML
-    void ResetButtonStyle(){
+    public void ResetButtonStyle(){
         homeBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         customerBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         tableBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");

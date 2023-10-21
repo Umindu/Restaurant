@@ -1,0 +1,25 @@
+.table-category-pane{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}
+
+.table-category-button{
+    -fx-background-color : transparent;
+    -fx-background-radius : 10px ;
+    -fx-border-radius : 10px;
+    -fx-border-width:2px;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+}
+
+.table-category-button:hover{
+    -fx-background-color : #fff2e8 !important;
+}
+
+.tabels-scroll-pane{
+    -fx-background-color: transparent; 
+    -fx-background: transparent; 
+    -fx-border-color: transparent;
+}

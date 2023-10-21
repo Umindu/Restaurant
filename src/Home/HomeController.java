@@ -95,6 +95,7 @@ public class HomeController implements Initializable{
     private List<Item> items(){
         
         List<Item> ls = new ArrayList<>();
+        
         Item item = new Item();
         item.setID(0);
         item.setImg("../items_img/Chicken-Biryani.png");
@@ -108,6 +109,7 @@ public class HomeController implements Initializable{
         item2.setName("Rolls");
         item2.setPrice("Rs. 100.00");
         ls.add(item2);
+        
   
         return ls;
     }

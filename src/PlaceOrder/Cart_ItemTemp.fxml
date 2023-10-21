@@ -52,17 +52,17 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="qntLabel" layoutX="81.0" layoutY="42.0" text="Qnt" visible="false">
+      <Label fx:id="qntLabel" layoutX="81.0" layoutY="46.0" text="Qnt" visible="false">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="disLabel" layoutX="220.0" layoutY="42.0" text="Discount(%)" visible="false">
+      <Label fx:id="disLabel" layoutX="220.0" layoutY="46.0" text="Discount(%)" visible="false">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="qntTextField" layoutX="81.0" layoutY="62.0" prefHeight="26.0" prefWidth="100.0" visible="false" />
-      <TextField fx:id="disTextField" layoutX="220.0" layoutY="62.0" prefHeight="26.0" prefWidth="100.0" visible="false" />
+      <TextField fx:id="qntTextField" layoutX="81.0" layoutY="68.0" prefHeight="40.0" prefWidth="110.0" visible="false" />
+      <TextField fx:id="disTextField" layoutX="220.0" layoutY="68.0" prefHeight="40.0" prefWidth="110.0" visible="false" />
    </children>
 </AnchorPane>
