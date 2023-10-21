@@ -23,3 +23,18 @@
     -fx-background: transparent; 
     -fx-border-color: transparent;
 }
+
+.buttom-bar{
+    -fx-background-color : #fff;
+
+}
+
+.main-button{
+    -fx-background-color : #fc8019;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+}
+
+.main-button:hover{
+    -fx-background-color : #dc6300;
+}

@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.Table_list;
@@ -42,24 +41,14 @@ public class TablesController implements Initializable {
                 }
 
                 tableGridPane.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(-20, 10, 50, 10));
+                GridPane.setMargin(pane, new Insets(-20, 20, 50, 00));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Set up responsive constraints for the GridPane
-        ColumnConstraints colConstraints = new ColumnConstraints();
-        colConstraints.setPercentWidth(20);
-
-        
-        for (int i = 0; i < 4; i++) {
-            tableGridPane.getColumnConstraints().add(colConstraints);
-        }
     }
 
     private List<Table_list> tables(){
-        
         List<Table_list> ls = new ArrayList<>();
 
         Table_list table = new Table_list();
