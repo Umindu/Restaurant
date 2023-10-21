@@ -1,0 +1,34 @@
+.topbar-pane{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}
+
+.topbar-button{
+    -fx-background-color : transparent;
+    -fx-background-radius : 10px ;
+    -fx-border-radius : 10px;
+    -fx-border-width:2px;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+}
+
+.card{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}
+
+.filter-button{
+    -fx-background-color : #fff;
+    -fx-border-color : #fc8019;
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-width:2px;
+}
+
+.filter-button:hover{
+    -fx-background-color : #fff2e8 !important;
+}

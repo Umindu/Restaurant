@@ -1,10 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #643;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="843.0" stylesheets="@CashierStylersheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cashier.CashierController">
    <children>
-      <Label layoutX="286.0" layoutY="191.0" text="Cashier" />
+      <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="667.0" spacing="10.0" styleClass="topbar-pane" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Button mnemonicParsing="false" styleClass="topbar-button" text="Cash Drawer">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" styleClass="topbar-button" text="Today's Sale">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" styleClass="topbar-button" text="Profile">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="64.0" prefHeight="120.0" prefWidth="200.0" spacing="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label layoutY="28.0" text="Opening Drawer Amount">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutY="60.0" text="Rs. 10000.00" textFill="#fc8019">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label layoutY="28.0" text="Cash Payment Sale">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutY="60.0" text="Rs. 10000.00" textFill="#09aa29">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label layoutY="30.0" text="Other Payment Sale">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutY="60.0" text="Rs. 10000.00" textFill="#09aa29">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+         </children>
+      </HBox>
+      <Label layoutX="10.0" layoutY="213.0" text="Sale History" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="763.0" layoutY="201.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" styleClass="filter-button" text="Filter" AnchorPane.rightAnchor="14.399999999999977">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
+      <TableView layoutX="14.0" layoutY="254.0" prefHeight="200.0" prefWidth="823.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="255.0" />
    </children>
 </AnchorPane>
