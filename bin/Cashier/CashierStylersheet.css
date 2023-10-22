@@ -19,6 +19,7 @@
     -fx-background-radius : 10px;
     -fx-border-radius : 10px;
     -fx-border-color : transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 1, 1);
 }
 
 .filter-button{

@@ -43,7 +43,7 @@
             <Insets left="10.0" />
          </padding>
       </HBox>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="66.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="823.0" styleClass="tabels-scroll-pane" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="14.0" layoutY="66.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="823.0" styleClass="tabels-scroll-pane" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <content>
             <GridPane fx:id="tableGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
               <rowConstraints>

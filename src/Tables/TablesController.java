@@ -41,7 +41,7 @@ public class TablesController implements Initializable {
                 }
 
                 tableGridPane.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(-20, 20, 50, 00));
+                GridPane.setMargin(pane, new Insets(-25, 20, 50, 00));
             }
         } catch (IOException e) {
             e.printStackTrace();
