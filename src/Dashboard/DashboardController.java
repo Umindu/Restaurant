@@ -124,6 +124,9 @@ public class DashboardController implements Initializable{
         ResetButtonStyle();
         orderBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
+
+        AnchorPane sideview = FXMLLoader.load(getClass().getResource("../Orders/OrderDetails/OrderDetails.fxml"));
+        borderdPane.setRight(sideview);
         checkVisibleRightPane = false;
     }
 

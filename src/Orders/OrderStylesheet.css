@@ -1,0 +1,42 @@
+.topbar-pane{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}
+
+.topbar-button{
+    -fx-background-color : transparent;
+    -fx-background-radius : 10px ;
+    -fx-border-radius : 10px;
+    -fx-border-width:2px;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+}
+
+.topbar-button:hover{
+    -fx-background-color : #fff2e8 !important;
+}
+
+.content-box{
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.searchPane{
+    -fx-border-radius: 0px;
+    -fx-background-color : transparent;
+    -fx-border-width:0px 0px 0.5px 0px;
+    -fx-border-color:#7e7e7e !important;
+}
+
+.search{
+    -fx-background-color : transparent;
+}
+
+.scroll-pane{
+    -fx-background-color: transparent; 
+    -fx-background: transparent; 
+    -fx-border-color: transparent;
+}
