@@ -2,7 +2,7 @@
     -fx-background-radius : 10px;
     -fx-background-color : #f5f5f5;
     -fx-border-radius : 10px;
-    -fx-border-width:0;
+    -fx-border-width:0.5;
     -fx-border-color:#000 !important;
 }
 

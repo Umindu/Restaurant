@@ -1,3 +1,52 @@
+/* Tab one styles */
+
+.radius{
+    -fx-background-radius: 10px;
+}
+
+.backgroud-color{
+    -fx-background-color: #fff;
+}
+
+.sub-background-color{
+    -fx-background-color: #f5f5f5;
+}
+
+.text-area{
+    -fx-background-color : #fff;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+}
+.text-area .content {
+	-fx-background-color: white;
+}
+.text-area:focused .content {
+	-fx-background-color: white;
+}
+
+.text-field{
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.green-button {
+    -fx-background-color: #09aa29;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #fff;
+}
+
+.green-button:hover {
+    -fx-background-color: #007a18;
+}
+
+
+/* Tab two styles */
 .topbar-pane{
     -fx-background-color : #fff; 
     -fx-background-radius : 10px;
