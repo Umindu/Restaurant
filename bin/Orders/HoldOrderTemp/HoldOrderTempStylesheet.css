@@ -1,0 +1,36 @@
+.background{
+    -fx-background-color :#fff;
+    -fx-background-radius : 10px;
+}
+
+#cusName, #tableNum, #date, #time, #note{
+    -fx-text-fill: #000;
+}
+
+.note-background{
+    -fx-background-color :#fff2e8;
+    -fx-background-radius : 10px;
+}
+
+.resume-button{
+    -fx-background-color : #09aa29;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+}
+
+.resume-button:hover{
+    -fx-background-color : #007a18;
+}
+
+.remove-button{
+    -fx-background-color : transparent;
+    -fx-border-color: #fc8019;
+    -fx-border-width: 2px;
+    -fx-background-radius : 10px;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #fc8019;
+}
+
+.remove-button:hover{
+    -fx-background-color : rgba(220, 99, 0, 0.274);
+}

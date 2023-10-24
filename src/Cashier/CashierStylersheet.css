@@ -62,6 +62,9 @@
     -fx-font-size:14px;
     -fx-font-weight:bold;
 }
+.topbar-button:hover{
+    -fx-background-color : #fff2e8 !important;
+}
 
 .card{
     -fx-background-color : #fff; 

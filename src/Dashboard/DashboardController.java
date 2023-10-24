@@ -3,6 +3,8 @@ package Dashboard;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Orders.OrderController;
 import PlaceOrder.PlacOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +48,7 @@ public class DashboardController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         PlacOrderController.setDashboardBorderdPane(borderdPane);
+        OrderController.setDashboardBorderdPane(borderdPane);
     }
 
     @FXML

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,19 +13,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="843.0" stylesheets="@OrderStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="843.0" stylesheets="@OrderStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Orders.OrderController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="667.0" spacing="10.0" styleClass="topbar-pane" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Button mnemonicParsing="false" styleClass="topbar-button" text="Order History">
+            <Button mnemonicParsing="false" onAction="#showOrderHistory" styleClass="topbar-button" text="Order History">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" styleClass="topbar-button" text="Order On Hold">
+            <Button mnemonicParsing="false" onAction="#showHoldOrders" styleClass="topbar-button" text="Order On Hold">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
@@ -34,7 +35,7 @@
             <Insets left="10.0" />
          </padding>
       </HBox>
-      <VBox layoutX="20.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+      <VBox fx:id="historyPane" layoutX="20.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
          <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="searchPane">
                <VBox.margin>
@@ -63,5 +64,16 @@
             </TableView>
          </children>
       </VBox>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+         <content>
+            <HBox fx:id="holdPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" visible="false">
+               <children>
+                  <VBox fx:id="colOne" maxHeight="1.7976931348623157E308" maxWidth="500.0" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="colTwo" maxHeight="1.7976931348623157E308" maxWidth="490.0" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="colThree" maxHeight="1.7976931348623157E308" maxWidth="490.0" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
