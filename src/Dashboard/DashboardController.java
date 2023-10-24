@@ -51,7 +51,6 @@ public class DashboardController implements Initializable{
         OrderController.setDashboardBorderdPane(borderdPane);
     }
 
-    @FXML
     public void ResetButtonStyle(){
         homeBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         customerBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");

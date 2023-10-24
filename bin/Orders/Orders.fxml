@@ -20,12 +20,12 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Button mnemonicParsing="false" onAction="#showOrderHistory" styleClass="topbar-button" text="Order History">
+            <Button fx:id="orderHistoryBtn" mnemonicParsing="false" onAction="#showOrderHistory" styleClass="topbar-button" text="Order History">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#showHoldOrders" styleClass="topbar-button" text="Order On Hold">
+            <Button fx:id="orderHoldBtn" mnemonicParsing="false" onAction="#showHoldOrders" styleClass="topbar-button" text="Order On Hold">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>

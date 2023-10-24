@@ -7,6 +7,7 @@ import Orders.HoldOrderTemp.HoldOrderTempController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -16,6 +17,12 @@ import model.Hold_invoice_list;
 public class OrderController {
 
     private List<Hold_invoice_list> invoices;
+
+    @FXML
+    private Button orderHistoryBtn;
+
+    @FXML
+    private Button orderHoldBtn;
 
     @FXML
     private VBox historyPane;
@@ -39,6 +46,11 @@ public class OrderController {
         DashboardBorderdPane = borderdPane;
     }
 
+    public void ResetButtonStyle(){
+        orderHistoryBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
+        orderHoldBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
+    }
+
     @FXML
     void showOrderHistory(ActionEvent event) {
         holdPane.setVisible(false);
@@ -49,6 +61,9 @@ public class OrderController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        ResetButtonStyle();
+        orderHistoryBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
 
     @FXML
@@ -83,6 +98,9 @@ public class OrderController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        ResetButtonStyle();
+        orderHoldBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
 
     private List<Hold_invoice_list> InvoiceList() {

@@ -39,6 +39,8 @@ public class HoldOrderTempController {
     }
 
     private void setItems(int invoiceId){
+
+        //hold invoice  get Items;
         for(int i =0; i<5; i++){
         HBox pane = new HBox();
         Pane emp = new Pane();

@@ -54,6 +54,11 @@
     -fx-border-color : transparent;
 }
 
+#drawerBtn{
+    -fx-background-color : #fff2e8; 
+    -fx-border-color : #fc8019;
+}
+
 .topbar-button{
     -fx-background-color : transparent;
     -fx-background-radius : 10px ;
