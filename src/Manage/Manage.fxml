@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1240.0" stylesheets="@ManageStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manage.ManageController">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1240.0" stylesheets="@ManageStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manage.ManageController">
    <left>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="245.0" styleClass="menu-scroll-pane" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
@@ -33,7 +33,7 @@
                   </Button>
                   <VBox fx:id="productVbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" visible="false">
                      <children>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="All Products">
+                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAllProducts" prefHeight="45.0" styleClass="menu-button" text="All Products">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -44,7 +44,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="Add Product">
+                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAddProduct" prefHeight="45.0" styleClass="menu-button" text="Add Product">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="Category">
+                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showCategory" prefHeight="45.0" styleClass="menu-button" text="Category">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>

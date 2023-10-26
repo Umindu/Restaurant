@@ -1,0 +1,88 @@
+.main-background{
+    -fx-background-color : #fff;
+    -fx-background-radius : 10px ;
+    -fx-border-radius: 10px;
+}
+
+.top-bar{
+    -fx-background-color : transparent;
+}
+
+
+.main-button{
+    -fx-background-color : #09aa29;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+}
+
+.main-button:hover{
+    -fx-background-color : #007a18;
+}
+
+.secondary-button{
+    -fx-background-color : #fc8019;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+}
+
+.secondary-button:hover{
+    -fx-background-color : #dc6300;
+}
+
+.content-box{
+    -fx-background-color: #fff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+
+/* All products */
+
+.searchPane{
+    -fx-border-radius: 0px;
+    -fx-background-color : transparent;
+    -fx-border-width:0px 0px 0.5px 0px;
+    -fx-border-color:#7e7e7e !important;
+}
+.search{
+    -fx-background-color : transparent;
+}
+
+.scroll-pane{
+    -fx-background-color: transparent; 
+    -fx-background: transparent; 
+    -fx-border-color: transparent;
+}
+
+/* Add product */
+
+.text-fields{
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.text-area{
+    -fx-background-color : #f5f5f5;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+}
+.text-area .content {
+	-fx-background-color: #f5f5f5;
+}
+.text-area:focused .content {
+	-fx-background-color: #f5f5f5;
+}
+
+.scroll-Pane{
+    -fx-background-color : #f5f5f5;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
