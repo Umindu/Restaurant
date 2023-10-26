@@ -207,6 +207,21 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="manageBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#ManageButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Manage">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/manage.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Arial Bold" size="11.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Button fx:id="settingsBtn" contentDisplay="TOP" ellipsisString="" mnemonicParsing="false" onAction="#SettingsButtonClick" prefHeight="70.0" prefWidth="70.0" styleClass="menu-button" text="Settings">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

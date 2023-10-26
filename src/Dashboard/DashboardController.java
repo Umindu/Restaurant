@@ -38,6 +38,9 @@ public class DashboardController implements Initializable{
     private Button reportBtn;
 
     @FXML
+    private Button manageBtn;
+
+    @FXML
     private Button settingsBtn;
 
     @FXML
@@ -58,6 +61,7 @@ public class DashboardController implements Initializable{
         cashierBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         orderBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         reportBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
+        manageBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
         settingsBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
     }
 
@@ -138,6 +142,16 @@ public class DashboardController implements Initializable{
         borderdPane.setCenter(view);
         ResetButtonStyle();
         reportBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        borderdPane.setRight(null);
+        checkVisibleRightPane = false;
+    }
+
+    @FXML
+    void ManageButtonClick(ActionEvent event) throws IOException {
+        BorderPane view = FXMLLoader.load(getClass().getResource("../Manage/Manage.fxml"));
+        borderdPane.setCenter(view);
+        ResetButtonStyle();
+        manageBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
         checkVisibleRightPane = false;
     }

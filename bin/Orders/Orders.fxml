@@ -64,7 +64,7 @@
             </TableView>
          </children>
       </VBox>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <content>
             <HBox fx:id="holdPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" visible="false">
                <children>

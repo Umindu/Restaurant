@@ -52,7 +52,7 @@
                   <Insets top="10.0" />
                </padding>
             </Label>
-            <Pane layoutX="1.0" layoutY="40.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="370.0" prefWidth="760.0">
+            <Pane layoutX="1.0" layoutY="42.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="370.0" prefWidth="760.0">
                <children>
                   <VBox alignment="CENTER" layoutY="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="760.0">
                      <children>
@@ -202,7 +202,7 @@
                   <String fx:value="radius" />
                </styleClass>
             </Pane>
-            <Label layoutY="411.0" text="Remarks">
+            <Label layoutY="413.0" text="Remarks">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -210,8 +210,8 @@
                   <Insets top="10.0" />
                </padding>
             </Label>
-            <TextArea layoutY="453.0" prefHeight="98.0" prefWidth="760.0" />
-            <Button alignment="CENTER" cache="true" layoutX="461.0" layoutY="567.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="299.0" styleClass="green-button" text="Close Drawer" textFill="WHITE" textOverrun="CLIP">
+            <TextArea layoutY="455.0" prefHeight="98.0" prefWidth="760.0" />
+            <Button alignment="CENTER" cache="true" layoutX="461.0" layoutY="578.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="299.0" styleClass="green-button" text="Close Drawer" textFill="WHITE" textOverrun="CLIP">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

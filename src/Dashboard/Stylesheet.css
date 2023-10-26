@@ -33,11 +33,5 @@
 }
 
 .sub-button{
-    -fx-background-color : #f5f5f5;
-    -fx-background-radius : 10px;
-}
-
-.sub-button:hover{
-    -fx-background-color : #dcdcdc;
-    -fx-background-radius : 10px;
+    -fx-background-color : Transparent;
 }

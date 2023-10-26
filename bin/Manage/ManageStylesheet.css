@@ -1,0 +1,26 @@
+.menu-background{
+    -fx-background-color : transparent;
+}
+
+.menu-scroll-pane{
+    -fx-background-color: #fff;
+    -fx-background-radius : 10px ;
+    -fx-background: transparent; 
+    /* -fx-border-color: transparent; */
+}
+
+.menu-button{
+    -fx-background-color : #fff;
+    -fx-background-radius : 0px ;
+    -fx-border-radius : 0px;
+}
+
+.menu-button:hover{
+    -fx-background-color : #fff2e8 !important;
+}
+
+.main-background{
+    -fx-background-color : #fff;
+    -fx-background-radius : 10px ;
+    -fx-border-radius: 10px;
+}
