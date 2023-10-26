@@ -6,6 +6,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -18,7 +20,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="900.0" stylesheets="@ProductStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manage.Products.ProductController">
    <children>
-      <VBox fx:id="allProPane" layoutY="10.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="allProPane" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -162,7 +164,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="categoryPane" layoutX="20.0" layoutY="30.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="categoryPane" layoutX="20.0" layoutY="30.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -180,8 +182,8 @@
                <children>
                   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                      <children>
-                        <TextField alignment="CENTER_RIGHT" layoutX="711.0" layoutY="54.0" prefHeight="40.0" prefWidth="130.0" promptText="#0000001" styleClass="text-fields" AnchorPane.leftAnchor="711.0" AnchorPane.topAnchor="54.0" />
-                        <Label layoutX="711.0" layoutY="34.0" text="Product ID" AnchorPane.leftAnchor="711.0" AnchorPane.topAnchor="34.0">
+                        <TextField alignment="CENTER_RIGHT" layoutX="560.0" layoutY="85.0" prefHeight="40.0" prefWidth="130.0" promptText="#0000001" styleClass="text-fields" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="85.0" />
+                        <Label layoutX="560.0" layoutY="65.0" text="Category ID" AnchorPane.rightAnchor="251.19999999999993" AnchorPane.topAnchor="65.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -196,6 +198,36 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
+                        <Separator layoutX="536.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefWidth="0.5" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="10.0" />
+                        <Label layoutX="558.0" layoutY="14.0" text="Add Category" AnchorPane.rightAnchor="187.60000000000002" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font name="Arial Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="560.0" layoutY="160.0" prefHeight="40.0" prefWidth="310.0" promptText="Drink" styleClass="text-fields" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0" />
+                        <Label layoutX="558.0" layoutY="140.0" text="Category Name" AnchorPane.rightAnchor="229.19999999999993" AnchorPane.topAnchor="140.0">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <AnchorPane layoutX="14.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="430.0" styleClass="searchPane" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="4.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/search.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <TextField focusTraversable="false" layoutX="28.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="754.0" promptText="Search Products..." styleClass="search" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </AnchorPane>
+                        <TableView layoutX="14.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="60.0" />
                      </children>
                   </AnchorPane>
                </children>
