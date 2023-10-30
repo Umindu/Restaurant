@@ -21,7 +21,7 @@ public class ProductController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        ManageController.setPane(allProPane ,addProPane, categoryPane);
+        ManageController.setProductsPane(allProPane ,addProPane, categoryPane);
     }
 
     public void showAllProPane(VBox allProPane2, VBox addProPane2, VBox categoryPane2){

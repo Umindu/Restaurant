@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Manage.Employees.EmployeeController;
 import Manage.Products.ProductController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,12 @@ public class ManageController implements Initializable {
     private Button emploMainBtn;
 
     @FXML
+    private Button allEmplonBtn;
+
+    @FXML
+    private Button addEmplonBtn;
+
+    @FXML
     private Button tableMainBtn;
 
     @FXML
@@ -57,10 +64,22 @@ public class ManageController implements Initializable {
     @FXML
     private static VBox categpryPane;
 
-    public static void setPane(VBox allProPane2, VBox addProPane2, VBox categpryPane2) {
+    //employee window
+    @FXML
+    private static VBox allEmployeesPane;
+
+    @FXML
+    private static VBox addEmployeesPane;
+
+    public static void setProductsPane(VBox allProPane2, VBox addProPane2, VBox categpryPane2) {
         addProPane = addProPane2;
         allProPane = allProPane2;
         categpryPane = categpryPane2;
+    }
+
+    public static void setEmployeesPane(VBox allEmployeesPane2, VBox addEmployeePane2) {
+        allEmployeesPane = allEmployeesPane2;
+        addEmployeesPane = addEmployeePane2;
     }
 
     // Reset button style.....................
@@ -70,6 +89,8 @@ public class ManageController implements Initializable {
         allProBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         categoryBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         emploMainBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
+        allEmplonBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
+        addEmplonBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         tableMainBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
     }
 
@@ -125,7 +146,9 @@ public class ManageController implements Initializable {
 
     // Employee tab......................................
     @FXML
-    void showEmployeeVbox(ActionEvent event) {
+    void showEmployeeVbox(ActionEvent event) throws IOException {
+        AnchorPane view = FXMLLoader.load(getClass().getResource("Employees/Employees.fxml"));
+        borderPane.setCenter(view);
         if (employeeVbox.isVisible()) {
             employeeVbox.setVisible(false);
             employeeVbox.setPrefHeight(0);
@@ -133,7 +156,25 @@ public class ManageController implements Initializable {
             employeeVbox.setVisible(true);
             employeeVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
         }
+        ResetButtonStyle();
+        emploMainBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-text-fill: #fff;");
     }
+
+    @FXML
+    void showAllEmployees(ActionEvent event) {
+        EmployeeController eController = new EmployeeController();
+        eController.showAllEmpPane(allEmployeesPane, addEmployeesPane);
+        ResetButtonStyle();
+        allEmplonBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-text-fill: #fff;");
+    }
+
+    @FXML
+    void showAddEmployees(ActionEvent event) {
+        EmployeeController eController = new EmployeeController();
+        eController.showAddEmpPane(allEmployeesPane, addEmployeesPane);
+        ResetButtonStyle();
+        addEmplonBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-text-fill: #fff;");
+    } 
 
 
     // Table tab......................................

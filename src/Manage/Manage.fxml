@@ -16,7 +16,7 @@
          <content>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="240.0" styleClass="menu-background">
                <children>
-                  <Button fx:id="proMainBtn" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showProductVbox" onMouseEntered="#showProductVbox" prefHeight="45.0" style="-fx-background-radius: 10 10 0 0;" styleClass="menu-button" text="Products">
+                  <Button fx:id="proMainBtn" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showProductVbox" prefHeight="45.0" style="-fx-background-radius: 10 10 0 0;" styleClass="menu-button" text="Products">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -85,7 +85,7 @@
                   </Button>
                   <VBox fx:id="employeeVbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" visible="false">
                      <children>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="All Employees">
+                        <Button fx:id="allEmplonBtn" alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAllEmployees" prefHeight="45.0" styleClass="menu-button" text="All Employees">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
@@ -96,7 +96,7 @@
                               <Insets left="30.0" />
                            </padding>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="Add Employee">
+                        <Button fx:id="addEmplonBtn" alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAddEmployees" prefHeight="45.0" styleClass="menu-button" text="Add Employee">
                            <font>
                               <Font name="Arial" size="13.0" />
                            </font>
