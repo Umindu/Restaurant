@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -20,6 +21,9 @@ public class ManageController implements Initializable {
 
     @FXML
     private Button proMainBtn;
+
+    @FXML
+    private ImageView proMainBtnImg;
 
     @FXML
     private Button addProBtn;
@@ -34,6 +38,9 @@ public class ManageController implements Initializable {
     private Button emploMainBtn;
 
     @FXML
+    private ImageView emploMainBtnImg;
+
+    @FXML
     private Button allEmplonBtn;
 
     @FXML
@@ -41,6 +48,9 @@ public class ManageController implements Initializable {
 
     @FXML
     private Button tableMainBtn;
+
+    @FXML
+    private ImageView tableMainBtnImg;
 
     @FXML
     private BorderPane borderPane;
@@ -54,7 +64,15 @@ public class ManageController implements Initializable {
     @FXML
     private VBox tableVbox;
 
-    //product window
+    //main windows variable
+    @FXML
+    private AnchorPane productView;
+    @FXML
+    private AnchorPane employeeView;
+    @FXML
+    private AnchorPane tableView;
+
+    //product windows
     @FXML
     private static VBox addProPane;
 
@@ -64,7 +82,7 @@ public class ManageController implements Initializable {
     @FXML
     private static VBox categpryPane;
 
-    //employee window
+    //employee windows
     @FXML
     private static VBox allEmployeesPane;
 
@@ -84,21 +102,25 @@ public class ManageController implements Initializable {
 
     // Reset button style.....................
     public void ResetButtonStyle(){
-        proMainBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000; -fx-background-radius: 10 10 0 0;");
         addProBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         allProBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         categoryBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
-        emploMainBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         allEmplonBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
         addEmplonBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
-        tableMainBtn.setStyle("-fx-background-color : #fff; -fx-text-fill: #000;");
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("Products/Products.fxml"));
-            borderPane.setCenter(view);
+            productView = FXMLLoader.load(getClass().getResource("Products/Products.fxml"));
+            borderPane.setCenter(productView);
+
+            //all product button styles
+            proMainBtnImg.setRotate(90);
+            productVbox.setVisible(true);
+            productVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
+            allProBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-text-fill: #fff;");
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,21 +129,23 @@ public class ManageController implements Initializable {
     //Product tab.....................................
     @FXML
     void showProductVbox(ActionEvent event) throws IOException {
-        AnchorPane view = FXMLLoader.load(getClass().getResource("Products/Products.fxml"));
-        borderPane.setCenter(view);
         if (productVbox.isVisible()) {
+            proMainBtnImg.setRotate(0);
             productVbox.setVisible(false);
             productVbox.setPrefHeight(0);
         } else {
+            proMainBtnImg.setRotate(90);
             productVbox.setVisible(true);
             productVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
         }
-        ResetButtonStyle();
-        proMainBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-background-radius: 10 10 0 0; -fx-text-fill: #fff;");
     }
 
     @FXML
     void showAddProduct(ActionEvent event) {
+        if (borderPane.getCenter() != productView) {
+            borderPane.setCenter(productView);
+        }
+
         ProductController pController = new ProductController();
         pController.showAddProPane(allProPane, addProPane, categpryPane);
         ResetButtonStyle();
@@ -130,6 +154,10 @@ public class ManageController implements Initializable {
 
     @FXML
     void showAllProducts(ActionEvent event) {
+        if (borderPane.getCenter() != productView) {
+            borderPane.setCenter(productView);
+        }
+
         ProductController pController = new ProductController();
         pController.showAllProPane(allProPane, addProPane, categpryPane);
         ResetButtonStyle();
@@ -138,6 +166,10 @@ public class ManageController implements Initializable {
 
     @FXML
     void showCategory(ActionEvent event) {
+        if (borderPane.getCenter() != productView) {
+            borderPane.setCenter(productView);
+        }
+
         ProductController pController = new ProductController();
         pController.showCategoryPane(allProPane, addProPane, categpryPane);
         ResetButtonStyle();
@@ -147,21 +179,25 @@ public class ManageController implements Initializable {
     // Employee tab......................................
     @FXML
     void showEmployeeVbox(ActionEvent event) throws IOException {
-        AnchorPane view = FXMLLoader.load(getClass().getResource("Employees/Employees.fxml"));
-        borderPane.setCenter(view);
+        employeeView = FXMLLoader.load(getClass().getResource("Employees/Employees.fxml"));
+        
         if (employeeVbox.isVisible()) {
+            emploMainBtnImg.setRotate(0);
             employeeVbox.setVisible(false);
             employeeVbox.setPrefHeight(0);
         } else {
+            emploMainBtnImg.setRotate(90);
             employeeVbox.setVisible(true);
             employeeVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
         }
-        ResetButtonStyle();
-        emploMainBtn.setStyle("-fx-background-color : #fe8b2c !important; -fx-text-fill: #fff;");
     }
 
     @FXML
-    void showAllEmployees(ActionEvent event) {
+    void showAllEmployees(ActionEvent event) throws IOException {
+        if (borderPane.getCenter() != employeeView) {
+            borderPane.setCenter(employeeView);
+        }
+
         EmployeeController eController = new EmployeeController();
         eController.showAllEmpPane(allEmployeesPane, addEmployeesPane);
         ResetButtonStyle();
@@ -169,7 +205,11 @@ public class ManageController implements Initializable {
     }
 
     @FXML
-    void showAddEmployees(ActionEvent event) {
+    void showAddEmployees(ActionEvent event) throws IOException {
+        if (borderPane.getCenter() != employeeView) {
+            borderPane.setCenter(employeeView);
+        }
+
         EmployeeController eController = new EmployeeController();
         eController.showAddEmpPane(allEmployeesPane, addEmployeesPane);
         ResetButtonStyle();
@@ -181,9 +221,11 @@ public class ManageController implements Initializable {
     @FXML
     void showTableVbox(ActionEvent event) {
         if (tableVbox.isVisible()) {
+            tableMainBtnImg.setRotate(0);
             tableVbox.setVisible(false);
             tableVbox.setPrefHeight(0);
         } else {
+            tableMainBtnImg.setRotate(90);
             tableVbox.setVisible(true);
             tableVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
         }

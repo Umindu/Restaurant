@@ -16,12 +16,12 @@
          <content>
             <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="240.0" styleClass="menu-background">
                <children>
-                  <Button fx:id="proMainBtn" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showProductVbox" prefHeight="45.0" style="-fx-background-radius: 10 10 0 0;" styleClass="menu-button" text="Products">
+                  <Button fx:id="proMainBtn" alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="103.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showProductVbox" prefHeight="45.0" style="-fx-background-radius: 10 10 0 0;" styleClass="menu-button" text="Products">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="proMainBtnImg" fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../img/right-arrow.png" />
                            </image>
@@ -73,7 +73,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="emploMainBtnImg" fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../img/right-arrow.png" />
                            </image>
@@ -114,7 +114,7 @@
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="tableMainBtnImg" fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../img/right-arrow.png" />
                            </image>
