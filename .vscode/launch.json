@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DBconnect",
+            "request": "launch",
+            "mainClass": "DBconnect",
+            "projectName": "Restaurant_fd3f1038"
+        },
+        {
+            "type": "java",
             "name": "PlacOrderController",
             "request": "launch",
             "mainClass": "PlaceOrder.PlacOrderController",

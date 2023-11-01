@@ -179,7 +179,10 @@ public class ManageController implements Initializable {
     // Employee tab......................................
     @FXML
     void showEmployeeVbox(ActionEvent event) throws IOException {
+        if (employeeView == null) {
         employeeView = FXMLLoader.load(getClass().getResource("Employees/Employees.fxml"));
+        System.out.println(employeeView);
+        }
         
         if (employeeVbox.isVisible()) {
             emploMainBtnImg.setRotate(0);
