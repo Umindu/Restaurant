@@ -1,15 +1,19 @@
 package Manage.Products.model;
 
+import javafx.scene.layout.HBox;
+
 public class Category {
     private String catId;
     private String catName;
-    private String catAction;
+    private HBox actionBtnContainer;
 
-    public Category(String cId, String cName, String action) {
+    public Category(String cId, String cName, HBox actionBtnContainer) {
         catId = cId;
         catName = cName;
-        catAction = action;
+        this.actionBtnContainer = actionBtnContainer;
     }
+
+    
 
     public String getCategoryId() {
         return catId;
@@ -19,7 +23,7 @@ public class Category {
         return catName;
     }
 
-    public String getCategoryAction() {
-        return catAction;
+    public HBox getCategoryAction() {
+        return this.actionBtnContainer;
     }
 }

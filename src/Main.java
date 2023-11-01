@@ -28,6 +28,6 @@ public class Main extends Application {
 
          // Get the controller instance from the FXMLLoader
         DashboardController dashboardController = loader.getController();
-        dashboardController.HomeButtonClick(null); 
+        dashboardController.HomeButtonClick(null);  
     }
 }

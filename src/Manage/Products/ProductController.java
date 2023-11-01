@@ -15,7 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -38,7 +41,7 @@ public class ProductController implements Initializable{
     private TableColumn<Category, String> tableCatName;
 
     @FXML
-    private TableColumn<Category, String> tableCatAction;
+    private TableColumn<Category, HBox> tableCatAction;
 
     private ObservableList<Category> categoryList = FXCollections.observableArrayList();
 
@@ -57,13 +60,13 @@ public class ProductController implements Initializable{
 
         tableCatID.setCellValueFactory(new PropertyValueFactory<Category ,String>("CategoryId"));
         tableCatName.setCellValueFactory(new PropertyValueFactory<Category ,String>("CategoryName"));
-        tableCatAction.setCellValueFactory(new PropertyValueFactory<Category ,String>("CategoryAction"));
+        tableCatAction.setCellValueFactory(new PropertyValueFactory<Category ,HBox>("CategoryAction"));
 
         categoryTableView.setItems(categoryList);
         loadDataFromDatabase();
     }
 
-    private void loadDataFromDatabase() {
+    public void loadDataFromDatabase() {
         categoryList.clear();
         try {
             Statement statement = DBConnect.connectToDB().createStatement();
@@ -72,18 +75,52 @@ public class ProductController implements Initializable{
             while (resultSet.next()) {
                 String id = resultSet.getString("ID");
                 String name = resultSet.getString("Name");
-                String action = "action";
 
-                categoryList.add(new Category(id, name, action));
+                Button editBtn = new Button("Edit");
+                Button deleteBtn = new Button("Delete");
+                HBox actionBtnContainer = new HBox(editBtn, deleteBtn);
+                editBtn.setOnAction(e -> {
+                    editCategory(new Category(id, name, actionBtnContainer));
+                });
+                deleteBtn.setOnAction(e ->{
+                    deleteCategory(new Category(id, name, actionBtnContainer));
+                });
+
+                categoryList.add(new Category(id, name, actionBtnContainer));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    //Add Category pane function.........................................
+    //Add or Edit Category pane function.........................................
+    private void editCategory(Category category){
+        catIdTextField.setText(category.getCategoryId());
+        catNameTextField.setText(category.getCategoryName());
+        catIdTextField.setEditable(false);
+    }
+
+    private void deleteCategory(Category category){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Category");
+        alert.setHeaderText("Are you sure you want to delete this category?");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == javafx.scene.control.ButtonType.OK) {
+                try {
+                    Statement statement = DBConnect.connectToDB().createStatement();
+                    statement.execute("delete from Category where ID = '"+category.getCategoryId()+"'");
+                    System.out.println("Category deleted successfully");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                loadDataFromDatabase();
+            }
+        });
+    }
+
     @FXML
     void cancelCategory(ActionEvent event) {
+        catIdTextField.setEditable(true);
         catIdTextField.clear();
         catNameTextField.clear();
     }
@@ -95,12 +132,22 @@ public class ProductController implements Initializable{
 
         if(!catId.isEmpty() || !catName.isEmpty()){
             //save to database
-            try {
-                Statement statement = DBConnect.connectToDB().createStatement();
-                statement.execute("insert into Category values ('"+catId+"', '"+catName+"')");
-                System.out.println("Category saved successfully");
-            } catch (SQLException e) {
-                e.printStackTrace();
+            if (catIdTextField.isEditable()) {
+                try {
+                    Statement statement = DBConnect.connectToDB().createStatement();
+                    statement.execute("insert into Category values ('"+catId+"', '"+catName+"')");
+                    System.out.println("Category saved successfully");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                try {
+                    Statement statement = DBConnect.connectToDB().createStatement();
+                    statement.execute("update Category set Name = '"+catName+"' where ID = '"+catId+"'");
+                    System.out.println("Category updated successfully");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         cancelCategory(null);
