@@ -1,13 +1,13 @@
 package model;
 
 public class Cart_list {
-    private int itemID;
+    private String itemID;
     private String itemName;
     private String itemPrice;
     private String itemQnt;
     // private String itemDiscount;
 
-    public int getID() {
+    public String getID() {
         return itemID;
     }
     public String getName() {
@@ -23,7 +23,7 @@ public class Cart_list {
     //     return itemDiscount;
     // }
 
-    public void setID(int itemID) {
+    public void setID(String itemID) {
         this.itemID = itemID;
     }
     public void setName(String itemName) {

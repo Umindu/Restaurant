@@ -35,7 +35,7 @@ public class ItemController {
         itemPrice.setText(item.getPrice());
 
         vbox.setOnMouseClicked(event -> {
-            int id = item.getID();
+            String id = item.getID();
             String name = item.getName();
             String price = item.getPrice();
             String qnt = "5";

@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import model.Cart_list;
 
 public class CartItemController {
-    private int ID;
+    private String ID;
 
     @FXML
     private AnchorPane anchorPane;

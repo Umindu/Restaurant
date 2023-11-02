@@ -223,7 +223,7 @@ public class PlacOrderController implements Initializable {
         }
     }
 
-    public void setItem(int id, String name, String price, String qnt, VBox vBox){
+    public void setItem(String id, String name, String price, String qnt, VBox vBox){
         item.setID(id);
         item.setName(name);
         item.setPrice(price);
@@ -232,7 +232,7 @@ public class PlacOrderController implements Initializable {
         Refresh(vBox);
     }
 
-    public void deleteItem(int id, VBox vbox) {
+    public void deleteItem(String id, VBox vbox) {
         for (int i = 0; i < cartItemList.size(); i++) {
             if (cartItemList.get(i).getID() == id) {
                 cartItemList.remove(i);

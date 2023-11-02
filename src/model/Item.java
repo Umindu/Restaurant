@@ -4,7 +4,7 @@ public class Item {
     private String name;
     private String price;
     private String img;
-    private int ID;
+    private String ID;
 
 
     public String getName() {
@@ -13,7 +13,7 @@ public class Item {
     public String getPrice() {
         return price;
     }
-    public int getID() {
+    public String getID() {
         return ID;
     }
     public String getImg() {
@@ -28,7 +28,7 @@ public class Item {
     public void setImg(String img) {
         this.img = img;
     }
-    public void setID(int iD) {
+    public void setID(String iD) {
         ID = iD;
     }
     

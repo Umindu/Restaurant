@@ -205,6 +205,7 @@ public class ProductController implements Initializable {
     private void editProduct(Product product) {
         Image image = new Image(getClass().getResourceAsStream("../" + product.getImgUrl()));
         addProImg.setImage(image);
+        imageUrl = product.getImgUrl();
         proIdTextField.setText(product.getProductId());
         proNameTextField.setText(product.getProductName());
         proCategoryCombo.getSelectionModel().select(product.getProductCategory());

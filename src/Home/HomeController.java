@@ -2,10 +2,14 @@ package Home;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import DataBase.DBConnect;
 import Item.ItemController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,8 +40,17 @@ public class HomeController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        ArrayList<String> array = new ArrayList<String>();
 
-        String[] array = {"Bus", "Car", "Van", "Bike"};
+        try {
+            Statement statement = DBConnect.connectToDB().createStatement();
+            statement.execute("SELECT * FROM category");
+            while (statement.getResultSet().next()) {
+                array.add(statement.getResultSet().getString("Name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         for (String labelString : array) {
             Button button = new Button(labelString);
@@ -93,24 +106,27 @@ public class HomeController implements Initializable{
 
 
     private List<Item> items(){
-        
         List<Item> ls = new ArrayList<>();
-        
-        Item item = new Item();
-        item.setID(0);
-        item.setImg("../items_img/Chicken-Biryani.png");
-        item.setName("Rice");
-        item.setPrice("Rs. 1400.00");
-        ls.add(item);
 
-        Item item2 = new Item();
-        item2.setID(1);
-        item2.setImg("../items_img/Chicken-Biryani.png");
-        item2.setName("Rolls");
-        item2.setPrice("Rs. 100.00");
-        ls.add(item2);
-        
-  
+        try  {
+            Statement statements = DBConnect.connectToDB().createStatement();
+            statements.execute("SELECT * FROM Products");
+            ResultSet result = statements.getResultSet();
+            while (result.next()) {
+                Item item = new Item();
+                item.setID(result.getString("ID"));
+                if (result.getString("ImgUrl").equals("null")) {
+                    item.setImg("../items_img/Temp.png");
+                } else {
+                    item.setImg(result.getString("ImgUrl"));
+                }
+                item.setName(result.getString("Name"));
+                item.setPrice(result.getString("Price"));
+                ls.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return ls;
     }
 
