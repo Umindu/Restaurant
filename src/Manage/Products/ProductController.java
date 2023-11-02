@@ -155,12 +155,13 @@ public class ProductController implements Initializable {
         productsTableView.setItems(productList);
         ProductloadDataFromDatabase();
 
+        // product category combo refresh
         refrashCategoryCombo();
     }
 
 
-    // All Product
-    // #########################################################################
+    // All Product#########################################################################
+    // load product data from database to table view
     public void ProductloadDataFromDatabase() {
         productList.clear();
         try {
@@ -185,25 +186,22 @@ public class ProductController implements Initializable {
                 actionBtnContainer.setId("actionBtnContainer");
                 editBtn.setOnAction(e -> {
                     editProduct(
-                            new Product(imgUrl, id, name, category, cost, discount, price, description,
-                                    actionBtnContainer));
+                            new Product(imgUrl, id, name, category, cost, discount, price, description, actionBtnContainer));
                 });
                 deleteBtn.setOnAction(e -> {
                     deleteProduct(
-                            new Product(imgUrl, id, name, category, cost, discount, price, description,
-                                    actionBtnContainer));
+                            new Product(imgUrl, id, name, category, cost, discount, price, description, actionBtnContainer));
                 });
 
                 productList
-                        .add(new Product(imgUrl, id, name, category, cost, discount, price, description,
-                                actionBtnContainer));
+                        .add(new Product(imgUrl, id, name, category, cost, discount, price, description, actionBtnContainer));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Add or Edit Products pane function.........................................
+    // Edit Product function
     private void editProduct(Product product) {
         Image image = new Image(getClass().getResourceAsStream("../" + product.getImgUrl()));
         addProImg.setImage(image);
@@ -221,7 +219,7 @@ public class ProductController implements Initializable {
 
         addAndEditLableTitle.setText("Edit Product");
     }
-
+    // Delete Product function
     private void deleteProduct(Product product) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Product");
@@ -242,9 +240,8 @@ public class ProductController implements Initializable {
 
 
 
-    // Add Productb
-    // #########################################################################
-
+    // Add Product#########################################################################
+    // choose product image 
     @FXML
     void chooseImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -271,10 +268,9 @@ public class ProductController implements Initializable {
             }
         }
     }
-
+    // refresh product category combo
     private void refrashCategoryCombo() {
         categoryComboList.clear();
-        // product category combo
         categoryComboList.add("Select Category");
         try {
             Statement statement = DBConnect.connectToDB().createStatement();
@@ -290,7 +286,7 @@ public class ProductController implements Initializable {
         proCategoryCombo.setItems(categoryComboList);
         proCategoryCombo.getSelectionModel().select(0);
     }
-
+    // product cancel button functions
     @FXML
     void cancelProduct(ActionEvent event) {
         Image image = new Image(getClass().getResourceAsStream("../../items_img/Temp.png"));
@@ -312,7 +308,7 @@ public class ProductController implements Initializable {
         addAndEditLableTitle.setText("Add Product");
         addProError.setVisible(false);
     }
-
+    // product save button functions
     @FXML
     void saveProduct(ActionEvent event) {
         String proImg = imageUrl;
@@ -326,7 +322,7 @@ public class ProductController implements Initializable {
 
         if (!proId.isEmpty() && !proName.isEmpty() && proCategory != "Select Category" && !proCost.isEmpty()
                 && !proPrice.isEmpty()) {
-            // save to database
+            //insert product data to database
             if (proIdTextField.isEditable()) {
                 try {
                     Statement statement = DBConnect.connectToDB().createStatement();
@@ -341,7 +337,9 @@ public class ProductController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else {
+            } 
+            //update product data to database
+            else {
                 try {
                     Statement statement = DBConnect.connectToDB().createStatement();
                     statement.execute("update Products set Name = '" + proName + "', ImgUrl = '" + proImg + "', Category = '" + proCategory
@@ -363,8 +361,8 @@ public class ProductController implements Initializable {
 
     
 
-    // Category
-    // ############################################################################
+    // Category############################################################################
+    // load category data from database to table view
     public void CategoryloadDataFromDatabase() {
         categoryList.clear();
         try {
@@ -395,13 +393,13 @@ public class ProductController implements Initializable {
         }
     }
 
-    // Add or Edit Category pane function.........................................
+    // Edit Category function
     private void editCategory(Category category) {
         catIdTextField.setText(category.getCategoryId());
         catNameTextField.setText(category.getCategoryName());
         catIdTextField.setEditable(false);
     }
-
+    // Delete Category function
     private void deleteCategory(Category category) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Delete Category");
@@ -419,7 +417,7 @@ public class ProductController implements Initializable {
             }
         });
     }
-
+    // Category cancel button functions
     @FXML
     void cancelCategory(ActionEvent event) {
         catIdTextField.setEditable(true);
@@ -430,7 +428,7 @@ public class ProductController implements Initializable {
 
         refrashCategoryCombo();
     }
-
+    // Category save button functions
     @FXML
     void saveCategory(ActionEvent event) {
         String catId = catIdTextField.getText();
@@ -463,7 +461,7 @@ public class ProductController implements Initializable {
         }
     }
 
-    // Menu Button functions.........................................
+    // Menu Button functions
     public void showAllProPane(VBox allProPane2, VBox addProPane2, VBox categoryPane2) {
         addProPane2.setVisible(false);
         categoryPane2.setVisible(false);
