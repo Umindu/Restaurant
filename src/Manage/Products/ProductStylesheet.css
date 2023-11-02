@@ -86,3 +86,25 @@
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
 }
+
+/* Category */
+
+#actionEditBtn{
+    -fx-background-color : #09aa29;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+    -fx-min-width: 50px;
+    -fx-cursor: hand;
+}
+
+#actionDeleteBtn{
+    -fx-background-color : #fc8019;
+    -fx-background-radius : 10px;
+    -fx-text-fill: #fff;
+    -fx-min-width: 50px;
+    -fx-cursor: hand;
+}
+
+#actionBtnContainer{
+    -fx-spacing: 10px;
+}
