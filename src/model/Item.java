@@ -5,10 +5,14 @@ public class Item {
     private String price;
     private String img;
     private String ID;
+    private String category;
 
 
     public String getName() {
         return name;
+    }
+    public String getCategory() {
+        return category;
     }
     public String getPrice() {
         return price;
@@ -21,6 +25,10 @@ public class Item {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public void setCategory(String category) {
+        this.category = category;
     }
     public void setPrice(String price) {
         this.price = price;

@@ -41,7 +41,7 @@ public class HomeController implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ArrayList<String> array = new ArrayList<String>();
-
+        array.add("All");
         try {
             Statement statement = DBConnect.connectToDB().createStatement();
             statement.execute("SELECT * FROM category");
@@ -65,12 +65,19 @@ public class HomeController implements Initializable{
             button.setOnAction(event -> {
                 // Your action for the button here
                 String clickedLabel = button.getId();
-                System.out.println(clickedLabel + " button clicked!");
+                createItem(clickedLabel);
             });
         }
 
-        // items list................................................    
-        items = new ArrayList<>(items());
+        createItem("All");
+    }
+    
+
+    // create item
+    private void createItem(String search){ 
+        itemGridPane.getChildren().clear();
+        items = new ArrayList<>(items(search));
+    
         int column = 0;
         int row = 1;
 
@@ -86,18 +93,15 @@ public class HomeController implements Initializable{
                     column=0;
                     ++row;
                 }
-
                 itemGridPane.add(box, column++, row);
                 GridPane.setMargin(box, new Insets(-30, 10, 50, 10));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // Set up responsive constraints for the GridPane
         ColumnConstraints colConstraints = new ColumnConstraints();
         colConstraints.setPercentWidth(20);
-
         
         for (int i = 0; i < 6; i++) {
             itemGridPane.getColumnConstraints().add(colConstraints);
@@ -105,24 +109,45 @@ public class HomeController implements Initializable{
     }
 
 
-    private List<Item> items(){
+    // get items from database
+    private List<Item> items(String search){
         List<Item> ls = new ArrayList<>();
 
         try  {
-            Statement statements = DBConnect.connectToDB().createStatement();
-            statements.execute("SELECT * FROM Products");
-            ResultSet result = statements.getResultSet();
-            while (result.next()) {
-                Item item = new Item();
-                item.setID(result.getString("ID"));
-                if (result.getString("ImgUrl").equals("null")) {
-                    item.setImg("../items_img/Temp.png");
-                } else {
-                    item.setImg(result.getString("ImgUrl"));
+            if (search == "All") {
+                Statement statements = DBConnect.connectToDB().createStatement();
+                statements.execute("SELECT * FROM Products");
+                ResultSet result = statements.getResultSet();
+                while (result.next()) {
+                    Item item = new Item();
+                    item.setID(result.getString("ID"));
+                    if (result.getString("ImgUrl").equals("null")) {
+                        item.setImg("../items_img/Temp.png");
+                    } else {
+                        item.setImg(result.getString("ImgUrl"));
+                    }
+                    item.setName(result.getString("Name"));
+                    item.setPrice("Rs. " + result.getString("Price"));
+                    ls.add(item);
                 }
-                item.setName(result.getString("Name"));
-                item.setPrice(result.getString("Price"));
-                ls.add(item);
+            }
+
+            else {
+                Statement statements = DBConnect.connectToDB().createStatement();
+                statements.execute("SELECT * FROM Products WHERE Category LIKE '" + search + "'");
+                ResultSet result = statements.getResultSet();
+                while (result.next()) {
+                    Item item = new Item();
+                    item.setID(result.getString("ID"));
+                    if (result.getString("ImgUrl").equals("null")) {
+                        item.setImg("../items_img/Temp.png");
+                    } else {
+                        item.setImg(result.getString("ImgUrl"));
+                    }
+                    item.setName(result.getString("Name"));
+                    item.setPrice("Rs. " + result.getString("Price"));
+                    ls.add(item);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
