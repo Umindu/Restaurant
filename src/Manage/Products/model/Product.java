@@ -3,6 +3,7 @@ package Manage.Products.model;
 import javafx.scene.layout.HBox;
 
 public class Product {
+    private String imgUrl;
     private String proId;
     private String proName;
     private String proCategory;
@@ -12,7 +13,8 @@ public class Product {
     private String proDescription;
     private HBox actionBtnContainer;
 
-    public Product(String proId, String proName, String proCategory, String proCost, String proDiscount, String proPrice, String proDescription, HBox actionBtnContainer) {
+    public Product(String imgUrl, String proId, String proName, String proCategory, String proCost, String proDiscount, String proPrice, String proDescription, HBox actionBtnContainer) {
+        this.imgUrl = imgUrl;
         this.proId = proId;
         this.proName = proName;
         this.proCategory = proCategory;
@@ -23,6 +25,10 @@ public class Product {
         this.actionBtnContainer = actionBtnContainer;
     }
 
+    
+    public String getImgUrl() {
+        return imgUrl;
+    }
     public String getProductId() {
         return proId;
     }

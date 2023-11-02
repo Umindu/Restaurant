@@ -21,7 +21,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="900.0" stylesheets="@ProductStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manage.Products.ProductController">
    <children>
-      <VBox fx:id="allProPane" layoutY="10.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="allProPane" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -84,7 +84,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="addProPane" layoutX="10.0" layoutY="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="addProPane" layoutX="10.0" layoutY="20.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -103,9 +103,9 @@
                   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                      <children>
                         <TextField fx:id="proIdTextField" alignment="CENTER_RIGHT" layoutX="278.0" layoutY="40.0" prefHeight="40.0" prefWidth="130.0" promptText="#0000001" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="40.0" />
-                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="52.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                        <ImageView fx:id="addProImg" cache="true" fitHeight="200.0" fitWidth="200.0" layoutX="52.0" layoutY="30.0" onMouseClicked="#chooseImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <image>
-                              <Image url="@../../items_img/Chicken-Biryani.png" />
+                              <Image url="@../../items_img/Temp.png" />
                            </image>
                         </ImageView>
                         <Label layoutX="278.0" layoutY="20.0" text="Product ID *" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="20.0">
@@ -176,6 +176,11 @@
                               <Font name="Arial" size="13.0" />
                            </font>
                         </Label>
+                        <Button layoutX="62.0" layoutY="175.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="30.0" styleClass="secondary-button" text="Choose image" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="175.0">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
@@ -254,6 +259,11 @@
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy></TableView>
+                        <Label fx:id="addCatError" layoutX="560.0" layoutY="538.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Star mark(*) text field not filled" textFill="RED" visible="false">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
