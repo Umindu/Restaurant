@@ -19,7 +19,7 @@
     -fx-text-fill: #4f4f4f;
 }
 
-#addDiscountPrice{
+#addDiscountPrice, #productTotalPrice{
     -fx-text-fill: #000;
 }
 

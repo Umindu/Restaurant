@@ -228,6 +228,7 @@ public class PlacOrderController implements Initializable {
         item.setQnt(qnt);
         item.setDiscount(discount);
         item.setItemeDiscoutntAddPrice(discount, price);
+        item.setProductTotalPrice(discount, price, qnt);
         cartItemList.add(item);
         Refresh(vBox);
     }

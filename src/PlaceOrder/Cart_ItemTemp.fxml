@@ -7,42 +7,29 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="57.0" prefWidth="360.0" styleClass="background" stylesheets="@CartItemStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlaceOrder.CartItemController">
    <children>
-      <Button fx:id="expandBtn" layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#ExpandAnchorpane" prefHeight="35.0" prefWidth="35.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="1.0">
+      <Button fx:id="expandBtn" layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#ExpandAnchorpane" prefHeight="30.0" prefWidth="30.0" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="1.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                <image>
                   <Image url="@../../img/right-arrow.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="narrowDownBtn" layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#NarrowDownAnchorpane" prefHeight="35.0" prefWidth="35.0" rotate="90.0" visible="false">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
-               <image>
-                  <Image url="@../../img/right-arrow.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label fx:id="qnt" layoutX="47.0" layoutY="12.0" text="1" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="10.0">
+      <Label fx:id="name" layoutX="43.0" layoutY="11.0" prefHeight="16.0" prefWidth="197.0" text="Rice (L)" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="9.0">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="name" layoutX="81.0" layoutY="12.0" prefHeight="16.0" prefWidth="239.0" text="Rice (L)" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="43.0" layoutY="38.0">
+      <AnchorPane layoutX="240.0" layoutY="11.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="8.0">
          <children>
-            <Label fx:id="price" contentDisplay="CENTER" text="Rs. 1200.00" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="price" contentDisplay="CENTER" layoutX="3.0" layoutY="1.0" text="Rs. 1200.00" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
@@ -50,34 +37,53 @@
                   <Insets left="2.0" right="2.0" />
                </padding>
             </Label>
-            <Pane prefHeight="0.1" style="-fx-background-color: #4f4f4f;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
+            <Pane prefHeight="0.1" style="-fx-background-color: #4f4f4f;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="9.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="removeBtn" layoutX="321.0" layoutY="2.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="35.0" prefWidth="35.0" textAlignment="CENTER" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="1.0">
+      <HBox layoutX="46.0" layoutY="38.0" spacing="6.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="34.0">
+         <children>
+            <Label fx:id="addDiscountPrice" text="Rs. 1200.00">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label style="-fx-text-fill: #000;" text="x">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="qnt" text="1">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="productTotalPrice" layoutX="237.0" layoutY="37.0" text="Rs. 1200.00" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="34.0">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="qntLabel" layoutX="47.0" layoutY="55.0" text="Qnt" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="55.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="disLabel" layoutX="186.0" layoutY="55.0" prefWidth="110.0" text="Discount(%)" visible="false" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="55.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="qntTextField" alignment="CENTER_RIGHT" layoutX="47.0" layoutY="77.0" prefHeight="40.0" prefWidth="110.0" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="77.0" />
+      <TextField fx:id="disTextField" alignment="CENTER_RIGHT" layoutX="186.0" layoutY="77.0" prefHeight="40.0" prefWidth="110.0" visible="false" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="77.0" />
+      <Button fx:id="removeBtn" layoutX="321.0" layoutY="2.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="30.0" prefWidth="30.0" textAlignment="CENTER" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                <image>
                   <Image url="@../../img/close.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="qntLabel" layoutX="47.0" layoutY="55.0" text="Qnt" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="55.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="disLabel" layoutX="186.0" layoutY="55.0" text="Discount(%)" visible="false" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="55.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="qntTextField" layoutX="47.0" layoutY="77.0" prefHeight="40.0" prefWidth="110.0" visible="false" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="77.0" />
-      <TextField fx:id="disTextField" layoutX="186.0" layoutY="77.0" prefHeight="40.0" prefWidth="110.0" visible="false" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="77.0" />
-      <Label fx:id="addDiscountPrice" layoutX="182.0" layoutY="37.0" text="Rs. 1200.00" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="33.8">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
