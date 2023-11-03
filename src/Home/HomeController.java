@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import DataBase.DBConnect;
 import Item.ItemController;
 import javafx.fxml.FXML;
@@ -25,7 +24,6 @@ import javafx.scene.layout.VBox;
 import model.Item;
 
 public class HomeController implements Initializable{
-
     @FXML
     private HBox categoryHBox;
 
@@ -80,7 +78,6 @@ public class HomeController implements Initializable{
     
         int column = 0;
         int row = 1;
-
         try {
             for(int i = 0 ; i < items.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -127,7 +124,8 @@ public class HomeController implements Initializable{
                         item.setImg(result.getString("ImgUrl"));
                     }
                     item.setName(result.getString("Name"));
-                    item.setPrice("Rs. " + result.getString("Price"));
+                    item.setPrice(result.getString("Price"));
+                    item.setDiscount(result.getString("Discount"));
                     ls.add(item);
                 }
             }
@@ -146,6 +144,7 @@ public class HomeController implements Initializable{
                     }
                     item.setName(result.getString("Name"));
                     item.setPrice("Rs. " + result.getString("Price"));
+                    item.setDiscount(result.getString("Discount"));
                     ls.add(item);
                 }
             }

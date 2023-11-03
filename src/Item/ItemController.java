@@ -1,5 +1,8 @@
 package Item;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import PlaceOrder.PlacOrderController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,6 +27,8 @@ public class ItemController {
     @FXML
     private static VBox rightSceneVBox ;
 
+    private String discount;
+
     public static void setRightSceneVBox(VBox VBox) {
         rightSceneVBox = VBox;
     }
@@ -32,16 +37,17 @@ public class ItemController {
         Image image = new Image(getClass().getResourceAsStream(item.getImg()));
         itemImg.setImage(image);
         itemName.setText(item.getName());
-        itemPrice.setText(item.getPrice());
+        itemPrice.setText("Rs. "+ new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
+        discount = item.getDiscount();
 
         vbox.setOnMouseClicked(event -> {
             String id = item.getID();
             String name = item.getName();
             String price = item.getPrice();
-            String qnt = "5";
+            String qnt = "1";
             
             PlacOrderController itemObj = new PlacOrderController();
-            itemObj.setItem(id, name, price, qnt, rightSceneVBox);
+            itemObj.setItem(id, name, price, qnt, discount, rightSceneVBox);
 
         }); 
     } 

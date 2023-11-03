@@ -16,6 +16,10 @@
 }
 
 #price{
+    -fx-text-fill: #4f4f4f;
+}
+
+#addDiscountPrice{
     -fx-text-fill: #000;
 }
 

@@ -207,8 +207,6 @@ public class PlacOrderController implements Initializable {
         vBox.getChildren().clear();
         try {
             for(int i = 0 ; i < cartItemList.size(); i++){
-                // FXMLLoader fxmlLoader = new FXMLLoader();
-                // fxmlLoader.setLocation(getClass().getResource("Cart_ItemTemp.fxml"));
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Cart_ItemTemp.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
                 CartItemController itemController = fxmlLoader.getController();
@@ -223,11 +221,13 @@ public class PlacOrderController implements Initializable {
         }
     }
 
-    public void setItem(String id, String name, String price, String qnt, VBox vBox){
+    public void setItem(String id, String name, String price, String qnt, String discount, VBox vBox){
         item.setID(id);
         item.setName(name);
         item.setPrice(price);
         item.setQnt(qnt);
+        item.setDiscount(discount);
+        item.setItemeDiscoutntAddPrice(discount, price);
         cartItemList.add(item);
         Refresh(vBox);
     }
