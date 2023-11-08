@@ -57,7 +57,6 @@ public class ItemController {
             itemObj.setItem(id, name, price, qnt, discount, rightSceneVBox);
 
             // itemObj.refrasOrderDetails(orderSubTotal, orderDiscount, orderAmount);
-
             // placeOrderController.setItem(id, name, price, qnt, discount, rightSceneVBox);
             placeOrderController.refrasOrderDetails();  
         }); 

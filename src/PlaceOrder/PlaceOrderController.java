@@ -85,6 +85,9 @@ public class PlaceOrderController implements Initializable {
     private Label orderDiscount;
 
     @FXML
+    private Label orderDiscountMethod;
+
+    @FXML
     private Label orderServiceCahrge;
 
     @FXML
@@ -212,6 +215,8 @@ public class PlaceOrderController implements Initializable {
         discountEnableBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
         discountLine.setVisible(false);
         discountLine.setMinHeight(0);
+        orderDetails.setDiscount("0");
+        refrasOrderDetails();
     }
 
     @FXML
@@ -260,7 +265,6 @@ public class PlaceOrderController implements Initializable {
                 break; 
             }
         }
-        // Refresh(vbox);
         refrasOrderDetails();
     }
 
@@ -271,7 +275,6 @@ public class PlaceOrderController implements Initializable {
                 break; 
             }
         }
-        // Refresh(vbox);
         refrasOrderDetails();
     }
 
@@ -302,7 +305,9 @@ public class PlaceOrderController implements Initializable {
             orderDiscount.setText("Rs. " + new BigDecimal(Float.parseFloat(orderDetails.getDiscount())).setScale(2, RoundingMode.HALF_UP));
             orderDetails.setAmount(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - Float.parseFloat(orderDetails.getDiscount())));
         }
-        
+  
+        orderDiscountMethod.setText(orderDetails.getDiscountMethod() ? "%" : "Rs.");
+        orderDiscount.setText(orderDetails.getDiscount());
         orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
     }
     

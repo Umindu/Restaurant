@@ -162,7 +162,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label fx:id="orderSubTotal" text="Rs. 00.00" HBox.hgrow="ALWAYS">
+                        <Label fx:id="orderSubTotal" text="Rs. 0.00" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -183,7 +183,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label fx:id="orderServiceCahrge" text="Rs. 00.00">
+                        <Label fx:id="orderServiceCahrge" text="Rs. 0.00">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -210,7 +210,15 @@
                            </padding>
                         </Button>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label fx:id="orderDiscount" text="Rs. 00.00">
+                        <Label fx:id="orderDiscountMethod" text="\%">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" right="10.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="orderDiscount" text="0.00">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -285,7 +293,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label fx:id="orderAmount" text="Rs. 00.00" HBox.hgrow="ALWAYS">
+                        <Label fx:id="orderAmount" text="Rs. 0.00" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>

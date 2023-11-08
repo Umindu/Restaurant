@@ -1,5 +1,6 @@
 package PlaceOrder.Discount;
 
+import PlaceOrder.PlaceOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,18 +27,26 @@ public class DiscountpopupController {
         this.orderDetails = orderDetails;
     }
 
+    //place order controller
+    private static PlaceOrderController placeOrderController;
+
+    public static void setPlacOrderController(PlaceOrderController placeOrderController2) {
+        placeOrderController = placeOrderController2;
+    }
+
+
     @FXML
     void discountAmount(ActionEvent event) {
+        DiscountPercentage = false;
         amountBtn.setStyle("-fx-background-color: #fc8019;  -fx-text-fill: #fff;");
         percentBtn.setStyle("-fx-background-color: #f5f5f5;  -fx-text-fill: #000;");
-        orderDetails.setDiscountMethod(false);
     }
 
     @FXML
     void discountPercentage(ActionEvent event) {
+        DiscountPercentage = true;
         percentBtn.setStyle("-fx-background-color: #fc8019;  -fx-text-fill: #fff;");
         amountBtn.setStyle("-fx-background-color: #f5f5f5;  -fx-text-fill: #000;");
-        orderDetails.setDiscountMethod(true);
     }
 
     @FXML
@@ -48,7 +57,9 @@ public class DiscountpopupController {
 
     @FXML
     void addDiscount(ActionEvent event) {
+        orderDetails.setDiscountMethod(DiscountPercentage);
         orderDetails.setDiscount(dicountTextField.getText());
+        placeOrderController.refrasOrderDetails();
         popupClose(event);
     }
 

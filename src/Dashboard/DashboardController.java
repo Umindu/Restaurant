@@ -8,6 +8,7 @@ import Item.ItemController;
 import Orders.OrderController;
 import PlaceOrder.CartItemController;
 import PlaceOrder.PlaceOrderController;
+import PlaceOrder.Discount.DiscountpopupController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,6 +81,7 @@ public class DashboardController implements Initializable{
             //item controller set place order controller object 
             ItemController.setPlacOrderController(placeOrderController);
             CartItemController.setPlacOrderController(placeOrderController);
+            DiscountpopupController.setPlacOrderController(placeOrderController);
             
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;
@@ -96,7 +98,13 @@ public class DashboardController implements Initializable{
 
         // right pane
         if (checkVisibleRightPane == false) {
-            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            AnchorPane sideview = loader.load();
+            PlaceOrderController placeOrderController = loader.getController();
+            //item controller set place order controller object 
+            ItemController.setPlacOrderController(placeOrderController);
+            CartItemController.setPlacOrderController(placeOrderController);
+            DiscountpopupController.setPlacOrderController(placeOrderController);
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;
         } 
@@ -112,7 +120,13 @@ public class DashboardController implements Initializable{
 
         // right pane
         if (checkVisibleRightPane == false) {
-            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            AnchorPane sideview = loader.load();
+            PlaceOrderController placeOrderController = loader.getController();
+            //item controller set place order controller object 
+            ItemController.setPlacOrderController(placeOrderController);
+            CartItemController.setPlacOrderController(placeOrderController);
+            DiscountpopupController.setPlacOrderController(placeOrderController);
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;
         }  
