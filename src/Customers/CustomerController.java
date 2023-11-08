@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import Customers.Customer_list_temp.CustomerListTempController;
-import PlaceOrder.PlacOrderController;
+import PlaceOrder.PlaceOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -146,7 +146,7 @@ public class CustomerController implements Initializable {
         customerDetailsPane.setPrefHeight(0);
         VBox.setMargin(customerDetailsPane, new Insets(0, 10, 0, 10));
 
-        PlacOrderController orderCustomer = new PlacOrderController();
+        PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.removeSetCustomer(cusOrderPane,cusAddBtn);
     }
 
@@ -166,7 +166,7 @@ public class CustomerController implements Initializable {
         cemail.setText(email);
         cphone.setText(phone);
 
-        PlacOrderController orderCustomer = new PlacOrderController();
+        PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.setCustomer(cusOrderPane, cusOrderName, cusOrderID, cusAddBtn, id, name);
     }
 

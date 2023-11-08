@@ -10,8 +10,14 @@
 }
 
 .sub-button:hover {
-    -fx-background-color: #dcdcdc;
+    -fx-background-color: #dcdcdc !important;
+    -fx-text-fill: #000 !important;
     -fx-background-radius: 10px;
+}
+
+#percentBtn{
+    -fx-background-color: #fc8019;  
+    -fx-text-fill: #fff;
 }
 
 .text-field{

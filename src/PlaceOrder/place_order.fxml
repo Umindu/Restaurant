@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@PlaceOrderStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlaceOrder.PlacOrderController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@PlaceOrderStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PlaceOrder.PlaceOrderController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -162,7 +162,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label text="Rs. 1500.00" HBox.hgrow="ALWAYS">
+                        <Label fx:id="orderSubTotal" text="Rs. 00.00" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -183,7 +183,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label text="Rs. 15.00">
+                        <Label fx:id="orderServiceCahrge" text="Rs. 00.00">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -210,7 +210,7 @@
                            </padding>
                         </Button>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label text="Rs. 15.00">
+                        <Label fx:id="orderDiscount" text="Rs. 00.00">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -252,7 +252,7 @@
                            </padding>
                         </Button>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label text="#453457">
+                        <Label fx:id="orderCouponCode" text="#453457">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
@@ -285,7 +285,7 @@
                            </padding>
                         </Label>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label text="Rs. 1500.00" HBox.hgrow="ALWAYS">
+                        <Label fx:id="orderAmount" text="Rs. 00.00" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>

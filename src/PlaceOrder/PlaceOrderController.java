@@ -1,13 +1,15 @@
 package PlaceOrder;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import Customers.CustomerController;
 import Item.ItemController;
+import PlaceOrder.Discount.DiscountpopupController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,8 +31,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Cart_list;
+import model.Order_details;
 
-public class PlacOrderController implements Initializable {
+public class PlaceOrderController implements Initializable {
     @FXML
     private static BorderPane DashboardBorderdPane;
 
@@ -71,7 +74,25 @@ public class PlacOrderController implements Initializable {
     @FXML
     private VBox rightSceneVBox ;
 
+    //.....................
+    @FXML
+    private Label orderAmount;
+
+    @FXML
+    private Label orderCouponCode;
+
+    @FXML
+    private Label orderDiscount;
+
+    @FXML
+    private Label orderServiceCahrge;
+
+    @FXML
+    private Label orderSubTotal;
+
     private Cart_list item = new Cart_list();
+    //create order details object
+    Order_details orderDetails = new Order_details();
 
     private static List<Cart_list> cartItemList = new ArrayList<>();
 
@@ -80,6 +101,7 @@ public class PlacOrderController implements Initializable {
         ItemController.setRightSceneVBox(rightSceneVBox);
         CartItemController.setRightSceneVBox(rightSceneVBox);
         CustomerController.setPlaceOrderComponent(orderCusPane, orderCusName, orderCusID, addCusBtn);
+        // ItemController.setPlaceOrderComponent(orderSubTotal, orderDiscount, orderAmount);
         rightSceneVBox.getChildren().clear();
     }
 
@@ -127,7 +149,6 @@ public class PlacOrderController implements Initializable {
 
     @FXML
     void AddDiscount(ActionEvent event) {
-
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.initStyle(StageStyle.UNDECORATED);
@@ -136,7 +157,8 @@ public class PlacOrderController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Discount/Discountpopup.fxml"));  
             AnchorPane popupPane = loader.load();
-            // DiscountpopupController controller = loader.getController();
+            DiscountpopupController controller = loader.getController();
+            controller.setObject(orderDetails);
 
             Scene popupScene = new Scene(popupPane);
             popupScene.setFill(Color.TRANSPARENT);
@@ -153,12 +175,10 @@ public class PlacOrderController implements Initializable {
             e.printStackTrace();
             return;
         }
- 
     }
 
     @FXML
     void AddCoupon(ActionEvent event) {
-        
         Stage popupStage = new Stage();
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.initStyle(StageStyle.UNDECORATED);
@@ -233,6 +253,28 @@ public class PlacOrderController implements Initializable {
         Refresh(vBox);
     }
 
+    public void addItemQnt(String id, float qnt, VBox vbox) {
+        for (int i = 0; i < cartItemList.size(); i++) {
+            if (cartItemList.get(i).getID() == id) {
+                cartItemList.get(i).setQnt(String.valueOf(qnt));
+                break; 
+            }
+        }
+        // Refresh(vbox);
+        refrasOrderDetails();
+    }
+
+    public void addItemDiscount(String id, float qnt, VBox vbox) {
+        for (int i = 0; i < cartItemList.size(); i++) {
+            if (cartItemList.get(i).getID() == id) {
+                cartItemList.get(i).setDiscount(String.valueOf(qnt));
+                break; 
+            }
+        }
+        // Refresh(vbox);
+        refrasOrderDetails();
+    }
+
     public void deleteItem(String id, VBox vbox) {
         for (int i = 0; i < cartItemList.size(); i++) {
             if (cartItemList.get(i).getID() == id) {
@@ -241,6 +283,27 @@ public class PlacOrderController implements Initializable {
             }
         }
         Refresh(vbox);
+        refrasOrderDetails();
+        
+    }
+
+    public void refrasOrderDetails(){
+        float subTotal = 0;
+        for(Cart_list item:cartItemList){
+            subTotal += Float.parseFloat(item.getProductTotalPrice());
+        }
+        orderDetails.setSubTotal(String.valueOf(subTotal));
+        orderSubTotal.setText("Rs. " + new BigDecimal(orderDetails.getSubTotal()).setScale(2, RoundingMode.HALF_UP));
+
+        if ((orderDetails.getDiscountMethod())) {
+            orderDiscount.setText("Rs. " + new BigDecimal((Float.parseFloat(orderDetails.getSubTotal()) * Float.parseFloat(orderDetails.getDiscount()) / 100)).setScale(2, RoundingMode.HALF_UP));
+            orderDetails.setAmount(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - (Float.parseFloat(orderDetails.getSubTotal()) * Float.parseFloat(orderDetails.getDiscount()) / 100)));
+        }else{
+            orderDiscount.setText("Rs. " + new BigDecimal(Float.parseFloat(orderDetails.getDiscount())).setScale(2, RoundingMode.HALF_UP));
+            orderDetails.setAmount(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - Float.parseFloat(orderDetails.getDiscount())));
+        }
+        
+        orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
     }
     
 }

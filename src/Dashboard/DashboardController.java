@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Item.ItemController;
 import Orders.OrderController;
-import PlaceOrder.PlacOrderController;
+import PlaceOrder.CartItemController;
+import PlaceOrder.PlaceOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +52,7 @@ public class DashboardController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        PlacOrderController.setDashboardBorderdPane(borderdPane);
+        PlaceOrderController.setDashboardBorderdPane(borderdPane);
         OrderController.setDashboardBorderdPane(borderdPane);
     }
 
@@ -72,7 +74,13 @@ public class DashboardController implements Initializable{
 
         // right pane
         if (checkVisibleRightPane == false) {
-            AnchorPane sideview = FXMLLoader.load(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            AnchorPane sideview = loader.load();
+            PlaceOrderController placeOrderController = loader.getController();
+            //item controller set place order controller object 
+            ItemController.setPlacOrderController(placeOrderController);
+            CartItemController.setPlacOrderController(placeOrderController);
+            
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;
         } 

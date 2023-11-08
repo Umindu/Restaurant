@@ -52,9 +52,17 @@ public class CartItemController {
 
     @FXML
     private static VBox rightSceneVBox ;
+    
 
     public static void setRightSceneVBox(VBox VBox) {
         rightSceneVBox = VBox;
+    }
+
+    //place order controller
+    private static PlaceOrderController placeOrderController;
+
+    public static void setPlacOrderController(PlaceOrderController placeOrderController2) {
+        placeOrderController = placeOrderController2;
     }
 
     @FXML
@@ -80,8 +88,10 @@ public class CartItemController {
 
     @FXML
     void removeItem(ActionEvent event) {
-        PlacOrderController remove = new PlacOrderController();
-        remove.deleteItem(this.ID, rightSceneVBox);
+        // PlaceOrderController remove = new PlaceOrderController();
+        // remove.deleteItem(this.ID, rightSceneVBox);
+        placeOrderController.deleteItem(this.ID, rightSceneVBox);
+        placeOrderController.refrasOrderDetails();
     }
 
     public void setData(Cart_list Cart_list_item){
@@ -104,17 +114,16 @@ public class CartItemController {
 
         //calculate total price and qnt
         qntTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            qnt.setText(qntTextField.getText());
-            //change object qnt value
-            Cart_list_item.setQnt(qntTextField.getText());
-
-            if (qntTextField.getText().isEmpty() || qntTextField.getText().equals("0")) {
-                Cart_list_item.setProductTotalPrice(Cart_list_item.getDiscount(), Cart_list_item.getPrice(), "1");
-                productTotalPrice.setText("Rs." + Cart_list_item.getProductTotalPrice());
-            }else{ 
-                Cart_list_item.setProductTotalPrice(Cart_list_item.getDiscount(), Cart_list_item.getPrice(), Cart_list_item.getQnt());
-                productTotalPrice.setText("Rs." + Cart_list_item.getProductTotalPrice());
+            if (qntTextField.getText().isEmpty() ) {
+                qntTextField.setText("0");
             }
+
+            Cart_list_item.setQnt(qntTextField.getText());
+            qnt.setText(qntTextField.getText());
+            Cart_list_item.setProductTotalPrice(Cart_list_item.getDiscount(), Cart_list_item.getPrice(), Cart_list_item.getQnt());
+            productTotalPrice.setText("Rs. " + new BigDecimal(Cart_list_item.getProductTotalPrice()).setScale(2, RoundingMode.HALF_UP));
+            
+            placeOrderController.addItemQnt(this.ID, Float.parseFloat(qntTextField.getText()), rightSceneVBox);
         });
 
         // allow only numbers
@@ -126,16 +135,17 @@ public class CartItemController {
 
         //calculate total price
         disTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            addDiscountPrice.setText("Rs. "+(Float.parseFloat(price.getText().substring(4)) - (Float.parseFloat(price.getText().substring(4)) * Float.parseFloat(disTextField.getText()) / 100)));
-            //change object discount value
-            Cart_list_item.setDiscount(disTextField.getText());
-            if (qntTextField.getText().isEmpty() || qntTextField.getText().equals("0") || disTextField.getText().isEmpty() || disTextField.getText().equals("0")) {
-                Cart_list_item.setProductTotalPrice("0", Cart_list_item.getPrice(), "1");
-                productTotalPrice.setText("Rs." + Cart_list_item.getProductTotalPrice());
-            }else{
-                Cart_list_item.setProductTotalPrice(Cart_list_item.getDiscount(), Cart_list_item.getPrice(), Cart_list_item.getQnt());
-                productTotalPrice.setText("Rs." + Cart_list_item.getProductTotalPrice());
+            if (disTextField.getText().isEmpty()) {
+                disTextField.setText("0.0");
             }
+
+            Cart_list_item.setDiscount(disTextField.getText());
+            Cart_list_item.setItemeDiscoutntAddPrice(disTextField.getText(), Cart_list_item.getPrice());
+            Cart_list_item.setProductTotalPrice(Cart_list_item.getDiscount(), Cart_list_item.getPrice(), Cart_list_item.getQnt());
+            addDiscountPrice.setText("Rs. " + new BigDecimal(Cart_list_item.getItemeDiscoutntAddPrice()).setScale(2, RoundingMode.HALF_UP));
+            productTotalPrice.setText("Rs. " + new BigDecimal(Cart_list_item.getProductTotalPrice()).setScale(2, RoundingMode.HALF_UP));
+            
+            placeOrderController.addItemDiscount(this.ID, Float.parseFloat(disTextField.getText()), rightSceneVBox);
         });
 
         // allow only numbers
@@ -145,5 +155,4 @@ public class CartItemController {
             }
         });
     }
-
 }
