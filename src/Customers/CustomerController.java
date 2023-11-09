@@ -2,10 +2,16 @@ package Customers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import Customers.Add_customer.AddCustomerController;
 import Customers.Customer_list_temp.CustomerListTempController;
+import DataBase.DBConnect;
 import PlaceOrder.PlaceOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +21,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -28,10 +36,13 @@ import model.Customer_list;
 public class CustomerController implements Initializable {
 
     @FXML
-    private Label CusPhone;
+    private Label cusPhone;
 
     @FXML
     private Label cusEmail;
+
+    @FXML
+    private ImageView cusImg;
 
     @FXML
     private Label cusID;
@@ -40,7 +51,16 @@ public class CustomerController implements Initializable {
     private Label cusName;
 
     @FXML
+    private Label cusAddress;
+
+    @FXML
+    private Label cusOpenBal;
+
+    @FXML
     private HBox customerDetailsPane;
+
+    @FXML
+    private Button editBtn;
 
     @FXML
     private VBox vBox;
@@ -60,7 +80,7 @@ public class CustomerController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        CustomerListTempController.GetCustomerDetialsPaneID(cusName, cusID, cusEmail, CusPhone, customerDetailsPane);
+        CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
 
         customers = new ArrayList<>(CustomerList());
 
@@ -83,22 +103,36 @@ public class CustomerController implements Initializable {
     private List<Customer_list> CustomerList(){
         List<Customer_list> ls = new ArrayList<>();
 
-        Customer_list customer = new Customer_list();
-        customer.setCusID(1);
-        customer.setCusName("Dilesh");
-        customer.setCusEmail("dilesh@gmail.com");
-        customer.setCusPhone("077335467");
-        customer.setDate("2023/05/11");
-        ls.add(customer);
+        try {
+            Statement statement = DBConnect.connectToDB().createStatement();
+            statement.execute("select * from Customers");
+            ResultSet resultSet = statement.getResultSet();
 
-        Customer_list customer2 = new Customer_list();
-        customer2.setCusID(2);
-        customer2.setCusName("Ganesh");
-        customer2.setCusEmail("ganesh@gmail.com");
-        customer2.setCusPhone("0773365467");
-        customer2.setDate("2023/12/23");
-        ls.add(customer2);
-        
+            while (resultSet.next()) {
+                // Customer_list customer = new Customer_list();
+
+                // customer.setCusID(resultSet.getInt("ID"));
+                // customer.setCusName(resultSet.getString("Name"));
+                // customer.setCusEmail(resultSet.getString("Email"));
+                // customer.setCusPhone(resultSet.getString("Phone"));
+                // customer.setCusAddress(resultSet.getString("Address"));
+                // customer.setOpenBal(resultSet.getString("OpeningBalance"));
+                // ls.add(customer);
+                
+                String imgUrl = resultSet.getString("ImgUrl");
+                String id = resultSet.getString("ID");
+                String name = resultSet.getString("Name");
+                String email = resultSet.getString("Email");
+                String phone = resultSet.getString("Phone");
+                String address = resultSet.getString("Address");
+                String openBal = resultSet.getString("OpeningBalance");
+
+                ls.add(new Customer_list(imgUrl, id, name, email, phone, address, openBal));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return ls;
     }
 
@@ -135,9 +169,33 @@ public class CustomerController implements Initializable {
 
     }
 
-    @FXML
-    void CustomerEdit(ActionEvent event) {
 
+    public void CustomerEdit(Customer_list Customer_list) {
+        Stage addCustomerStage = new Stage();
+        addCustomerStage.initModality(Modality.APPLICATION_MODAL);
+        addCustomerStage.initStyle(StageStyle.UNDECORATED);
+        addCustomerStage.initStyle(StageStyle.TRANSPARENT);
+
+
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        addCustomerStage.setWidth(screenWidth);
+        addCustomerStage.setHeight(screenHeight);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Add_customer/Add_customer.fxml"));  
+            HBox popupPane = loader.load();
+            AddCustomerController addCustomerController = loader.getController();
+            addCustomerController.editCustomer(Customer_list);
+            Scene popupScene = new Scene(popupPane);
+            popupScene.setFill(Color.TRANSPARENT);
+            addCustomerStage.setScene(popupScene);
+            addCustomerStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
     @FXML
@@ -157,14 +215,22 @@ public class CustomerController implements Initializable {
         cusAddBtn = addCusBtn;
     }
 
-    public void CustomerDetailsPaneSet(Label cname, Label cid, Label cemail, Label cphone, String name, int id, String email, String phone, HBox customerDetailsPane){
+    public void CustomerDetailsPaneSet(ImageView cimg, Label cname, Label cid, Label cemail, Label cphone, Label cAddress, Label cOpenBal, Button editBtn2, String img, String name, String id, String email, String phone, String address, String openBal, HBox customerDetailsPane){
         customerDetailsPane.setVisible(true);
-        customerDetailsPane.setPrefHeight(160);
+        customerDetailsPane.setPrefHeight(170);
         VBox.setMargin(customerDetailsPane, new Insets(30, 10, 0, 10));
+        Image image = new Image(getClass().getResourceAsStream(img));
+        cimg.setImage(image);
         cname.setText(name);
-        cid.setText("#"+String.valueOf(id));
+        cid.setText("#"+id);
         cemail.setText(email);
         cphone.setText(phone);
+        cAddress.setText(address);
+        cOpenBal.setText(openBal);
+
+        editBtn2.setOnAction(e -> {
+            CustomerEdit(new Customer_list(img, id, name, email, phone, address, openBal));
+        });
 
         PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.setCustomer(cusOrderPane, cusOrderName, cusOrderID, cusAddBtn, id, name);

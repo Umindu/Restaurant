@@ -60,9 +60,9 @@
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
                <children>
-                  <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" styleClass="user-img">
+                  <ImageView fx:id="cusImg" fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" styleClass="user-img">
                      <image>
-                        <Image url="@../../img/1.jpg" />
+                        <Image url="@../customers_img/Temp.png" />
                      </image>
                      <HBox.margin>
                         <Insets />
@@ -80,16 +80,13 @@
                                     <Insets left="15.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="cusID" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="69.0" text="#56825">
+                              <Label fx:id="cusID" alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="#56825">
                                  <HBox.margin>
-                                    <Insets left="20.0" />
+                                    <Insets bottom="2.0" left="20.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font name="Arial" size="18.0" />
                                  </font>
-                                 <padding>
-                                    <Insets top="20.0" />
-                                 </padding>
                               </Label>
                            </children>
                         </HBox>
@@ -101,7 +98,7 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="CusPhone" text="0763335436">
+                        <Label fx:id="cusPhone" text="0763335436">
                            <VBox.margin>
                               <Insets left="15.0" top="5.0" />
                            </VBox.margin>
@@ -109,10 +106,38 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </Label>
-                        <Pane prefHeight="62.0" prefWidth="504.0" VBox.vgrow="ALWAYS" />
-                        <HBox prefHeight="45.0" prefWidth="504.0">
+                        <Label fx:id="cusAddress" text="Kekanadura">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox>
                            <children>
-                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CustomerEdit" styleClass="text-button" text="Edit">
+                              <Label text="Opening Balance :  Rs.">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="cusOpenBal" text="0.00">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Pane prefHeight="62.0" prefWidth="504.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="504.0">
+                           <children>
+                              <Button fx:id="editBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="text-button" text="Edit">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>
@@ -142,9 +167,13 @@
                                     <Font name="Arial" size="12.0" />
                                  </font>
                               </Button>
+                              <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
                      </children>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
                   </VBox>
                   <Button mnemonicParsing="false" onAction="#RemoveCustomer" prefHeight="40.0" prefWidth="117.0" styleClass="secondary-button" text="Remove">
                      <font>

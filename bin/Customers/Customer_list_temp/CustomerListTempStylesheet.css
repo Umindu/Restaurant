@@ -20,7 +20,11 @@
     -fx-text-fill: #000000;
 }
 
-#date{
+#cusAddress{
+    -fx-text-fill: #000000;
+}
+
+#cusOpenBal{
     -fx-text-fill: #000000;
 }
 

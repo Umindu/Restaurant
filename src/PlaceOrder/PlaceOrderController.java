@@ -108,7 +108,7 @@ public class PlaceOrderController implements Initializable {
         rightSceneVBox.getChildren().clear();
     }
 
-    public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, int id, String name) {
+    public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
         cusAddBtn.setPrefWidth(0);
         cusAddBtn.setVisible(false);
         cusOrderPane.setVisible(true);
