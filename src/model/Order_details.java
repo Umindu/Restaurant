@@ -7,7 +7,11 @@ public class Order_details {
     private String coupnCode;
     private String amount = "0";
     private boolean dicountMethod = true;
+    private String customerID;
 
+    public String getCustomerID() {
+        return customerID;
+    }
     public String getSubTotal() {
         return subTotal;
     }
@@ -45,5 +49,8 @@ public class Order_details {
     }
     public void setAmount(String amount) {
         this.amount = amount ;
+    }
+    public void setCustomerID(String id) {
+        this.customerID = id;
     }
 }

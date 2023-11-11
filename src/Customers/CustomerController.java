@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import Customers.Add_customer.AddCustomerController;
 import Customers.Customer_list_temp.CustomerListTempController;
 import DataBase.DBConnect;
@@ -32,6 +31,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Customer_list;
+import model.Order_details;
 
 public class CustomerController implements Initializable {
 
@@ -64,6 +64,8 @@ public class CustomerController implements Initializable {
 
     @FXML
     private VBox vBox;
+    //order details object
+    private static Order_details orderDetails;
 
     //Place order compenent variables
     @FXML
@@ -81,8 +83,15 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
-
+        if (orderDetails.getCustomerID() != null) {
+            System.out.println(orderDetails.getCustomerID());
+            allReadyCustomerDetailsLoad();
+        }
         createCustomerList();
+    }
+
+    public static void setOrderDetailsObject(Order_details orderDetails2) {
+        orderDetails = orderDetails2;
     }
 
     private void createCustomerList(){
@@ -193,6 +202,8 @@ public class CustomerController implements Initializable {
         customerDetailsPane.setPrefHeight(0);
         VBox.setMargin(customerDetailsPane, new Insets(0, 10, 0, 10));
 
+        orderDetails.setCustomerID(null); 
+
         PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.removeSetCustomer(cusOrderPane,cusAddBtn);
     }
@@ -202,6 +213,39 @@ public class CustomerController implements Initializable {
         cusOrderName = orderCusName;
         cusOrderID = orderCusID;
         cusAddBtn = addCusBtn;
+    }
+
+    public void allReadyCustomerDetailsLoad(){
+        customerDetailsPane.setVisible(true);
+        customerDetailsPane.setPrefHeight(170);
+        VBox.setMargin(customerDetailsPane, new Insets(30, 10, 0, 10));
+
+
+        try {
+            Statement statement = DBConnect.connectToDB().createStatement();
+            statement.execute("select * from Customers where ID = '"+orderDetails.getCustomerID()+"'");
+            ResultSet resultSet = statement.getResultSet();
+            resultSet.next();
+            
+            Image image = new Image(getClass().getResourceAsStream(resultSet.getString("ImgUrl")));
+            cusImg.setImage(image);
+            cusName.setText(resultSet.getString("Name"));
+            cusID.setText(resultSet.getString("ID"));
+            cusEmail.setText(resultSet.getString("Email"));
+            cusPhone.setText(resultSet.getString("Phone"));
+            cusAddress.setText(resultSet.getString("Address"));
+            cusOpenBal.setText(resultSet.getString("OpeningBalance"));
+
+            editBtn.setOnAction(e -> {
+                try {
+                    CustomerEdit(new Customer_list(resultSet.getString("ImgUrl"), resultSet.getString("ID"), resultSet.getString("Name"), resultSet.getString("Email"), resultSet.getString("Phone"), resultSet.getString("Address"), resultSet.getString("OpeningBalance")));
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void CustomerDetailsPaneSet(ImageView cimg, Label cname, Label cid, Label cemail, Label cphone, Label cAddress, Label cOpenBal, Button editBtn2, String img, String name, String id, String email, String phone, String address, String openBal, HBox customerDetailsPane){
@@ -223,7 +267,10 @@ public class CustomerController implements Initializable {
 
         PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.setCustomer(cusOrderPane, cusOrderName, cusOrderID, cusAddBtn, id, name);
+        orderDetails.setCustomerID(id);
     }
+
+    
 
    
 }

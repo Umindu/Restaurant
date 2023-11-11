@@ -105,6 +105,7 @@ public class PlaceOrderController implements Initializable {
         CartItemController.setRightSceneVBox(rightSceneVBox);
         CustomerController.setPlaceOrderComponent(orderCusPane, orderCusName, orderCusID, addCusBtn);
         // ItemController.setPlaceOrderComponent(orderSubTotal, orderDiscount, orderAmount);
+        CustomerController.setOrderDetailsObject(orderDetails);
         rightSceneVBox.getChildren().clear();
     }
 
@@ -112,7 +113,7 @@ public class PlaceOrderController implements Initializable {
         cusAddBtn.setPrefWidth(0);
         cusAddBtn.setVisible(false);
         cusOrderPane.setVisible(true);
-        cusOrderID.setText(String.valueOf(id));
+        cusOrderID.setText("#"+String.valueOf(id));
         cusOrderName.setText(name);
     }
 
@@ -309,6 +310,12 @@ public class PlaceOrderController implements Initializable {
         orderDiscountMethod.setText(orderDetails.getDiscountMethod() ? "%" : "Rs.");
         orderDiscount.setText(orderDetails.getDiscount());
         orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
+    }
+
+
+    @FXML
+    void print(ActionEvent event) {
+        System.out.println(orderDetails.getCustomerID());
     }
     
 }
