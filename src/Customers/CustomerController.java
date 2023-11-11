@@ -82,8 +82,12 @@ public class CustomerController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
 
-        customers = new ArrayList<>(CustomerList());
+        createCustomerList();
+    }
 
+    private void createCustomerList(){
+        vBox.getChildren().clear();
+        customers = new ArrayList<>(CustomerList());
         try {
             for(int i = 0 ; i < customers.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -109,16 +113,6 @@ public class CustomerController implements Initializable {
             ResultSet resultSet = statement.getResultSet();
 
             while (resultSet.next()) {
-                // Customer_list customer = new Customer_list();
-
-                // customer.setCusID(resultSet.getInt("ID"));
-                // customer.setCusName(resultSet.getString("Name"));
-                // customer.setCusEmail(resultSet.getString("Email"));
-                // customer.setCusPhone(resultSet.getString("Phone"));
-                // customer.setCusAddress(resultSet.getString("Address"));
-                // customer.setOpenBal(resultSet.getString("OpeningBalance"));
-                // ls.add(customer);
-                
                 String imgUrl = resultSet.getString("ImgUrl");
                 String id = resultSet.getString("ID");
                 String name = resultSet.getString("Name");
@@ -162,11 +156,6 @@ public class CustomerController implements Initializable {
             e.printStackTrace();
             return;
         }
-    }
-
-    @FXML
-    void CustomerDelete(ActionEvent event) {
-
     }
 
 
