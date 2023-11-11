@@ -54,7 +54,7 @@
                         </Label>
                      </children></Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
-                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" onAction="#print" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
+                  <Button alignment="CENTER" cache="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="sub-button">
                      <font>
                         <Font size="14.0" />
                      </font>

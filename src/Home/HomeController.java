@@ -109,45 +109,34 @@ public class HomeController implements Initializable{
     // get items from database
     private List<Item> items(String search){
         List<Item> ls = new ArrayList<>();
-
+        ResultSet result;
         try  {
             if (search == "All") {
                 Statement statements = DBConnect.connectToDB().createStatement();
                 statements.execute("SELECT * FROM Products");
-                ResultSet result = statements.getResultSet();
-                while (result.next()) {
-                    Item item = new Item();
-                    item.setID(result.getString("ID"));
-                    if (result.getString("ImgUrl").equals("null")) {
-                        item.setImg("../items_img/Temp.png");
-                    } else {
-                        item.setImg(result.getString("ImgUrl"));
-                    }
-                    item.setName(result.getString("Name"));
-                    item.setPrice(result.getString("Price"));
-                    item.setDiscount(result.getString("Discount"));
-                    ls.add(item);
-                }
+                result = statements.getResultSet();
             }
-
             else {
                 Statement statements = DBConnect.connectToDB().createStatement();
-                statements.execute("SELECT * FROM Products WHERE Category LIKE '" + search + "'");
-                ResultSet result = statements.getResultSet();
-                while (result.next()) {
-                    Item item = new Item();
-                    item.setID(result.getString("ID"));
-                    if (result.getString("ImgUrl").equals("null")) {
-                        item.setImg("../items_img/Temp.png");
-                    } else {
-                        item.setImg(result.getString("ImgUrl"));
-                    }
-                    item.setName(result.getString("Name"));
-                    item.setPrice("Rs. " + result.getString("Price"));
-                    item.setDiscount(result.getString("Discount"));
-                    ls.add(item);
-                }
+                statements.execute("SELECT * FROM Products WHERE Category LIKE '"+ search +"'");
+                result = statements.getResultSet();
             }
+            while (result.next()) {
+                Item item = new Item();
+                item.setID(result.getString("ID"));
+                if (result.getString("ImgUrl").equals("null")) {
+                    item.setImg("../items_img/Temp.png");
+                } else {
+                    item.setImg(result.getString("ImgUrl"));
+                }
+                item.setName(result.getString("Name"));
+                item.setPrice(result.getString("Price"));
+                item.setDiscount(result.getString("Discount"));
+                ls.add(item);
+            }
+            
+
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

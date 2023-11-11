@@ -312,10 +312,4 @@ public class PlaceOrderController implements Initializable {
         orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
     }
 
-
-    @FXML
-    void print(ActionEvent event) {
-        System.out.println(orderDetails.getCustomerID());
-    }
-    
 }
