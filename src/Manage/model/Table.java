@@ -7,13 +7,15 @@ public class Table {
     private String tableId;
     private String tableName;
     private String tableStates;
+    private String tableSheetCount;
     private HBox actionBtnContainer;
 
-    public Table(String tImg, String tId, String tName, String tStates, HBox actionBtnContainer) {
+    public Table(String tImg, String tId, String tName, String tStates, String tSheetCount, HBox actionBtnContainer) {
         imgUrl = tImg;
         tableId = tId;
         tableName = tName;
         tableStates = tStates;
+        tableSheetCount = tSheetCount;
         this.actionBtnContainer = actionBtnContainer;
     }
 
@@ -31,6 +33,10 @@ public class Table {
 
     public String getTableStates() {
         return tableStates;
+    }
+
+    public String getTableSheetCount() {
+        return tableSheetCount;
     }
 
     public HBox getTableAction() {

@@ -1,33 +1,35 @@
 package model;
 
 public class Table_list {
-    private int ID;
-    private int tableNum;
-    private int numOfGuest;
-    private String img;
+    private String tableID;
+    private String tableName;
+    private String tableimg;
+    private String tablestates;
+    private String tableSheetsCount;
 
-    public int getID() {
-        return ID;
+    public Table_list(String timg, String tID, String tName, String tstates, String tSheetsCount){
+        this.tableID = tID;
+        this.tableName = tName;
+        this.tableimg = timg;
+        this.tablestates = tstates;
+        this.tableSheetsCount = tSheetsCount;
     }
-    public void setID(int iD) {
-        ID = iD;
+
+    public String getTableID() {
+        return tableID;
     }
-    public int getTableNum() {
-        return tableNum;
+    public String getTableName() {
+        return tableName;
     }
-    public void setTableNum(int tableNum) {
-        this.tableNum = tableNum;
+    public String getTableimg() {
+        return tableimg;
     }
-    public int getNumOfGuest() {
-        return numOfGuest;
+    public String getTablestates() {
+        return tablestates;
     }
-    public void setNumOfGuest(int numOfGuest) {
-        this.numOfGuest = numOfGuest;
+    public String getTableSheetsCount() {
+        return tableSheetsCount;
     }
-    public String getImg() {
-        return img;
-    }
-    public void setImg(String img) {
-        this.img = img;
-    }  
+
+    
 }

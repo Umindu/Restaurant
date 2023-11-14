@@ -36,6 +36,9 @@ public class TableController implements Initializable {
     private TextField TableNameTextField;
 
     @FXML
+    private TextField TableSheetCountTextField;
+
+    @FXML
     private ImageView addTableImg;
 
     private String imageUrl;
@@ -60,9 +63,12 @@ public class TableController implements Initializable {
     @FXML
     private TableColumn<Table, String> tableStatesCol;
 
+    @FXML
+    private TableColumn<Table, String> tableSheetCountCol;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        ObservableList<String> tableStates = FXCollections.observableArrayList("Select States", "Available", "Reserved", "Disabled");
+        ObservableList<String> tableStates = FXCollections.observableArrayList("Select States", "Vacant", "Occupied", "Order on hold", "Disabled");
         tableStatesCombo.setItems(tableStates);
         tableStatesCombo.getSelectionModel().selectFirst();
 
@@ -70,6 +76,7 @@ public class TableController implements Initializable {
         tableIDCol.setCellValueFactory(new PropertyValueFactory<Table, String>("TableId"));
         tableNameCol.setCellValueFactory(new PropertyValueFactory<Table, String>("TableName"));
         tableStatesCol.setCellValueFactory(new PropertyValueFactory<Table, String>("TableStates"));
+        tableSheetCountCol.setCellValueFactory(new PropertyValueFactory<Table, String>("TableSheetCount"));
         tableActionCol.setCellValueFactory(new PropertyValueFactory<Table, String>("TableAction"));
 
         tableView.setItems(tableList);
@@ -88,6 +95,7 @@ public class TableController implements Initializable {
                 String id = resultSet.getString("ID");
                 String name = resultSet.getString("Name");
                 String states = resultSet.getString("States");
+                String sheetCount = resultSet.getString("SheetCount");
 
                 Button editBtn = new Button("Edit");
                 editBtn.setId("actionEditBtn");
@@ -96,14 +104,14 @@ public class TableController implements Initializable {
                 HBox actionBtnContainer = new HBox(editBtn, deleteBtn);
                 actionBtnContainer.setId("actionBtnContainer");
                 editBtn.setOnAction(e -> {
-                    editProduct(new Table(imgUrl, id, name, states, actionBtnContainer));
+                    editProduct(new Table(imgUrl, id, name, states, sheetCount, actionBtnContainer));
                 });
                 deleteBtn.setOnAction(e -> {
-                    deleteProduct(new Table(imgUrl, id, name, states, actionBtnContainer));
+                    deleteProduct(new Table(imgUrl, id, name, states, sheetCount, actionBtnContainer));
                 });
 
                 tableList
-                        .add(new Table(imgUrl, id, name, states, actionBtnContainer));
+                        .add(new Table(imgUrl, id, name, states, sheetCount, actionBtnContainer));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,6 +144,7 @@ public class TableController implements Initializable {
         TableIdTextField.setText(table.getTableId());
         TableNameTextField.setText(table.getTableName());
         tableStatesCombo.getSelectionModel().select(table.getTableStates());
+        TableSheetCountTextField.setText(table.getTableSheetCount());
 
         TableIdTextField.setEditable(false);
     }
@@ -185,14 +194,15 @@ public class TableController implements Initializable {
         String tableId = TableIdTextField.getText();
         String tableName = TableNameTextField.getText();
         String tableStates = tableStatesCombo.getSelectionModel().getSelectedItem();
+        String tableSheetCount = TableSheetCountTextField.getText();
 
-        if (!tableId.isEmpty() && !tableName.isEmpty() && tableStates != "Select Category") {
+        if (!tableId.isEmpty() && !tableName.isEmpty() && tableStates != "Select Category" && !tableSheetCount.isEmpty()) {
             //insert product data to database
             if (TableIdTextField.isEditable()) {
                 try {
                     Statement statement = DBConnect.connectToDB().createStatement();
                     statement.execute("insert into Tables values ('" + tableId + "', '" + tableName + "', '" + tableImg
-                            + "', '" + tableStates + "')");
+                            + "', '" + tableStates + "', '" + tableSheetCount + "' )");
                     System.out.println("Product saved successfully");
 
                     cancelTable(null);
@@ -206,7 +216,7 @@ public class TableController implements Initializable {
                 try {
                     Statement statement = DBConnect.connectToDB().createStatement();
                     statement.execute("update Tables set Name = '" + tableName + "', ImgUrl = '" + tableImg + "', States = '" + tableStates
-                            + "' where ID = '" + tableId + "'");
+                            + "', SheetCount = '" + tableSheetCount + "' where ID = '" + tableId + "'");
                     System.out.println("Product updated successfully");
 
                     cancelTable(null);

@@ -8,9 +8,13 @@ public class Order_details {
     private String amount = "0";
     private boolean dicountMethod = true;
     private String customerID;
+    private String tableId;
 
     public String getCustomerID() {
         return customerID;
+    }
+    public String getTableId() {
+        return tableId;
     }
     public String getSubTotal() {
         return subTotal;
@@ -52,5 +56,8 @@ public class Order_details {
     }
     public void setCustomerID(String id) {
         this.customerID = id;
+    }
+    public void setTableID(String id) {
+        this.tableId = id;
     }
 }

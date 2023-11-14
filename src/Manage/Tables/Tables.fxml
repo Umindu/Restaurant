@@ -86,6 +86,7 @@
                               <TableColumn fx:id="tableIDCol" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Table ID" />
                               <TableColumn fx:id="tableNameCol" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Table Name" />
                               <TableColumn fx:id="tableStatesCol" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Sates" />
+                              <TableColumn fx:id="tableSheetCountCol" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Sheet Count" />
                               <TableColumn fx:id="tableActionCol" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Actions" />
                            </columns>
                            <columnResizePolicy>
@@ -121,6 +122,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <TextField fx:id="TableSheetCountTextField" layoutX="560.0" layoutY="469.0" prefHeight="40.0" prefWidth="130.0" promptText="01" styleClass="text-fields" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="467.0" />
+                        <Label layoutX="560.0" layoutY="449.0" text="Sheet Count" AnchorPane.rightAnchor="243.99999999999997" AnchorPane.topAnchor="447.0">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

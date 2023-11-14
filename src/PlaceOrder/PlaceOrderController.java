@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import Customers.CustomerController;
 import Item.ItemController;
 import PlaceOrder.Discount.DiscountpopupController;
+import Tables.TablesController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -106,6 +107,7 @@ public class PlaceOrderController implements Initializable {
         CustomerController.setPlaceOrderComponent(orderCusPane, orderCusName, orderCusID, addCusBtn);
         // ItemController.setPlaceOrderComponent(orderSubTotal, orderDiscount, orderAmount);
         CustomerController.setOrderDetailsObject(orderDetails);
+        TablesController.setOrderDetailsObject(orderDetails);
         rightSceneVBox.getChildren().clear();
     }
 

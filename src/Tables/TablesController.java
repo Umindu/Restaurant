@@ -2,9 +2,13 @@ package Tables;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import DataBase.DBConnect;
 import Tables.Table_Temp.TableTempController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import model.Order_details;
 import model.Table_list;
 
 public class TablesController implements Initializable {
@@ -20,6 +25,13 @@ public class TablesController implements Initializable {
     private GridPane tableGridPane;
 
     private List<Table_list> tables;
+
+    //order details object
+    private static Order_details orderDetails;
+
+    public static void setOrderDetailsObject(Order_details orderDetails2) {
+        orderDetails = orderDetails2;
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -42,6 +54,11 @@ public class TablesController implements Initializable {
 
                 tableGridPane.add(pane, column++, row);
                 GridPane.setMargin(pane, new Insets(-25, 20, 50, 00));
+
+                final int tableIndex = i;
+                pane.setOnMouseClicked(event -> {
+                    orderDetails.setTableID(tables.get(tableIndex).getTableID());
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,20 +68,24 @@ public class TablesController implements Initializable {
     private List<Table_list> tables(){
         List<Table_list> ls = new ArrayList<>();
 
-        Table_list table = new Table_list();
-        table.setID(0);
-        table.setTableNum(1);
-        table.setNumOfGuest(4);
-        table.setImg("../Table_imge/table.jpg");
-        ls.add(table);
+        try {
+            Statement statement = DBConnect.connectToDB().createStatement();
+            statement.execute("select * from Tables");
+            ResultSet resultSet = statement.getResultSet();
 
-        Table_list table2 = new Table_list();
-        table2.setID(1);
-        table2.setTableNum(2);
-        table2.setNumOfGuest(6);
-        table2.setImg("../Table_imge/table.jpg");
-        ls.add(table2);
+            while (resultSet.next()) {
+                String imgUrl = resultSet.getString("ImgUrl");
+                String id = resultSet.getString("ID");
+                String name = resultSet.getString("Name");
+                String states = resultSet.getString("States");
+                String sheetCount = resultSet.getString("SheetCount");
 
+                ls.add(new Table_list(imgUrl, id, name, states, sheetCount));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return ls;
     }
 

@@ -95,6 +95,15 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
+            <Circle fill="#4f4f4f" layoutX="419.0" layoutY="40.0" radius="15.0" stroke="#4f4f4f" strokeType="INSIDE" />
+            <Label layoutX="434.0" layoutY="32.0" text="Disabled">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" right="20.0" />
+               </padding>
+            </Label>
          </children>
       </AnchorPane>
    </children>
