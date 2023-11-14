@@ -1,4 +1,4 @@
-package Manage.Products.model;
+package Manage.model;
 
 import javafx.scene.layout.HBox;
 

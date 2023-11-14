@@ -55,14 +55,14 @@ public class TablesController implements Initializable {
         table.setID(0);
         table.setTableNum(1);
         table.setNumOfGuest(4);
-        table.setImg("../Table_imge/table.png");
+        table.setImg("../Table_imge/table.jpg");
         ls.add(table);
 
         Table_list table2 = new Table_list();
         table2.setID(1);
         table2.setTableNum(2);
         table2.setNumOfGuest(6);
-        table2.setImg("../Table_imge/table.png");
+        table2.setImg("../Table_imge/table.jpg");
         ls.add(table2);
 
         return ls;

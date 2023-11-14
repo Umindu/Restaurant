@@ -124,32 +124,6 @@
                         <Insets left="10.0" />
                      </padding>
                   </Button>
-                  <VBox fx:id="tableVbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" visible="false">
-                     <children>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="All Tables">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="30.0" />
-                           </padding>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="100.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="menu-button" text="Add Table">
-                           <font>
-                              <Font name="Arial" size="13.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets left="30.0" />
-                           </padding>
-                        </Button>
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </content>

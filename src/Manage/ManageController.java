@@ -61,9 +61,6 @@ public class ManageController implements Initializable {
     @FXML
     private VBox employeeVbox;
 
-    @FXML
-    private VBox tableVbox;
-
     //main windows variable
     @FXML
     private AnchorPane productView;
@@ -181,7 +178,6 @@ public class ManageController implements Initializable {
     void showEmployeeVbox(ActionEvent event) throws IOException {
         if (employeeView == null) {
         employeeView = FXMLLoader.load(getClass().getResource("Employees/Employees.fxml"));
-        System.out.println(employeeView);
         }
         
         if (employeeVbox.isVisible()) {
@@ -222,16 +218,14 @@ public class ManageController implements Initializable {
 
     // Table tab......................................
     @FXML
-    void showTableVbox(ActionEvent event) {
-        if (tableVbox.isVisible()) {
-            tableMainBtnImg.setRotate(0);
-            tableVbox.setVisible(false);
-            tableVbox.setPrefHeight(0);
-        } else {
-            tableMainBtnImg.setRotate(90);
-            tableVbox.setVisible(true);
-            tableVbox.setPrefHeight(Control.USE_COMPUTED_SIZE);
+    void showTableVbox(ActionEvent event) throws IOException {
+        if (tableView == null) {
+            tableView = FXMLLoader.load(getClass().getResource("Tables/Tables.fxml"));
+        }
+        if (borderPane.getCenter() != tableView) {
+                borderPane.setCenter(tableView);
         }
     }
+
 
 }

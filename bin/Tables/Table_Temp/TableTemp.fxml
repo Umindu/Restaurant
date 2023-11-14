@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane fx:id="pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@TableTempStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tables.Table_Temp.TableTempController">
    <children>
       <ImageView fx:id="tableImg" fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Table_imge/table.png" />
+            <Image url="@../Table_imge/table.jpg" />
          </image>
       </ImageView>
       <Label fx:id="tableNum" alignment="CENTER" layoutX="25.0" layoutY="87.0" prefHeight="27.0" prefWidth="150.0" styleClass="table-num" text="#001">

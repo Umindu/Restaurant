@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import DataBase.DBConnect;
 import Manage.ManageController;
-import Manage.Products.model.Category;
-import Manage.Products.model.Product;
+import Manage.model.Category;
+import Manage.model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -285,7 +285,7 @@ public class ProductController implements Initializable {
             e.printStackTrace();
         }
         proCategoryCombo.setItems(categoryComboList);
-        proCategoryCombo.getSelectionModel().select(0);
+        proCategoryCombo.getSelectionModel().selectFirst();
     }
     // product cancel button functions
     @FXML

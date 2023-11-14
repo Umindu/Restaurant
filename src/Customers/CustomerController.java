@@ -84,7 +84,6 @@ public class CustomerController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
         if (orderDetails.getCustomerID() != null) {
-            System.out.println(orderDetails.getCustomerID());
             allReadyCustomerDetailsLoad();
         }
         createCustomerList();
@@ -230,7 +229,7 @@ public class CustomerController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream(resultSet.getString("ImgUrl")));
             cusImg.setImage(image);
             cusName.setText(resultSet.getString("Name"));
-            cusID.setText(resultSet.getString("ID"));
+            cusID.setText("#"+resultSet.getString("ID"));
             cusEmail.setText(resultSet.getString("Email"));
             cusPhone.setText(resultSet.getString("Phone"));
             cusAddress.setText(resultSet.getString("Address"));
