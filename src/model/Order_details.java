@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Order_details {
     private String subTotal = "0";
     private String serviceCharge;
@@ -8,13 +10,11 @@ public class Order_details {
     private String amount = "0";
     private boolean dicountMethod = true;
     private String customerID;
-    private String tableId;
+    private ArrayList<String> tables = new ArrayList<>();
 
+    
     public String getCustomerID() {
         return customerID;
-    }
-    public String getTableId() {
-        return tableId;
     }
     public String getSubTotal() {
         return subTotal;
@@ -33,6 +33,9 @@ public class Order_details {
     }
     public String getAmount() {
         return amount;
+    }
+    public ArrayList<String> getTables() {
+        return tables;
     }
 
 
@@ -57,7 +60,7 @@ public class Order_details {
     public void setCustomerID(String id) {
         this.customerID = id;
     }
-    public void setTableID(String id) {
-        this.tableId = id;
+    public void setTables(ArrayList<String> tables) {
+        this.tables = tables;
     }
 }

@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import model.Order_details;
@@ -24,10 +25,15 @@ public class TablesController implements Initializable {
     @FXML
     private GridPane tableGridPane;
 
+    @FXML
+    private Label selectTablesLabel;
+
     private List<Table_list> tables;
 
     //order details object
     private static Order_details orderDetails;
+
+    private ArrayList<String> selectTables = new ArrayList<>();
 
     public static void setOrderDetailsObject(Order_details orderDetails2) {
         orderDetails = orderDetails2;
@@ -35,6 +41,16 @@ public class TablesController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        //allready selected tables load
+        selectTables = orderDetails.getTables();
+    
+        if(selectTables.isEmpty()){
+            selectTablesLabel.setText("Not Selected");
+        }else{
+            selectTablesLabel.setText(selectTables.toString());
+        }
+
+        //load tables
         tables = new ArrayList<>(tables());
         int column = 0;
         int row = 1;
@@ -45,7 +61,7 @@ public class TablesController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("Table_Temp/TableTemp.fxml"));
                 Pane pane = fxmlLoader.load();
                 TableTempController tableController = fxmlLoader.getController();
-                tableController.setData(tables.get(i));
+                tableController.setData(tables.get(i), selectTables);
 
                 if(column == 4){
                     column=0;
@@ -53,11 +69,23 @@ public class TablesController implements Initializable {
                 }
 
                 tableGridPane.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(-25, 20, 50, 00));
+                GridPane.setMargin(pane, new Insets(-25, 14, 50, 5));
 
                 final int tableIndex = i;
                 pane.setOnMouseClicked(event -> {
-                    orderDetails.setTableID(tables.get(tableIndex).getTableID());
+                    if (selectTables.contains(tables.get(tableIndex).getTableID())) {
+                        selectTables.remove(tables.get(tableIndex).getTableID());
+                        orderDetails.setTables(selectTables);
+                    }else{
+                        selectTables.add(tables.get(tableIndex).getTableID());
+                        orderDetails.setTables(selectTables);
+                    }
+
+                    if(selectTables.isEmpty()){
+                        selectTablesLabel.setText("Not Selected");
+                    }else{
+                        selectTablesLabel.setText(selectTables.toString());
+                    }
                 });
             }
         } catch (IOException e) {

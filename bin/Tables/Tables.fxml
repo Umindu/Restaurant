@@ -85,7 +85,7 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Label alignment="TOP_RIGHT" layoutX="456.4" layoutY="15.0" prefHeight="22.0" prefWidth="177.0" text="Table #2" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="15.0">
+            <Label fx:id="selectTablesLabel" alignment="TOP_RIGHT" layoutX="456.4" layoutY="15.0" prefHeight="22.0" prefWidth="177.0" text="Not Selected" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="15.0">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

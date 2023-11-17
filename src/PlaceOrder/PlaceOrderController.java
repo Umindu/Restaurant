@@ -314,4 +314,16 @@ public class PlaceOrderController implements Initializable {
         orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
     }
 
+    //Order Hold Button Action
+    @FXML
+    void OrderHold(ActionEvent event) {
+
+    }
+
+    //Order Proceed Button Action
+    @FXML
+    void OrderProceed(ActionEvent event) {
+
+    }
+
 }

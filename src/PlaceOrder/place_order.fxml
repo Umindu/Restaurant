@@ -313,7 +313,7 @@
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="50.0" prefWidth="450.0" spacing="10.0" styleClass="other-backgrouns">
                <children>
-                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="main-button" text="  Hold Cart" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OrderHold" prefHeight="50.0" styleClass="main-button" text="  Hold Cart" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -331,7 +331,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" styleClass="proceed-button" text="  Proceed" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" cache="true" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#OrderProceed" prefHeight="50.0" styleClass="proceed-button" text="  Proceed" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
