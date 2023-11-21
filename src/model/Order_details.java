@@ -1,16 +1,20 @@
 package model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class Order_details {
-    private String subTotal = "0";
-    private String serviceCharge;
-    private String discount = "0";
-    private String coupnCode;
-    private String amount = "0";
-    private boolean dicountMethod = true;
-    private String customerID;
+    private String customerID = "";
     private ArrayList<String> tables = new ArrayList<>();
+    private String subTotal = "0";
+    private String serviceCharge = "0";
+    private boolean dicountMethod = true;
+    private String discount = "0";
+    private String coupnCode = "None";
+    private String grandTotal = "0";
+    private String payableAmount = "0";
+    private String balance = "0";
 
     
     public String getCustomerID() {
@@ -31,16 +35,22 @@ public class Order_details {
     public String getCoupnCode() {
         return coupnCode;
     }
-    public String getAmount() {
-        return amount;
+    public String getGrandTotal() {
+        return grandTotal;
     }
     public ArrayList<String> getTables() {
         return tables;
     }
+    public String getPayableAmount() {
+        return payableAmount;
+    }
+    public String getBalance() {
+        return balance;
+    }
 
 
     public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
+        this.subTotal = String.valueOf(new BigDecimal(subTotal).setScale(2, RoundingMode.HALF_UP));
     }
     public void setServiceCharge(String serviceCharge) {
         this.serviceCharge = serviceCharge;
@@ -54,13 +64,19 @@ public class Order_details {
     public void setCoupnCode(String coupnCode) {
         this.coupnCode = coupnCode;
     }
-    public void setAmount(String amount) {
-        this.amount = amount ;
+    public void setGrandTotal(String grandTotal) {
+        this.grandTotal = String.valueOf(new BigDecimal(grandTotal).setScale(2, RoundingMode.HALF_UP));
     }
     public void setCustomerID(String id) {
         this.customerID = id;
     }
     public void setTables(ArrayList<String> tables) {
         this.tables = tables;
+    }
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+    public void setPayableAmount(String payableAmount) {
+        this.payableAmount = String.valueOf(new BigDecimal(payableAmount).setScale(2, RoundingMode.HALF_UP));
     }
 }

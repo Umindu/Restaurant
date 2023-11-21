@@ -8,6 +8,7 @@ import Item.ItemController;
 import Orders.OrderController;
 import PlaceOrder.CartItemController;
 import PlaceOrder.PlaceOrderController;
+import PlaceOrder.Coupon.CouponpopupController;
 import PlaceOrder.Discount.DiscountpopupController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,6 +83,7 @@ public class DashboardController implements Initializable{
             ItemController.setPlacOrderController(placeOrderController);
             CartItemController.setPlacOrderController(placeOrderController);
             DiscountpopupController.setPlacOrderController(placeOrderController);
+            CouponpopupController.setPlacOrderController(placeOrderController);
             
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;

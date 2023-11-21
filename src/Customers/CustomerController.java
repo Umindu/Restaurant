@@ -83,7 +83,7 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
-        if (orderDetails.getCustomerID() != null) {
+        if (orderDetails.getCustomerID() != "") {
             allReadyCustomerDetailsLoad();
         }
         createCustomerList();

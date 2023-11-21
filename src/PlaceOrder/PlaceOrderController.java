@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import Customers.CustomerController;
 import Item.ItemController;
+import PlaceOrder.Coupon.CouponpopupController;
 import PlaceOrder.Discount.DiscountpopupController;
 import Tables.TablesController;
 import javafx.event.ActionEvent;
@@ -29,10 +30,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Cart_list;
 import model.Order_details;
+import paymentMethod.paymentMethodController;
 
 public class PlaceOrderController implements Initializable {
     @FXML
@@ -77,7 +80,7 @@ public class PlaceOrderController implements Initializable {
 
     //.....................
     @FXML
-    private Label orderAmount;
+    private Label orderGrandTotal;
 
     @FXML
     private Label orderCouponCode;
@@ -193,7 +196,8 @@ public class PlaceOrderController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Coupon/Couponpopup.fxml"));  
             AnchorPane popupPane = loader.load();
-            // CouponpopupController controller = loader.getController();
+            CouponpopupController controller = loader.getController();
+            controller.setObject(orderDetails);
 
             Scene popupScene = new Scene(popupPane);
             popupScene.setFill(Color.TRANSPARENT);
@@ -303,27 +307,51 @@ public class PlaceOrderController implements Initializable {
 
         if ((orderDetails.getDiscountMethod())) {
             orderDiscount.setText("Rs. " + new BigDecimal((Float.parseFloat(orderDetails.getSubTotal()) * Float.parseFloat(orderDetails.getDiscount()) / 100)).setScale(2, RoundingMode.HALF_UP));
-            orderDetails.setAmount(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - (Float.parseFloat(orderDetails.getSubTotal()) * Float.parseFloat(orderDetails.getDiscount()) / 100)));
+            orderDetails.setGrandTotal(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - (Float.parseFloat(orderDetails.getSubTotal()) * Float.parseFloat(orderDetails.getDiscount()) / 100)));
         }else{
             orderDiscount.setText("Rs. " + new BigDecimal(Float.parseFloat(orderDetails.getDiscount())).setScale(2, RoundingMode.HALF_UP));
-            orderDetails.setAmount(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - Float.parseFloat(orderDetails.getDiscount())));
+            orderDetails.setGrandTotal(String.valueOf(Float.parseFloat(orderDetails.getSubTotal()) - Float.parseFloat(orderDetails.getDiscount())));
         }
-  
         orderDiscountMethod.setText(orderDetails.getDiscountMethod() ? "%" : "Rs.");
         orderDiscount.setText(orderDetails.getDiscount());
-        orderAmount.setText("Rs. " + new BigDecimal(orderDetails.getAmount()).setScale(2, RoundingMode.HALF_UP));
+        orderCouponCode.setText("#"+orderDetails.getCoupnCode());
+        orderGrandTotal.setText("Rs. " + new BigDecimal(orderDetails.getGrandTotal()).setScale(2, RoundingMode.HALF_UP));
     }
 
     //Order Hold Button Action
     @FXML
     void OrderHold(ActionEvent event) {
-
     }
 
     //Order Proceed Button Action
     @FXML
     void OrderProceed(ActionEvent event) {
+        Stage addCustomerStage = new Stage();
+        addCustomerStage.initModality(Modality.APPLICATION_MODAL);
+        addCustomerStage.initStyle(StageStyle.UNDECORATED);
+        addCustomerStage.initStyle(StageStyle.TRANSPARENT);
 
+
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        addCustomerStage.setWidth(screenWidth);
+        addCustomerStage.setHeight(screenHeight);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../paymentMethod/paymentMethod.fxml"));  
+            HBox popupPane = loader.load();
+            paymentMethodController controller = loader.getController();
+            controller.setOrderDetailsObject(orderDetails);
+
+            Scene popupScene = new Scene(popupPane);
+            popupScene.setFill(Color.TRANSPARENT);
+            addCustomerStage.setScene(popupScene);
+            addCustomerStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
 }
