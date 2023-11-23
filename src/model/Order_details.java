@@ -7,14 +7,14 @@ import java.util.ArrayList;
 public class Order_details {
     private String customerID = "";
     private ArrayList<String> tables = new ArrayList<>();
-    private String subTotal = "0";
-    private String serviceCharge = "0";
+    private String subTotal = "0.00";
+    private String serviceCharge = "0.00";
     private boolean dicountMethod = true;
-    private String discount = "0";
+    private String discount = "0.00";
     private String coupnCode = "None";
-    private String grandTotal = "0";
-    private String payableAmount = "0";
-    private String balance = "0";
+    private String grandTotal = "0.00";
+    private String payAmount = "0.00";
+    private String balance = "0.00";
 
     
     public String getCustomerID() {
@@ -41,8 +41,8 @@ public class Order_details {
     public ArrayList<String> getTables() {
         return tables;
     }
-    public String getPayableAmount() {
-        return payableAmount;
+    public String getPayAmount() {
+        return payAmount;
     }
     public String getBalance() {
         return balance;
@@ -76,7 +76,7 @@ public class Order_details {
     public void setBalance(String balance) {
         this.balance = balance;
     }
-    public void setPayableAmount(String payableAmount) {
-        this.payableAmount = String.valueOf(new BigDecimal(payableAmount).setScale(2, RoundingMode.HALF_UP));
+    public void setPayAmount(String payableAmount) {
+        this.payAmount = String.valueOf(new BigDecimal(payableAmount).setScale(2, RoundingMode.HALF_UP));
     }
 }

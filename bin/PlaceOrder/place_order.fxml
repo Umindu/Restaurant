@@ -260,7 +260,7 @@
                            </padding>
                         </Button>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="SOMETIMES" />
-                        <Label fx:id="orderCouponCode" text="#">
+                        <Label fx:id="orderCouponCode" text="None">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>

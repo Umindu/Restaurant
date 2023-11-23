@@ -217,21 +217,23 @@ public class PlaceOrderController implements Initializable {
     }
 
     @FXML
-    void RemoveDiscount(ActionEvent event) {
+    public void RemoveDiscount(ActionEvent event) {
         discountEnableBtn.setVisible(true);
         discountEnableBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
         discountLine.setVisible(false);
         discountLine.setMinHeight(0);
-        orderDetails.setDiscount("0");
+        orderDetails.setDiscount("0.00");
         refrasOrderDetails();
     }
 
     @FXML
-    void RemoveCoupon(ActionEvent event) {
+    public void RemoveCoupon(ActionEvent event) {
         couponEnableBtn.setVisible(true);
         couponEnableBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
         couponLine.setVisible(false);
         couponLine.setMinHeight(0);
+        orderDetails.setCoupnCode("None");
+        refrasOrderDetails();
     }
 
 
@@ -314,7 +316,12 @@ public class PlaceOrderController implements Initializable {
         }
         orderDiscountMethod.setText(orderDetails.getDiscountMethod() ? "%" : "Rs.");
         orderDiscount.setText(orderDetails.getDiscount());
-        orderCouponCode.setText("#"+orderDetails.getCoupnCode());
+
+        if (orderDetails.getCoupnCode().isEmpty() || orderDetails.getCoupnCode() == "None") {
+            orderCouponCode.setText("None");
+        }else{
+            orderCouponCode.setText("#"+orderDetails.getCoupnCode());
+        }
         orderGrandTotal.setText("Rs. " + new BigDecimal(orderDetails.getGrandTotal()).setScale(2, RoundingMode.HALF_UP));
     }
 

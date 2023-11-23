@@ -47,7 +47,7 @@ public class TablesController implements Initializable {
         if(selectTables.isEmpty()){
             selectTablesLabel.setText("Not Selected");
         }else{
-            selectTablesLabel.setText(selectTables.toString());
+            selectTablesLabel.setText(selectTables.toString().substring(1, selectTables.toString().length()-1));
         }
 
         //load tables
@@ -84,7 +84,7 @@ public class TablesController implements Initializable {
                     if(selectTables.isEmpty()){
                         selectTablesLabel.setText("Not Selected");
                     }else{
-                        selectTablesLabel.setText(selectTables.toString());
+                        selectTablesLabel.setText(selectTables.toString().substring(1, selectTables.toString().length()-1));
                     }
                 });
             }

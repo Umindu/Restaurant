@@ -29,6 +29,9 @@ public class CouponpopupController {
     void popupClose(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
+        if (orderDetails.getCoupnCode().isEmpty() || orderDetails.getCoupnCode() == "None") {
+            placeOrderController.RemoveCoupon(event);
+        }
     }
 
     @FXML

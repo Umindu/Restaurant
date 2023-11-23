@@ -53,12 +53,19 @@ public class DiscountpopupController {
     void popupClose(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
+        if (orderDetails.getDiscount().isEmpty() || orderDetails.getDiscount() == "0.00") {
+            placeOrderController.RemoveDiscount(event);
+        }
     }
 
     @FXML
     void addDiscount(ActionEvent event) {
         orderDetails.setDiscountMethod(DiscountPercentage);
-        orderDetails.setDiscount(dicountTextField.getText());
+        if (dicountTextField.getText().isEmpty()) {
+            orderDetails.setDiscount("0.00");
+        }else{
+            orderDetails.setDiscount(dicountTextField.getText());
+        }
         placeOrderController.refrasOrderDetails();
         popupClose(event);
     }

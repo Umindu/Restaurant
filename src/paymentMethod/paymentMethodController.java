@@ -17,7 +17,7 @@ import model.Order_details;
 public class paymentMethodController implements Initializable {
 
     @FXML
-    private Label amountLabel2;
+    private Label payableAmountLabel;
 
     @FXML
     private Label cusNameLabel2;
@@ -183,13 +183,17 @@ public class paymentMethodController implements Initializable {
     private void setOrderDetails() {
         cusIdLabel.setText(orderDetails.getCustomerID());
         
-        tableNumbersLabel.setText(orderDetails.getTables().toString());
+        if (orderDetails.getTables().isEmpty()) {
+            tableNumbersLabel.setText("Takeaway");
+        }else{
+            tableNumbersLabel.setText(orderDetails.getTables().toString().substring(1, orderDetails.getTables().toString().length() - 1));
+        }
 
         if (amountTextfield.getLength() > 0) {
-            orderDetails.setPayableAmount(amountTextfield.getText());
-            orderDetails.setBalance(String.valueOf(Float.parseFloat(orderDetails.getPayableAmount()) - Float.parseFloat(orderDetails.getGrandTotal())));
+            orderDetails.setPayAmount(amountTextfield.getText());
+            orderDetails.setBalance(String.valueOf(Float.parseFloat(orderDetails.getPayAmount()) - Float.parseFloat(orderDetails.getGrandTotal())));
         } else{   
-            orderDetails.setPayableAmount("0.00");
+            orderDetails.setPayAmount("0.00");
             orderDetails.setBalance("-"+orderDetails.getGrandTotal());
         }
         
@@ -203,12 +207,16 @@ public class paymentMethodController implements Initializable {
             discountLabel.setText("Rs. "+ new BigDecimal(orderDetails.getDiscount()).setScale(2, RoundingMode.HALF_UP));
         }
 
-        couponLabel.setText("#"+orderDetails.getCoupnCode());
+        if (orderDetails.getCoupnCode() == "None") {
+            couponLabel.setText("None");
+        }else{
+            couponLabel.setText("#"+orderDetails.getCoupnCode());
+        }
 
         grandTotalLabel.setText("Rs. "+ orderDetails.getGrandTotal());
 
-        amountLabel.setText("Rs. "+orderDetails.getPayableAmount());
-        amountLabel2.setText("Rs. "+ orderDetails.getPayableAmount());
+        amountLabel.setText("Rs. "+orderDetails.getPayAmount());
+        payableAmountLabel.setText("Rs. "+ orderDetails.getGrandTotal());
             
         balanceLabel.setText("Rs. "+ orderDetails.getBalance());
 

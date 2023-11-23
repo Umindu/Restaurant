@@ -103,22 +103,17 @@
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="20.0" layoutY="477.0" text="Tax" AnchorPane.bottomAnchor="230.0">
-                                 <font>
-                                    <Font name="Arial" size="15.0" />
-                                 </font>
-                              </Label>
                               <Label layoutX="20.0" layoutY="495.0" text="Discount" AnchorPane.bottomAnchor="210.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="20.0" layoutY="459.0" text="Service Charge" AnchorPane.bottomAnchor="250.0">
+                              <Label layoutX="20.0" layoutY="459.0" text="Service Charge" AnchorPane.bottomAnchor="230.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="20.0" layoutY="441.0" text="Sub Total" AnchorPane.bottomAnchor="270.0">
+                              <Label layoutX="20.0" layoutY="441.0" text="Sub Total" AnchorPane.bottomAnchor="250.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
@@ -128,22 +123,17 @@
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="serviceChargeLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="469.0" prefHeight="18.0" prefWidth="155.0" text="0.00" AnchorPane.bottomAnchor="230.0" AnchorPane.rightAnchor="20.0">
-                                 <font>
-                                    <Font name="Arial" size="15.0" />
-                                 </font>
-                              </Label>
                               <Label fx:id="discountLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="487.0" prefHeight="18.0" prefWidth="155.0" text="Rs. 0.00" AnchorPane.bottomAnchor="210.0" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="serviceChargeLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="451.0" prefHeight="18.0" prefWidth="155.0" text="0.00" AnchorPane.bottomAnchor="250.0" AnchorPane.rightAnchor="20.0">
+                              <Label fx:id="serviceChargeLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="451.0" prefHeight="18.0" prefWidth="155.0" text="0.00" AnchorPane.bottomAnchor="230.0" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="subTotalLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="433.0" prefHeight="18.0" prefWidth="155.0" text="Rs. 0.00" AnchorPane.bottomAnchor="270.0" AnchorPane.rightAnchor="20.0">
+                              <Label fx:id="subTotalLabel" alignment="CENTER_RIGHT" layoutX="513.0" layoutY="433.0" prefHeight="18.0" prefWidth="155.0" text="Rs. 0.00" AnchorPane.bottomAnchor="250.0" AnchorPane.rightAnchor="20.0">
                                  <font>
                                     <Font name="Arial" size="15.0" />
                                  </font>
@@ -170,7 +160,7 @@
                                     <Font name="Arial" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="amountLabel2" layoutX="23.0" layoutY="54.0" text="Rs.2000.00" textFill="#09aa29" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0">
+                              <Label fx:id="payableAmountLabel" layoutX="23.0" layoutY="54.0" text="Rs 0.00" textFill="#09aa29" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0">
                                  <font>
                                     <Font name="Arial Bold" size="28.0" />
                                  </font>
