@@ -11,10 +11,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Order_details;
 
 public class paymentMethodController implements Initializable {
+    @FXML
+    private Button cashTabBtn;
+
+    @FXML
+    private Button otherMethodBtn;
+    
+    @FXML
+    private VBox cachVbox;
+
+    @FXML
+    private VBox otherMethodVbox;
 
     @FXML
     private Label payableAmountLabel;
@@ -70,7 +82,6 @@ public class paymentMethodController implements Initializable {
         // allow only numbers and dot
         amountTextfield.addEventFilter(javafx.scene.input.KeyEvent.KEY_TYPED, event -> {
             char inputChar = event.getCharacter().charAt(0);
-            System.out.println(inputChar);
             if (!(Character.isDigit(inputChar) || (inputChar == '.' && !amountTextfield.getText().contains(".")))) {
                 event.consume();
             }
@@ -218,7 +229,23 @@ public class paymentMethodController implements Initializable {
         amountLabel.setText("Rs. "+orderDetails.getPayAmount());
         payableAmountLabel.setText("Rs. "+ orderDetails.getGrandTotal());
             
-        balanceLabel.setText("Rs. "+ orderDetails.getBalance());
+        balanceLabel.setText("Rs. "+ new BigDecimal(orderDetails.getBalance()).setScale(2, RoundingMode.HALF_UP));
 
     }  
+
+    @FXML
+    void showCashTab(ActionEvent event) {
+        otherMethodVbox.setVisible(false);
+        otherMethodVbox.setPrefHeight(0);
+        cachVbox.setVisible(true);
+        cachVbox.setPrefHeight(517.6);
+    }
+
+    @FXML
+    void showOtherMethodTab(ActionEvent event) {
+        cachVbox.setVisible(false);
+        cachVbox.setPrefHeight(0);
+        otherMethodVbox.setVisible(true);
+        otherMethodVbox.setPrefHeight(517.6);
+    }
 }

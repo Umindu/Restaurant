@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -186,16 +187,16 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <VBox layoutX="27.0" layoutY="98.0" prefHeight="639.0" prefWidth="518.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="105.0">
+                        <VBox layoutY="104.0" prefHeight="639.0" prefWidth="518.0" styleClass="background" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="104.0">
                            <children>
-                              <HBox prefHeight="75.0" prefWidth="531.0">
+                              <HBox prefHeight="130.0" prefWidth="531.0">
                                  <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="41.0" prefWidth="31.0" styleClass="tab-button" text="Cash" HBox.hgrow="ALWAYS">
+                                    <Button fx:id="cashTabBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCashTab" prefHeight="41.0" prefWidth="31.0" styleClass="tab-button" text="Cash" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Arial Bold" size="17.0" />
                                        </font>
                                     </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="41.0" prefWidth="0.0" styleClass="tab-button" text="Other Methods" HBox.hgrow="ALWAYS">
+                                    <Button fx:id="otherMethodBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showOtherMethodTab" prefHeight="41.0" prefWidth="0.0" styleClass="tab-button" text="Other Methods" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font name="Arial Bold" size="17.0" />
                                        </font>
@@ -205,165 +206,269 @@
                                     <Insets />
                                  </VBox.margin>
                               </HBox>
-                              <TextField fx:id="amountTextfield" alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="498.0" styleClass="text-field">
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="15.0" right="15.0" top="20.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="Arial" size="30.0" />
-                                 </font>
-                              </TextField>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
+                              <VBox fx:id="cachVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.6" prefWidth="546.4">
                                  <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressOne" prefWidth="165.6" styleClass="sub-button" text="1">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
+                                    <TextField fx:id="amountTextfield" alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="498.0" styleClass="text-field">
                                        <font>
-                                          <Font name="Arial Bold" size="18.0" />
+                                          <Font name="Arial" size="30.0" />
                                        </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressTwo" prefWidth="165.6" styleClass="sub-button" text="2">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressThree" prefWidth="165.6" styleClass="sub-button" text="3">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <HBox prefHeight="100.0">
+                                       <children>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressOne" prefWidth="165.6" styleClass="sub-button" text="1">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressTwo" prefWidth="165.6" styleClass="sub-button" text="2">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressThree" prefWidth="165.6" styleClass="sub-button" text="3">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0">
+                                       <children>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressFour" prefWidth="165.6" styleClass="sub-button" text="4">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressFive" prefWidth="165.6" styleClass="sub-button" text="5">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressSix" prefWidth="165.6" styleClass="sub-button" text="6">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0">
+                                       <children>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressSeven" prefWidth="165.6" styleClass="sub-button" text="7">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressEight" prefWidth="165.6" styleClass="sub-button" text="8">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressNine" prefWidth="165.6" styleClass="sub-button" text="9">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0">
+                                       <children>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressDoubleZero" prefWidth="165.6" styleClass="sub-button" text="00">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressZero" prefWidth="165.6" styleClass="sub-button" text="0">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressBackspace" prefWidth="165.6" styleClass="sub-button">
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../img/delete.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox prefHeight="100.0">
+                                       <children>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressDot" prefWidth="165.6" styleClass="sub-button" text=".">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressClear" prefHeight="73.0" prefWidth="341.6" styleClass="sub-button" text="Clear">
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Arial Bold" size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
                                  <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
+                                    <Insets bottom="5.0" top="5.0" />
                                  </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
+                              </VBox>
+                              <VBox fx:id="otherMethodVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="546.4" visible="false">
                                  <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressFour" prefWidth="165.6" styleClass="sub-button" text="4">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressFive" prefWidth="165.6" styleClass="sub-button" text="5">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressSix" prefWidth="165.6" styleClass="sub-button" text="6">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="106.0" text="Card Payment">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="15.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Pane prefHeight="100.0" prefWidth="34.0" />
+                                          <VBox prefHeight="100.0" prefWidth="282.0">
+                                             <children>
+                                                <Label text="Amount">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="201.0">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                                <Label text="Bill number">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="282.0">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="15.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="106.0" text="QR">
+                                             <font>
+                                                <Font name="Arial Bold" size="15.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="15.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Pane prefHeight="100.0" prefWidth="34.0" />
+                                          <VBox prefHeight="100.0" prefWidth="282.0">
+                                             <children>
+                                                <Label text="Amount">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="282.0">
+                                                   <font>
+                                                      <Font name="Arial" size="15.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </VBox.margin>
+                                                </TextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="15.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressSeven" prefWidth="165.6" styleClass="sub-button" text="7">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressEight" prefWidth="165.6" styleClass="sub-button" text="8">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressNine" prefWidth="165.6" styleClass="sub-button" text="9">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressDoubleZero" prefWidth="165.6" styleClass="sub-button" text="00">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressZero" prefWidth="165.6" styleClass="sub-button" text="0">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressBackspace" prefWidth="165.6" styleClass="sub-button">
-                                       <graphic>
-                                          <ImageView fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../img/delete.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressDot" prefWidth="165.6" styleClass="sub-button" text=".">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#pressClear" prefHeight="73.0" prefWidth="341.6" styleClass="sub-button" text="Clear">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="Arial Bold" size="18.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" />
-                                 </VBox.margin>
-                              </HBox>
+                              </VBox>
                            </children>
                         </VBox>
                      </children>
