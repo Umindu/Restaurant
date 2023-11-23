@@ -53,7 +53,7 @@ public class DiscountpopupController {
     void popupClose(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
-        if (orderDetails.getDiscount().isEmpty() || orderDetails.getDiscount() == "0.00") {
+        if (orderDetails.getDiscount().isEmpty() || orderDetails.getDiscount() == "0") {
             placeOrderController.RemoveDiscount(event);
         }
     }
@@ -62,7 +62,7 @@ public class DiscountpopupController {
     void addDiscount(ActionEvent event) {
         orderDetails.setDiscountMethod(DiscountPercentage);
         if (dicountTextField.getText().isEmpty()) {
-            orderDetails.setDiscount("0.00");
+            orderDetails.setDiscount("0");
         }else{
             orderDetails.setDiscount(dicountTextField.getText());
         }

@@ -222,7 +222,7 @@ public class PlaceOrderController implements Initializable {
         discountEnableBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
         discountLine.setVisible(false);
         discountLine.setMinHeight(0);
-        orderDetails.setDiscount("0.00");
+        orderDetails.setDiscount("0");
         refrasOrderDetails();
     }
 

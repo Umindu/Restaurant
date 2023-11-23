@@ -10,7 +10,7 @@ public class Order_details {
     private String subTotal = "0.00";
     private String serviceCharge = "0.00";
     private boolean dicountMethod = true;
-    private String discount = "0.00";
+    private String discount = "0";
     private String coupnCode = "None";
     private String grandTotal = "0.00";
     private String payAmount = "0.00";

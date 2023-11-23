@@ -87,6 +87,9 @@ public class paymentMethodController implements Initializable {
             }
         });
 
+        
+        cashTabBtn.setStyle("-fx-border-color: #fc8019; -fx-text-fill: #fc8019;");
+
     }
 
     public void setOrderDetailsObject(Order_details orderDetails) {
@@ -235,6 +238,8 @@ public class paymentMethodController implements Initializable {
 
     @FXML
     void showCashTab(ActionEvent event) {
+        otherMethodBtn.setStyle("-fx-border-color: #7e7e7e; -fx-text-fill: #000;");
+        cashTabBtn.setStyle("-fx-border-color: #fc8019; -fx-text-fill: #fc8019;");
         otherMethodVbox.setVisible(false);
         otherMethodVbox.setPrefHeight(0);
         cachVbox.setVisible(true);
@@ -243,6 +248,8 @@ public class paymentMethodController implements Initializable {
 
     @FXML
     void showOtherMethodTab(ActionEvent event) {
+        cashTabBtn.setStyle("-fx-border-color: #7e7e7e; -fx-text-fill: #000;");
+        otherMethodBtn.setStyle("-fx-border-color: #fc8019; -fx-text-fill: #fc8019;");
         cachVbox.setVisible(false);
         cachVbox.setPrefHeight(0);
         otherMethodVbox.setVisible(true);
