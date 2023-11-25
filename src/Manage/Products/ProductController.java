@@ -324,6 +324,7 @@ public class ProductController implements Initializable {
         if (!proId.isEmpty() && !proName.isEmpty() && proCategory != "Select Category" && !proCost.isEmpty()
                 && !proPrice.isEmpty()) {
             //insert product data to database
+            System.out.println("##########");
             if (proIdTextField.isEditable()) {
                 try {
                     Statement statement = DBConnect.connectToDB().createStatement();

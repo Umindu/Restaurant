@@ -13,8 +13,12 @@ public class Order_details {
     private String discount = "0";
     private String coupnCode = "None";
     private String grandTotal = "0.00";
-    private String payAmount = "0.00";
+    private String totalPayAmount = "0.00";
     private String balance = "0.00";
+    private String cashPayAmount = "0.00";
+    private String cardPayAmount = "0.00";
+    private String cardBillNumber = "";
+    private String qrPayAmount = "0.00";
 
     
     public String getCustomerID() {
@@ -41,11 +45,23 @@ public class Order_details {
     public ArrayList<String> getTables() {
         return tables;
     }
-    public String getPayAmount() {
-        return payAmount;
+    public String getTotalPayAmount() {
+        return totalPayAmount;
     }
     public String getBalance() {
         return balance;
+    }
+    public String getCashPayAmount() {
+        return cashPayAmount;
+    }
+    public String getCardPayAmount() {
+        return cardPayAmount;
+    }
+    public String getCardBillNumber() {
+        return cardBillNumber;
+    }
+    public String getQrPayAmount() {
+        return qrPayAmount;
     }
 
 
@@ -76,7 +92,19 @@ public class Order_details {
     public void setBalance(String balance) {
         this.balance = balance;
     }
-    public void setPayAmount(String payableAmount) {
-        this.payAmount = String.valueOf(new BigDecimal(payableAmount).setScale(2, RoundingMode.HALF_UP));
+    public void setTotalPayAmount(String payableAmount) {
+        this.totalPayAmount = String.valueOf(new BigDecimal(payableAmount).setScale(2, RoundingMode.HALF_UP));
+    }
+    public void setCashPayAmount(String cashPayAmount) {
+        this.cashPayAmount = cashPayAmount;
+    }
+    public void setCardPayAmount(String cardPayAmount) {
+        this.cardPayAmount = cardPayAmount;
+    }
+    public void setCardBillNumber(String cardBillNumber) {
+        this.cardBillNumber = cardBillNumber;
+    }
+    public void setQrPayAmount(String qrPayAmount) {
+        this.qrPayAmount = qrPayAmount;
     }
 }

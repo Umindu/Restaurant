@@ -80,17 +80,12 @@
                   <Insets left="5.0" right="20.0" />
                </padding>
             </Label>
-            <Button layoutX="653.0" layoutY="15.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="178.0" styleClass="main-button" text="Select &amp; Place Order" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="selectTablesLabel" alignment="TOP_RIGHT" layoutX="456.4" layoutY="15.0" prefHeight="22.0" prefWidth="177.0" text="Not Selected" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="15.0">
+            <Label fx:id="selectTablesLabel" alignment="TOP_RIGHT" layoutX="456.4" layoutY="15.0" prefHeight="22.0" prefWidth="177.0" text="Not Selected" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="BOTTOM_RIGHT" layoutX="454.6" layoutY="45.0" prefHeight="18.0" prefWidth="178.0" text="#5476" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="209.0">
+            <Label alignment="BOTTOM_RIGHT" layoutX="454.6" layoutY="45.0" prefHeight="18.0" prefWidth="178.0" text="#5476" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
