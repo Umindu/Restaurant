@@ -5,7 +5,9 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class Order_details {
+    private String invoiceID = "";
     private String customerID = "";
+    private String customerName = "";
     private ArrayList<String> tables = new ArrayList<>();
     private String subTotal = "0.00";
     private String serviceCharge = "0.00";
@@ -20,9 +22,14 @@ public class Order_details {
     private String cardBillNumber = "";
     private String qrPayAmount = "0.00";
 
-    
+    public String getInvoiceID() {
+        return invoiceID;
+    }
     public String getCustomerID() {
         return customerID;
+    }
+    public String getCustomerName() {
+        return customerName;
     }
     public String getSubTotal() {
         return subTotal;
@@ -65,6 +72,9 @@ public class Order_details {
     }
 
 
+    public void setInvoiceID(String invoiceID) {
+        this.invoiceID = invoiceID;
+    }
     public void setSubTotal(String subTotal) {
         this.subTotal = String.valueOf(new BigDecimal(subTotal).setScale(2, RoundingMode.HALF_UP));
     }
@@ -85,6 +95,9 @@ public class Order_details {
     }
     public void setCustomerID(String id) {
         this.customerID = id;
+    }
+    public void setCustomerName(String name) {
+        this.customerName = name;
     }
     public void setTables(ArrayList<String> tables) {
         this.tables = tables;

@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import paymentMethod.paymentMethodController;
 
 public class DashboardController implements Initializable{
 
@@ -84,6 +85,7 @@ public class DashboardController implements Initializable{
             CartItemController.setPlacOrderController(placeOrderController);
             DiscountpopupController.setPlacOrderController(placeOrderController);
             CouponpopupController.setPlacOrderController(placeOrderController);
+            paymentMethodController.setPlacOrderController(placeOrderController);
             
             borderdPane.setRight(sideview);
             checkVisibleRightPane = true;

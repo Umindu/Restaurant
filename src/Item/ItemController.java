@@ -28,6 +28,8 @@ public class ItemController {
 
     private String discount;
 
+    private String cost;
+
     //place order controller
     private static PlaceOrderController placeOrderController;
 
@@ -46,6 +48,7 @@ public class ItemController {
         itemName.setText(item.getName());
         itemPrice.setText("Rs. "+ new BigDecimal(item.getPrice()).setScale(2, RoundingMode.HALF_UP));
         discount = item.getDiscount();
+        cost = item.getCost();
 
         vbox.setOnMouseClicked(event -> {
             String id = item.getID();
@@ -54,7 +57,7 @@ public class ItemController {
             String qnt = "1";
             
             PlaceOrderController itemObj = new PlaceOrderController();
-            itemObj.setItem(id, name, price, qnt, discount, rightSceneVBox);
+            itemObj.setItem(id, name, cost, price, qnt, discount, rightSceneVBox);
 
             // itemObj.refrasOrderDetails(orderSubTotal, orderDiscount, orderAmount);
             // placeOrderController.setItem(id, name, price, qnt, discount, rightSceneVBox);

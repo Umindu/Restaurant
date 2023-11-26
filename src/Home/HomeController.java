@@ -130,6 +130,7 @@ public class HomeController implements Initializable{
                     item.setImg(result.getString("ImgUrl"));
                 }
                 item.setName(result.getString("Name"));
+                item.setCost(result.getString("Cost"));
                 item.setPrice(result.getString("Price"));
                 item.setDiscount(result.getString("Discount"));
                 ls.add(item);

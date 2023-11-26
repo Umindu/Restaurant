@@ -267,6 +267,7 @@ public class CustomerController implements Initializable {
         PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.setCustomer(cusOrderPane, cusOrderName, cusOrderID, cusAddBtn, id, name);
         orderDetails.setCustomerID(id);
+        orderDetails.setCustomerName(name);
     }
 
     

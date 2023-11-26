@@ -3,6 +3,7 @@ package model;
 public class Cart_list {
     private String itemID;
     private String itemName;
+    private String itemCost;
     private String itemPrice;
     private String itemQnt;
     private String itemDiscount;
@@ -14,6 +15,9 @@ public class Cart_list {
     }
     public String getName() {
         return itemName;
+    }
+    public String getCost() {
+        return itemCost;
     }
     public String getPrice() {
         return itemPrice;
@@ -30,12 +34,14 @@ public class Cart_list {
     public String getProductTotalPrice() {
         return productTotalPrice;
     }
-
     public void setID(String itemID) {
         this.itemID = itemID;
     }
     public void setName(String itemName) {
         this.itemName = itemName;
+    }
+    public void setCost(String itemCost) {
+        this.itemCost = itemCost;
     }
     public void setPrice(String itemPrice) {
         this.itemPrice = itemPrice;

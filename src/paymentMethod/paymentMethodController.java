@@ -3,8 +3,12 @@ package paymentMethod;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
-
+import DataBase.DBConnect;
+import PlaceOrder.PlaceOrderController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +17,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Cart_list;
 import model.Order_details;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class paymentMethodController implements Initializable {
     @FXML
@@ -71,6 +79,7 @@ public class paymentMethodController implements Initializable {
     private Label balanceLabel;
 
     private Order_details orderDetails;
+    private List<Cart_list> cartItemList;
 
     //other payment method
     @FXML
@@ -81,6 +90,13 @@ public class paymentMethodController implements Initializable {
 
     @FXML
     private TextField qrAmountTextfield;
+
+    //place order controller
+    private static PlaceOrderController placeOrderController;
+
+    public static void setPlacOrderController(PlaceOrderController placeOrderController2) {
+        placeOrderController = placeOrderController2;
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -117,7 +133,6 @@ public class paymentMethodController implements Initializable {
 
         //set order details
         cashAmountTextfield.setOnKeyReleased(event -> {
-            orderDetails.setCashPayAmount(cashAmountTextfield.getText());
             setOrderDetails();
         });
 
@@ -143,9 +158,9 @@ public class paymentMethodController implements Initializable {
         cashTabBtn.setStyle("-fx-border-color: #fc8019; -fx-text-fill: #fc8019;");
     }
 
-    public void setOrderDetailsObject(Order_details orderDetails) {
+    public void setOrderDetailsObject(Order_details orderDetails, List<Cart_list> cartItemList) {
         this.orderDetails = orderDetails;
-        
+        this.cartItemList = cartItemList;
         setOrderDetails();
     }
 
@@ -246,7 +261,14 @@ public class paymentMethodController implements Initializable {
     }
 
     private void setOrderDetails() {
-        cusIdLabel.setText(orderDetails.getCustomerID());
+        invoiceIdLabel.setText("Order ID #"+orderDetails.getInvoiceID());
+
+        cusNameLabel.setText(orderDetails.getCustomerName());
+        cusNameLabel2.setText(orderDetails.getCustomerName());
+
+        orderDetails.setCashPayAmount(cashAmountTextfield.getText());
+        
+        cusIdLabel.setText("#"+orderDetails.getCustomerID());
         
         if (orderDetails.getTables().isEmpty()) {
             tableNumbersLabel.setText("Takeaway");
@@ -311,13 +333,43 @@ public class paymentMethodController implements Initializable {
     }
 
     @FXML
-    void confirmPayment(ActionEvent event) {
-        System.out.println("Payment confirmed");
-        System.out.println("Total pay amount: "+orderDetails.getTotalPayAmount());
-        System.out.println("Balance: "+orderDetails.getBalance());
-        System.out.println("Cash pay amount: "+orderDetails.getCashPayAmount());
-        System.out.println("Card pay amount: "+orderDetails.getCardPayAmount());
-        System.out.println("Card bill number: "+orderDetails.getCardBillNumber());
-        System.out.println("QR pay amount: "+orderDetails.getQrPayAmount());
+    void confirmPayment(ActionEvent event) throws SQLException {
+        Statement statement = DBConnect.connectToDB().createStatement();
+        for (Cart_list cart_item : cartItemList) {
+            statement.execute("insert into Order_Product values ('" + orderDetails.getInvoiceID() + "', '" + cart_item.getID() + "', '" + cart_item.getQnt()
+            + "', '" + cart_item.getCost() + "', '" + cart_item.getPrice() + "', '" + cart_item.getDiscount() + "', '" + cart_item.getProductTotalPrice() + "')");
+        }
+        System.out.println("Order_Product table updated");
+        
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(currentDate);
+
+        statement.execute("insert into Order_Invoice values ('" + orderDetails.getInvoiceID() + "', '" + formattedDate + "', '" + orderDetails.getCustomerID() + "', '" + orderDetails.getTables().toString().substring(1, orderDetails.getTables().toString().length() - 1) + "', '" + orderDetails.getSubTotal() + "', '" + orderDetails.getServiceCharge() + "', '" + orderDetails.getDiscount() + "', '" + orderDetails.getDiscountMethod() + "', '" + orderDetails.getCoupnCode() + "', '" + orderDetails.getGrandTotal() + "', '" + orderDetails.getTotalPayAmount() + "', '" + orderDetails.getCashPayAmount() + "', '" + orderDetails.getCardPayAmount() + "', '" + orderDetails.getCardBillNumber() + "', '" + orderDetails.getQrPayAmount() + "', '" + orderDetails.getBalance() + "')");
+        System.out.println("Order_Invoice table updated");
+
+        popupClose(event);
+
+        //clear cart
+        orderDetails.setInvoiceID("");
+        orderDetails.setCustomerID("");
+        orderDetails.setSubTotal("0.00");
+        orderDetails.setServiceCharge("0.00");
+        orderDetails.setDiscount("0.00");
+        orderDetails.setDiscountMethod(true);
+        orderDetails.setCoupnCode("None");
+        orderDetails.setGrandTotal("0.00");
+        orderDetails.setTotalPayAmount("0.00");
+        orderDetails.setCashPayAmount("0.00");
+        orderDetails.setCardPayAmount("0.00");
+        orderDetails.setCardBillNumber("");
+        orderDetails.setQrPayAmount("0.00");
+        orderDetails.setBalance("0.00");
+        orderDetails.setTables(new ArrayList<String>());
+        cartItemList.clear();
+
+        //refresh plase order page
+        placeOrderController.refreshPlaceOrder();
+
     }
 }

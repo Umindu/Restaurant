@@ -372,7 +372,7 @@
                                     <Insets bottom="5.0" top="5.0" />
                                  </VBox.margin>
                               </VBox>
-                              <VBox fx:id="otherMethodVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="546.4">
+                              <VBox fx:id="otherMethodVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="546.4" visible="false">
                                  <children>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>

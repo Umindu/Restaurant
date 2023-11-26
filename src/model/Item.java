@@ -4,6 +4,7 @@ public class Item {
     private String ID;
     private String img;
     private String name;
+    private String cost;
     private String price;
     private String discount;
     private String category;
@@ -20,6 +21,9 @@ public class Item {
     }
     public String getCategory() {
         return category;
+    }
+    public String getCost() {
+        return cost;
     }
     public String getPrice() {
         return price;
@@ -40,6 +44,9 @@ public class Item {
     }
     public void setCategory(String category) {
         this.category = category;
+    }
+    public void setCost(String cost) {
+        this.cost = cost;
     }
     public void setPrice(String price) {
         this.price = price;

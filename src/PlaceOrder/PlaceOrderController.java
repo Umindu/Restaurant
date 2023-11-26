@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import Customers.CustomerController;
+import DataBase.DBConnect;
 import Item.ItemController;
 import PlaceOrder.Coupon.CouponpopupController;
 import PlaceOrder.Discount.DiscountpopupController;
@@ -44,6 +48,9 @@ public class PlaceOrderController implements Initializable {
     public static void setDashboardBorderdPane(BorderPane dashboardBorderdPane) {
         DashboardBorderdPane = dashboardBorderdPane;
     }
+
+    @FXML
+    private Label invoiceIDLabel;
 
     @FXML
     private Pane orderCusPane;
@@ -112,6 +119,22 @@ public class PlaceOrderController implements Initializable {
         CustomerController.setOrderDetailsObject(orderDetails);
         TablesController.setOrderDetailsObject(orderDetails);
         rightSceneVBox.getChildren().clear();
+
+        //set invoice id
+        try (Statement statement = DBConnect.connectToDB().createStatement()) {
+            statement.execute("SELECT max(InvoiceID) FROM Order_Invoice");
+            ResultSet resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                int maxInvoiceID = resultSet.getInt(1);
+                if (resultSet.wasNull()) {
+                    invoiceIDLabel.setText("#1");
+                } else {
+                    invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
@@ -255,9 +278,10 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
-    public void setItem(String id, String name, String price, String qnt, String discount, VBox vBox){
+    public void setItem(String id, String name, String cost, String price, String qnt, String discount,  VBox vBox){
         item.setID(id);
         item.setName(name);
+        item.setCost(cost);
         item.setPrice(price);
         item.setQnt(qnt);
         item.setDiscount(discount);
@@ -300,6 +324,8 @@ public class PlaceOrderController implements Initializable {
     }
 
     public void refrasOrderDetails(){
+        orderDetails.setInvoiceID(invoiceIDLabel.getText().substring(1));
+
         float subTotal = 0;
         for(Cart_list item:cartItemList){
             subTotal += Float.parseFloat(item.getProductTotalPrice());
@@ -348,7 +374,7 @@ public class PlaceOrderController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../paymentMethod/paymentMethod.fxml"));  
             HBox popupPane = loader.load();
             paymentMethodController controller = loader.getController();
-            controller.setOrderDetailsObject(orderDetails);
+            controller.setOrderDetailsObject(orderDetails, cartItemList);
 
             Scene popupScene = new Scene(popupPane);
             popupScene.setFill(Color.TRANSPARENT);
@@ -361,4 +387,24 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
+    public void refreshPlaceOrder() throws SQLException {
+        Refresh(rightSceneVBox);
+        refrasOrderDetails();
+        
+        //set invoice id
+        try (Statement statement = DBConnect.connectToDB().createStatement()) {
+            statement.execute("SELECT max(InvoiceID) FROM Order_Invoice");
+            ResultSet resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                int maxInvoiceID = resultSet.getInt(1);
+                if (resultSet.wasNull()) {
+                    invoiceIDLabel.setText("#1");
+                } else {
+                    invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }  
+    }
 }
