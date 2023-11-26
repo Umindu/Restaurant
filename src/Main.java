@@ -19,7 +19,7 @@ public class Main extends Application {
 
         // Load the FXML file.
         Parent root = (Parent) loader.load();
-
+        
         // Set the scene on the stage.
         stage.setScene(new Scene(root));
 

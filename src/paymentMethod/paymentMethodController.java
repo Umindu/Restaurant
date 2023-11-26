@@ -263,12 +263,18 @@ public class paymentMethodController implements Initializable {
     private void setOrderDetails() {
         invoiceIdLabel.setText("Order ID #"+orderDetails.getInvoiceID());
 
-        cusNameLabel.setText(orderDetails.getCustomerName());
-        cusNameLabel2.setText(orderDetails.getCustomerName());
+        if (orderDetails.getCustomerName().isEmpty()) {
+            cusNameLabel.setText("My Customer");
+            cusNameLabel2.setText("My Customer");
+            cusIdLabel.setText("#000");
+        }else{
+            cusNameLabel.setText(orderDetails.getCustomerName());
+            cusNameLabel2.setText(orderDetails.getCustomerName());
+            cusIdLabel.setText("#"+orderDetails.getCustomerID());
+        }
 
         orderDetails.setCashPayAmount(cashAmountTextfield.getText());
         
-        cusIdLabel.setText("#"+orderDetails.getCustomerID());
         
         if (orderDetails.getTables().isEmpty()) {
             tableNumbersLabel.setText("Takeaway");

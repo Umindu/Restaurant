@@ -359,32 +359,34 @@ public class PlaceOrderController implements Initializable {
     //Order Proceed Button Action
     @FXML
     void OrderProceed(ActionEvent event) {
-        Stage addCustomerStage = new Stage();
-        addCustomerStage.initModality(Modality.APPLICATION_MODAL);
-        addCustomerStage.initStyle(StageStyle.UNDECORATED);
-        addCustomerStage.initStyle(StageStyle.TRANSPARENT);
+        if (!cartItemList.isEmpty()){
+            Stage addCustomerStage = new Stage();
+            addCustomerStage.initModality(Modality.APPLICATION_MODAL);
+            addCustomerStage.initStyle(StageStyle.UNDECORATED);
+            addCustomerStage.initStyle(StageStyle.TRANSPARENT);
 
 
-        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
-        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
-        addCustomerStage.setWidth(screenWidth);
-        addCustomerStage.setHeight(screenHeight);
+            double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+            double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+            addCustomerStage.setWidth(screenWidth);
+            addCustomerStage.setHeight(screenHeight);
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../paymentMethod/paymentMethod.fxml"));  
-            HBox popupPane = loader.load();
-            paymentMethodController controller = loader.getController();
-            controller.setOrderDetailsObject(orderDetails, cartItemList);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../paymentMethod/paymentMethod.fxml"));  
+                HBox popupPane = loader.load();
+                paymentMethodController controller = loader.getController();
+                controller.setOrderDetailsObject(orderDetails, cartItemList);
 
-            Scene popupScene = new Scene(popupPane);
-            popupScene.setFill(Color.TRANSPARENT);
-            addCustomerStage.setScene(popupScene);
-            addCustomerStage.show();
+                Scene popupScene = new Scene(popupPane);
+                popupScene.setFill(Color.TRANSPARENT);
+                addCustomerStage.setScene(popupScene);
+                addCustomerStage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }  
     }
 
     public void refreshPlaceOrder() throws SQLException {
