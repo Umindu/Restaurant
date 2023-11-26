@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import Item.ItemController;
 import Orders.OrderController;
+import Orders.OrderDetails.OrderDetailsController;
 import PlaceOrder.CartItemController;
 import PlaceOrder.PlaceOrderController;
 import PlaceOrder.Coupon.CouponpopupController;
@@ -157,8 +158,12 @@ public class DashboardController implements Initializable{
         orderBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
 
-        AnchorPane sideview = FXMLLoader.load(getClass().getResource("../Orders/OrderDetails/OrderDetails.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Orders/OrderDetails/OrderDetails.fxml"));
+        AnchorPane sideview = loader.load();
         borderdPane.setRight(sideview);
+        OrderDetailsController orderDetailsController = loader.getController();
+        OrderController.setOrderDetailsController(orderDetailsController);
+        
         checkVisibleRightPane = false;
     }
 

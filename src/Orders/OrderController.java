@@ -1,20 +1,49 @@
 package Orders;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+import DataBase.DBConnect;
 import Orders.HoldOrderTemp.HoldOrderTempController;
+import Orders.OrderDetails.OrderDetailsController;
+import Orders.model.orders;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Hold_invoice_list;
 
-public class OrderController {
+public class OrderController implements Initializable {
+
+    @FXML
+    private TableView<orders> ordersTableView;
+
+    @FXML
+    private TableColumn<orders, String> date;
+
+    @FXML
+    private TableColumn<orders, String> orderID;
+
+    @FXML
+    private TableColumn<orders, String> totalSales;
+
+    private ObservableList<orders> ordersList = FXCollections.observableArrayList();
 
     private List<Hold_invoice_list> invoices;
 
@@ -28,7 +57,7 @@ public class OrderController {
     private VBox historyPane;
 
     @FXML
-    private HBox holdPane;
+    private ScrollPane holdPane;
 
     @FXML
     private VBox colOne;
@@ -41,6 +70,40 @@ public class OrderController {
 
     @FXML
     private static BorderPane DashboardBorderdPane;
+
+    private static OrderDetailsController orderDetailsController;
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        orderID.setCellValueFactory(new PropertyValueFactory<orders, String>("OrderID"));
+        date.setCellValueFactory(new PropertyValueFactory<orders, String>("Date"));
+        totalSales.setCellValueFactory(new PropertyValueFactory<orders, String>("TotalSales"));
+
+        ordersTableView.setItems(ordersList);
+        OrderloadDataFromDatabase();
+    }
+
+    public static void setOrderDetailsController(OrderDetailsController orderDetailsController2) {
+        orderDetailsController = orderDetailsController2;
+    }
+
+    public void OrderloadDataFromDatabase(){
+        ordersList.clear();
+        try {
+            Statement statement = DBConnect.connectToDB().createStatement();
+            statement.execute("select * from Order_Invoice");
+            ResultSet resultSet = statement.getResultSet();
+            while (resultSet.next()) {
+                String orderId = resultSet.getString("InvoiceID");
+                String date = resultSet.getString("Date");
+                String totalSales = resultSet.getString("GrandTotal");
+
+                ordersList.add(new orders(orderId, date, totalSales));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void setDashboardBorderdPane(BorderPane borderdPane) {
         DashboardBorderdPane = borderdPane;
@@ -105,7 +168,7 @@ public class OrderController {
 
     private List<Hold_invoice_list> InvoiceList() {
         List<Hold_invoice_list> ls = new ArrayList<>();
-        // for(int i =0; i<10; i++){
+
         Hold_invoice_list invoice = new Hold_invoice_list();
         invoice.setInvoiceNum(1);
         invoice.setCusName("Dilesh");
@@ -122,9 +185,12 @@ public class OrderController {
         invoice2.setTime("01:00");
         ls.add(invoice2);
 
-        // }
-
         return ls;
     }
 
+    @FXML
+    void showOrderDetails(MouseEvent event) {
+        String id = ordersTableView.getSelectionModel().getSelectedItem().getOrderID();
+        orderDetailsController.showOrderDetails(id);
+    }
 }
