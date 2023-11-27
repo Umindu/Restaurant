@@ -287,7 +287,20 @@ public class PlaceOrderController implements Initializable {
         item.setDiscount(discount);
         item.setItemeDiscoutntAddPrice(discount, price);
         item.setProductTotalPrice(discount, price, qnt);
-        cartItemList.add(item);
+        if(cartItemList.isEmpty()){
+            cartItemList.add(item);
+        }else{
+            for (int i = 0; i < cartItemList.size(); i++) {
+                if (cartItemList.get(i).getID() == id) {
+                    cartItemList.get(i).setQnt(String.valueOf(Float.parseFloat(cartItemList.get(i).getQnt()) + Float.parseFloat(qnt)));
+                    cartItemList.get(i).setProductTotalPrice(cartItemList.get(i).getDiscount(), cartItemList.get(i).getPrice(), cartItemList.get(i).getQnt());
+                    break; 
+                }else if(i == cartItemList.size()-1){
+                    cartItemList.add(item);
+                    break;
+                }
+            }
+        }
         Refresh(vBox);
     }
 
