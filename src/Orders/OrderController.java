@@ -24,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import model.Hold_invoice_list;
@@ -118,12 +117,8 @@ public class OrderController implements Initializable {
     void showOrderHistory(ActionEvent event) {
         holdPane.setVisible(false);
         historyPane.setVisible(true);
-        try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("OrderDetails/OrderDetails.fxml"));
-            DashboardBorderdPane.setRight(view);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        DashboardBorderdPane.getRight().setVisible(true);
+        DashboardBorderdPane.getRight().setManaged(true);
 
         ResetButtonStyle();
         orderHistoryBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
@@ -133,7 +128,8 @@ public class OrderController implements Initializable {
     void showHoldOrders(ActionEvent event) {
         historyPane.setVisible(false);
         holdPane.setVisible(true);
-        DashboardBorderdPane.setRight(null);
+        DashboardBorderdPane.getRight().setVisible(false);
+        DashboardBorderdPane.getRight().setManaged(false);
 
         colOne.getChildren().clear();
         colTwo.getChildren().clear();

@@ -1,0 +1,33 @@
+#anchorPane{
+    /* -fx-border-color: linear-gradient(to right, #09aa29 0%, transparent 2%); */
+    -fx-effect: dropshadow(three-pass-box, #f5f5f5, 0, 0, -4, 0);
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-border-color: transparent;
+}
+
+#qnt{
+    -fx-text-fill: #000;
+}
+
+#name{
+    -fx-text-fill: #000;
+}
+
+#price{
+    -fx-text-fill: #4f4f4f;
+}
+
+#discount{
+    -fx-text-fill: #000;
+}
+
+#productTotalPrice{
+    -fx-text-fill: #000;
+}
+
+.background{
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius : 10px;
+}
