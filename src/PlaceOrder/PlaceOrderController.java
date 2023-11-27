@@ -42,6 +42,7 @@ import model.Order_details;
 import paymentMethod.paymentMethodController;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Arrays;
 
 public class PlaceOrderController implements Initializable {
     @FXML
@@ -128,7 +129,7 @@ public class PlaceOrderController implements Initializable {
         if (!cartItemList.isEmpty()) {
             Refresh(rightSceneVBox);
             refrasOrderDetails();
-        }
+        } 
     }
 
     public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
@@ -446,6 +447,7 @@ public class PlaceOrderController implements Initializable {
 
     public void HoldOrderProcess(String invoiceNum) {
         try (Statement statement = DBConnect.connectToDB().createStatement()) {
+            //get invoice products
             statement.execute("select * from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
             ResultSet resultSet = statement.getResultSet();
 
@@ -455,11 +457,32 @@ public class PlaceOrderController implements Initializable {
             }
             refrasOrderDetails();
             setInvoiceID(invoiceNum);
-            statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
-            statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
+            // statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
+            // statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
+
+
+            //set customer
+            statement.execute("Select CustomerID, CustomerName from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
+
+            resultSet = statement.getResultSet();
+            if (resultSet.next()) {
+                System.out.println(resultSet.getString("CustomerID"));
+                setCustomer(orderCusPane, orderCusName, orderCusID, addCusBtn, resultSet.getString("CustomerID"), resultSet.getString("CustomerName"));
+            }
+            orderDetails.setCustomerID(resultSet.getString("CustomerID"));
+            orderDetails.setCustomerName(resultSet.getString("CustomerName"));
+
+            //set tables
+            statement.execute("Select Tables from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
+            resultSet = statement.getResultSet();
+
+            if (resultSet.next()) {
+                ArrayList<String> tableList = new ArrayList<String>(Arrays.asList(resultSet.getString("Tables").substring(1, resultSet.getString("Tables").length() - 1).split(",")));
+                orderDetails.setTables(tableList);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        
+        }  
     }
 }
