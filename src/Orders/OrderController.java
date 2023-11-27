@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import Dashboard.DashboardController;
 import DataBase.DBConnect;
 import Orders.HoldOrderTemp.HoldOrderTempController;
 import Orders.OrderDetails.OrderDetailsController;
@@ -72,6 +74,10 @@ public class OrderController implements Initializable {
 
     private static OrderDetailsController orderDetailsController;
 
+    private static OrderController orderController;
+
+    private static DashboardController dashboardController;
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         orderID.setCellValueFactory(new PropertyValueFactory<orders, String>("OrderID"));
@@ -82,8 +88,10 @@ public class OrderController implements Initializable {
         OrderloadDataFromDatabase();
     }
 
-    public static void setOrderDetailsController(OrderDetailsController orderDetailsController2) {
+    public static void setController(OrderDetailsController orderDetailsController2, OrderController orderController2, DashboardController dashboardController2) {
         orderDetailsController = orderDetailsController2;
+        orderController = orderController2;
+        dashboardController = dashboardController2;
     }
 
     public void OrderloadDataFromDatabase(){
@@ -124,8 +132,7 @@ public class OrderController implements Initializable {
         orderHistoryBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
     }
 
-    @FXML
-    void showHoldOrders(ActionEvent event) {
+    public void showHoldOrders() {
         historyPane.setVisible(false);
         holdPane.setVisible(true);
         DashboardBorderdPane.getRight().setVisible(false);
@@ -143,7 +150,7 @@ public class OrderController implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("HoldOrderTemp/HoldOrderTemp.fxml"));
                 VBox box = fxmlLoader.load();
                 HoldOrderTempController holdOrderTempController = fxmlLoader.getController();
-                holdOrderTempController.setData(invoices.get(i));
+                holdOrderTempController.setData(invoices.get(i), orderController, dashboardController);
 
                 if (i % 3 == 0) {
                     colOne.getChildren().add(box);

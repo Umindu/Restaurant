@@ -54,6 +54,8 @@ public class DashboardController implements Initializable{
 
     private boolean checkVisibleRightPane = false;
 
+    private DashboardController dashboardController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         PlaceOrderController.setDashboardBorderdPane(borderdPane);
@@ -71,10 +73,16 @@ public class DashboardController implements Initializable{
         settingsBtn.setStyle("-fx-background-color : #fff; -fx-border-width:0;");
     }
 
+    public void setDashboardBorderController(DashboardController dashboardController2){
+        dashboardController = dashboardController2;
+    }
+
+
     @FXML
-    public void HomeButtonClick(ActionEvent event) throws IOException {
-        AnchorPane view = FXMLLoader.load(getClass().getResource("../Home/Home.fxml"));
-        borderdPane.setCenter(view);
+    public void HomeButtonClick(ActionEvent event) {
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("../Home/Home.fxml"));
+            borderdPane.setCenter(view);
 
         // right pane
         if (checkVisibleRightPane == false) {
@@ -94,7 +102,44 @@ public class DashboardController implements Initializable{
         
         ResetButtonStyle();
         homeBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
+
+    public void HomeButtonClick(ActionEvent event, String invoiceNum) {
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("../Home/Home.fxml"));
+            borderdPane.setCenter(view);
+
+        // right pane
+        if (checkVisibleRightPane == false) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../PlaceOrder/place_order.fxml"));
+            AnchorPane sideview = loader.load();
+            PlaceOrderController placeOrderController = loader.getController();
+            //item controller set place order controller object 
+            ItemController.setPlacOrderController(placeOrderController);
+            CartItemController.setPlacOrderController(placeOrderController);
+            DiscountpopupController.setPlacOrderController(placeOrderController);
+            CouponpopupController.setPlacOrderController(placeOrderController);
+            paymentMethodController.setPlacOrderController(placeOrderController);
+
+            placeOrderController.HoldOrderProcess(invoiceNum);
+            
+            borderdPane.setRight(sideview);
+            checkVisibleRightPane = true;
+        } 
+        
+        ResetButtonStyle();
+        homeBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+
 
     @FXML
     public void CustomersButtonClick(ActionEvent event) throws IOException {
@@ -152,17 +197,19 @@ public class DashboardController implements Initializable{
 
     @FXML
     void OrdersButtonClick(ActionEvent event) throws IOException {
-        AnchorPane view = FXMLLoader.load(getClass().getResource("../Orders/Orders.fxml"));
+        FXMLLoader loaderView = new FXMLLoader(getClass().getResource("../Orders/Orders.fxml"));
+        AnchorPane view = loaderView.load();
         borderdPane.setCenter(view);
+        OrderController orderController = loaderView.getController();
         ResetButtonStyle();
         orderBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Orders/OrderDetails/OrderDetails.fxml"));
-        AnchorPane sideview = loader.load();
+        FXMLLoader loaderSideView = new FXMLLoader(getClass().getResource("../Orders/OrderDetails/OrderDetails.fxml"));
+        AnchorPane sideview = loaderSideView.load();
         borderdPane.setRight(sideview);
-        OrderDetailsController orderDetailsController = loader.getController();
-        OrderController.setOrderDetailsController(orderDetailsController);
+        OrderDetailsController orderDetailsController = loaderSideView.getController();
+        OrderController.setController(orderDetailsController, orderController, dashboardController);
         
         checkVisibleRightPane = false;
     }
@@ -195,6 +242,10 @@ public class DashboardController implements Initializable{
         settingsBtn.setStyle("-fx-background-color : #fff2e8; -fx-border-color : #fc8019;");
         borderdPane.setRight(null);
         checkVisibleRightPane = false;
+    }
+
+    public void HoldOrderProcess(String invoiceNum) {
+        HomeButtonClick(null, invoiceNum);
     }
     
 

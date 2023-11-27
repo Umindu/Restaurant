@@ -110,7 +110,7 @@ public class PlaceOrderController implements Initializable {
     //create order details object
     Order_details orderDetails = new Order_details();
 
-    private static List<Cart_list> cartItemList = new ArrayList<>();
+    public static List<Cart_list> cartItemList = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -123,7 +123,12 @@ public class PlaceOrderController implements Initializable {
         rightSceneVBox.getChildren().clear();
 
         //set invoice id
-        setInvoiceID();
+        setInvoiceID(null);
+
+        if (!cartItemList.isEmpty()) {
+            Refresh(rightSceneVBox);
+            refrasOrderDetails();
+        }
     }
 
     public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
@@ -372,7 +377,7 @@ public class PlaceOrderController implements Initializable {
             cartItemList.clear();
             Refresh(rightSceneVBox);
             refrasOrderDetails();
-            setInvoiceID();
+            setInvoiceID(null);
         }
     }
 
@@ -412,25 +417,49 @@ public class PlaceOrderController implements Initializable {
     public void refreshPlaceOrder() throws SQLException {
         Refresh(rightSceneVBox);
         refrasOrderDetails();
-        setInvoiceID();
+        setInvoiceID(null);
     }
 
     //set invoice id
-    public void setInvoiceID(){
-
-        try (Statement statement = DBConnect.connectToDB().createStatement()) {
-            statement.execute("SELECT MAX(largest_value) AS overall_largest_value FROM (SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Order_Invoice UNION ALL SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Hold_Order_Invoice) AS combined_results;");
-            ResultSet resultSet = statement.getResultSet();
-            if (resultSet.next()) {
-                int maxInvoiceID = resultSet.getInt(1);
-                if (resultSet.wasNull()) {
-                    invoiceIDLabel.setText("#1");
-                } else {
-                    invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
+    public void setInvoiceID(String invoiceNum){
+        if (invoiceNum == null) {
+            try (Statement statement = DBConnect.connectToDB().createStatement()) {
+                statement.execute("SELECT MAX(largest_value) AS overall_largest_value FROM (SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Order_Invoice UNION ALL SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Hold_Order_Invoice) AS combined_results;");
+                ResultSet resultSet = statement.getResultSet();
+                if (resultSet.next()) {
+                    int maxInvoiceID = resultSet.getInt(1);
+                    if (resultSet.wasNull()) {
+                        invoiceIDLabel.setText("#1");
+                    } else {
+                        invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
+                    }
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }  
+        }else{
+            invoiceIDLabel.setText(invoiceNum);
+            orderDetails.setInvoiceID(invoiceNum);
+        }
+        
+    }
+
+    public void HoldOrderProcess(String invoiceNum) {
+        try (Statement statement = DBConnect.connectToDB().createStatement()) {
+            statement.execute("select * from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
+            ResultSet resultSet = statement.getResultSet();
+
+            while (resultSet.next()) {
+                PlaceOrderController itemObj = new PlaceOrderController();
+                itemObj.setItem(resultSet.getString("Product_ID"), resultSet.getString("ProductName"), resultSet.getString("Cost"), resultSet.getString("Price"), resultSet.getString("Qnt"), resultSet.getString("Discount"), rightSceneVBox);
             }
+            refrasOrderDetails();
+            setInvoiceID(invoiceNum);
+            statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
+            statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
     }
 }

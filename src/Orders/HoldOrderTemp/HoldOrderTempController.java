@@ -3,8 +3,12 @@ package Orders.HoldOrderTemp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import Dashboard.DashboardController;
 import DataBase.DBConnect;
+import Orders.OrderController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -31,7 +35,14 @@ public class HoldOrderTempController {
     @FXML
     private Label note;
 
-    public void setData(Hold_invoice_list hold_invoice_list){
+    @FXML
+    private Button removeButton;
+
+    @FXML
+    private Button resumeButton;
+
+    // set data in the hold order temp pane
+    public void setData(Hold_invoice_list hold_invoice_list, OrderController orderController, DashboardController dashboardController){
         invoiceID.setText("#"+hold_invoice_list.getInvoiceNum());
 
         if (hold_invoice_list.getCusName().equals("")) {
@@ -46,11 +57,26 @@ public class HoldOrderTempController {
         }
         date.setText(hold_invoice_list.getDate());
         setItems(hold_invoice_list.getInvoiceNum());
+
+        removeButton.setOnMouseClicked(e->{
+            try (Statement statement = DBConnect.connectToDB().createStatement()) {
+                statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+hold_invoice_list.getInvoiceNum()+"'");
+                statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+hold_invoice_list.getInvoiceNum()+"'");
+                itemPane.getChildren().clear();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            
+            orderController.showHoldOrders();
+        });
+
+        resumeButton.setOnMouseClicked(e->{
+            dashboardController.HoldOrderProcess(hold_invoice_list.getInvoiceNum());
+        });
     }
 
+    // set items in the item pane
     private void setItems(String invoiceId){
-
-
         try (Statement statement = DBConnect.connectToDB().createStatement()) {
             statement.execute("select * from Hold_Order_Product where InvoiceID = '"+invoiceId+"'");
             ResultSet resultSet = statement.getResultSet();
@@ -74,16 +100,6 @@ public class HoldOrderTempController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-
-
-
-
-
-
-        //hold invoice  get Items;
-        
-        
+        } 
     }
 }
