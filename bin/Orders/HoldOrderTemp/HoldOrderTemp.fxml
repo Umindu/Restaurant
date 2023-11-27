@@ -21,9 +21,9 @@
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="tableNum" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="T-35">
+                  <Label fx:id="invoiceID" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="T-35">
                      <font>
-                        <Font name="Arial" size="18.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -38,10 +38,13 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="time" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="09.56 PM">
+                  <Label fx:id="tableNum" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="T">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
                <padding>

@@ -3,7 +3,7 @@
     -fx-background-radius : 10px;
 }
 
-#cusName, #tableNum, #date, #time, #note{
+#invoiceID, #cusName, #tableNum, #date, #time, #note{
     -fx-text-fill: #000;
 }
 

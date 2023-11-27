@@ -40,6 +40,8 @@ import javafx.stage.StageStyle;
 import model.Cart_list;
 import model.Order_details;
 import paymentMethod.paymentMethodController;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PlaceOrderController implements Initializable {
     @FXML
@@ -121,20 +123,7 @@ public class PlaceOrderController implements Initializable {
         rightSceneVBox.getChildren().clear();
 
         //set invoice id
-        try (Statement statement = DBConnect.connectToDB().createStatement()) {
-            statement.execute("SELECT max(InvoiceID) FROM Order_Invoice");
-            ResultSet resultSet = statement.getResultSet();
-            if (resultSet.next()) {
-                int maxInvoiceID = resultSet.getInt(1);
-                if (resultSet.wasNull()) {
-                    invoiceIDLabel.setText("#1");
-                } else {
-                    invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        setInvoiceID();
     }
 
     public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
@@ -367,6 +356,24 @@ public class PlaceOrderController implements Initializable {
     //Order Hold Button Action
     @FXML
     void OrderHold(ActionEvent event) {
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(currentDate);
+
+        if (!cartItemList.isEmpty()){
+            try (Statement statement = DBConnect.connectToDB().createStatement()) {
+                for (Cart_list cart_list : cartItemList) {
+                    statement.execute("INSERT INTO Hold_Order_Product VALUES ('"+orderDetails.getInvoiceID()+"', '"+cart_list.getID()+"', '"+cart_list.getName()+"', '"+cart_list.getQnt()+"', '"+cart_list.getCost()+"', '"+cart_list.getPrice()+"', '"+cart_list.getDiscount()+"', '"+cart_list.getProductTotalPrice()+"')");
+                }
+                statement.execute("INSERT INTO Hold_Order_Invoice VALUES ('"+orderDetails.getInvoiceID()+"', '"+formattedDate+"', '"+orderDetails.getCustomerID()+"', '"+orderDetails.getCustomerName()+"', '"+orderDetails.getTables()+"')");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            cartItemList.clear();
+            Refresh(rightSceneVBox);
+            refrasOrderDetails();
+            setInvoiceID();
+        }
     }
 
     //Order Proceed Button Action
@@ -405,10 +412,14 @@ public class PlaceOrderController implements Initializable {
     public void refreshPlaceOrder() throws SQLException {
         Refresh(rightSceneVBox);
         refrasOrderDetails();
-        
-        //set invoice id
+        setInvoiceID();
+    }
+
+    //set invoice id
+    public void setInvoiceID(){
+
         try (Statement statement = DBConnect.connectToDB().createStatement()) {
-            statement.execute("SELECT max(InvoiceID) FROM Order_Invoice");
+            statement.execute("SELECT MAX(largest_value) AS overall_largest_value FROM (SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Order_Invoice UNION ALL SELECT MAX(COALESCE(InvoiceID, 0)) AS largest_value FROM Hold_Order_Invoice) AS combined_results;");
             ResultSet resultSet = statement.getResultSet();
             if (resultSet.next()) {
                 int maxInvoiceID = resultSet.getInt(1);
@@ -420,6 +431,6 @@ public class PlaceOrderController implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }  
+        }
     }
 }

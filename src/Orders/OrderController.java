@@ -165,22 +165,21 @@ public class OrderController implements Initializable {
     private List<Hold_invoice_list> InvoiceList() {
         List<Hold_invoice_list> ls = new ArrayList<>();
 
-        Hold_invoice_list invoice = new Hold_invoice_list();
-        invoice.setInvoiceNum(1);
-        invoice.setCusName("Dilesh");
-        invoice.setTableNum("1");
-        invoice.setDate("2021-05-20");
-        invoice.setTime("12:00");
-        ls.add(invoice);
+        try (Statement statement = DBConnect.connectToDB().createStatement()) {
+            statement.execute("select * from Hold_Order_Invoice");
+            ResultSet resultSet = statement.getResultSet();
 
-        Hold_invoice_list invoice2 = new Hold_invoice_list();
-        invoice2.setInvoiceNum(2);
-        invoice2.setCusName("Ganesh");
-        invoice2.setTableNum("4");
-        invoice2.setDate("2021-05-20");
-        invoice2.setTime("01:00");
-        ls.add(invoice2);
-
+            while (resultSet.next()) {
+                Hold_invoice_list invoice = new Hold_invoice_list();
+                invoice.setInvoiceNum(resultSet.getString("InvoiceID"));
+                invoice.setCusName(resultSet.getString("CustomerName"));
+                invoice.setTableNum(resultSet.getString("Tables"));
+                invoice.setDate(resultSet.getString("Date"));
+                ls.add(invoice);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return ls;
     }
 

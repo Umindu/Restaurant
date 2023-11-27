@@ -2,16 +2,16 @@ package model;
 
 public class Hold_invoice_list {
 
-    private int invoiceNum;
+    private String invoiceNum;
     private String cusName;
     private String tableNum;
     private String date;
     private String time;
     
-    public int getInvoiceNum() {
+    public String getInvoiceNum() {
         return invoiceNum;
     }
-    public void setInvoiceNum(int invoiceNum) {
+    public void setInvoiceNum(String invoiceNum) {
         this.invoiceNum = invoiceNum;
     }
     public String getCusName() {
