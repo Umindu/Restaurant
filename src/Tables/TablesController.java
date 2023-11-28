@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import DataBase.DBConnect;
 import Tables.Table_Temp.TableTempController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,8 +51,13 @@ public class TablesController implements Initializable {
             selectTablesLabel.setText(selectTables.toString().substring(1, selectTables.toString().length()-1));
         }
 
+        LoadTables("All");
+    }
+
+    private void LoadTables(String type){
+        tableGridPane.getChildren().clear();
         //load tables
-        tables = new ArrayList<>(tables());
+        tables = new ArrayList<>(tables(type));
         int column = 0;
         int row = 1;
 
@@ -93,12 +99,19 @@ public class TablesController implements Initializable {
         }
     }
 
-    private List<Table_list> tables(){
+    private List<Table_list> tables(String type){
         List<Table_list> ls = new ArrayList<>();
 
         try {
             Statement statement = DBConnect.connectToDB().createStatement();
-            statement.execute("select * from Tables");
+            if (type.equals("All")) {
+                statement.execute("select * from Tables");
+                
+            }else if(type.equals("Vacant")){
+                statement.execute("select * from Tables where States = 'Order on hold' OR States = 'Vacant'");
+            }else{
+                statement.execute("select * from Tables where States = '"+type+"'");
+            }
             ResultSet resultSet = statement.getResultSet();
 
             while (resultSet.next()) {
@@ -115,6 +128,27 @@ public class TablesController implements Initializable {
             e.printStackTrace();
         }
         return ls;
+    }
+
+
+    @FXML
+    void AllTables(ActionEvent event) {
+        LoadTables("All");
+    }
+
+    @FXML
+    void DisabledTables(ActionEvent event) {
+        LoadTables("Disabled");
+    }
+
+    @FXML
+    void OccupiedTables(ActionEvent event) {
+        LoadTables("Occupied");
+    }
+
+    @FXML
+    void VacantTables(ActionEvent event) {
+        LoadTables("Vacant");
     }
 
 }

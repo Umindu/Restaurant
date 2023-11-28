@@ -83,7 +83,8 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         CustomerListTempController.GetCustomerDetialsPaneID(cusImg, cusName, cusID, cusEmail, cusPhone, cusAddress, cusOpenBal, editBtn, customerDetailsPane);
-        if (orderDetails.getCustomerID() != "") {
+        
+        if (!orderDetails.getCustomerID().isEmpty()) {
             allReadyCustomerDetailsLoad();
         }
         createCustomerList();
@@ -201,7 +202,8 @@ public class CustomerController implements Initializable {
         customerDetailsPane.setPrefHeight(0);
         VBox.setMargin(customerDetailsPane, new Insets(0, 10, 0, 10));
 
-        orderDetails.setCustomerID(null); 
+        orderDetails.setCustomerID(""); 
+        orderDetails.setCustomerName("");
 
         PlaceOrderController orderCustomer = new PlaceOrderController();
         orderCustomer.removeSetCustomer(cusOrderPane,cusAddBtn);
@@ -218,7 +220,6 @@ public class CustomerController implements Initializable {
         customerDetailsPane.setVisible(true);
         customerDetailsPane.setPrefHeight(170);
         VBox.setMargin(customerDetailsPane, new Insets(30, 10, 0, 10));
-
 
         try {
             Statement statement = DBConnect.connectToDB().createStatement();

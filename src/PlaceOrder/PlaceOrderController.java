@@ -118,20 +118,15 @@ public class PlaceOrderController implements Initializable {
         ItemController.setRightSceneVBox(rightSceneVBox);
         CartItemController.setRightSceneVBox(rightSceneVBox);
         CustomerController.setPlaceOrderComponent(orderCusPane, orderCusName, orderCusID, addCusBtn);
-        // ItemController.setPlaceOrderComponent(orderSubTotal, orderDiscount, orderAmount);
         CustomerController.setOrderDetailsObject(orderDetails);
         TablesController.setOrderDetailsObject(orderDetails);
         rightSceneVBox.getChildren().clear();
 
-        //set invoice id
-        setInvoiceID(null);
-
-        if (!cartItemList.isEmpty()) {
-            Refresh(rightSceneVBox);
-            refrasOrderDetails();
-        } 
+        //Reset Place Order
+        resetPlaceOrder();
     }
 
+    //set customer
     public void setCustomer(Pane cusOrderPane, Label cusOrderName, Label cusOrderID, Button cusAddBtn, String id, String name) {
         cusAddBtn.setPrefWidth(0);
         cusAddBtn.setVisible(false);
@@ -140,12 +135,14 @@ public class PlaceOrderController implements Initializable {
         cusOrderName.setText(name);
     }
 
+    //remove customer
     public void removeSetCustomer(Pane cusOrderPane, Button cusAddBtn){
         cusOrderPane.setVisible(false);
         cusAddBtn.setPrefWidth(Control.USE_COMPUTED_SIZE);
         cusAddBtn.setVisible(true);
     }
 
+    //Add Customer Button Action
     @FXML
     void AddCustomer(ActionEvent event) {
         try {
@@ -156,6 +153,7 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
+    //Add Coupon Section Button Action
     @FXML
     void AddCouponSection(ActionEvent event) {
         couponEnableBtn.setPrefWidth(0);
@@ -165,6 +163,7 @@ public class PlaceOrderController implements Initializable {
         AddCoupon(event);
     }
 
+    //Add Discount Section Button Action
     @FXML
     void AddDiscountSection(ActionEvent event) {
         discountEnableBtn.setPrefWidth(0);
@@ -174,6 +173,7 @@ public class PlaceOrderController implements Initializable {
         AddDiscount(event);
     }
 
+    //Add Discount Button Action
     @FXML
     void AddDiscount(ActionEvent event) {
         Stage popupStage = new Stage();
@@ -204,6 +204,7 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
+    //Add Coupon Button Action
     @FXML
     void AddCoupon(ActionEvent event) {
         Stage popupStage = new Stage();
@@ -234,6 +235,7 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
+    //Remove Discount and Discount Section Button Action
     @FXML
     public void RemoveDiscount(ActionEvent event) {
         discountEnableBtn.setVisible(true);
@@ -244,6 +246,7 @@ public class PlaceOrderController implements Initializable {
         refrasOrderDetails();
     }
 
+    //Remove Coupon and Coupon Section Button Action
     @FXML
     public void RemoveCoupon(ActionEvent event) {
         couponEnableBtn.setVisible(true);
@@ -254,8 +257,8 @@ public class PlaceOrderController implements Initializable {
         refrasOrderDetails();
     }
 
-
-    public void Refresh(VBox vBox) {
+    //Create Cart Items
+    public void CreateCartItems(VBox vBox) {
         vBox.getChildren().clear();
         try {
             for(int i = 0 ; i < cartItemList.size(); i++){
@@ -273,6 +276,7 @@ public class PlaceOrderController implements Initializable {
         }
     }
 
+    //Add Item data to cart list
     public void setItem(String id, String name, String cost, String price, String qnt, String discount,  VBox vBox){
         item.setID(id);
         item.setName(name);
@@ -296,9 +300,10 @@ public class PlaceOrderController implements Initializable {
                 }
             }
         }
-        Refresh(vBox);
+        CreateCartItems(vBox);
     }
 
+    //Add Item Qnt Button Action
     public void addItemQnt(String id, float qnt, VBox vbox) {
         for (int i = 0; i < cartItemList.size(); i++) {
             if (cartItemList.get(i).getID() == id) {
@@ -309,6 +314,7 @@ public class PlaceOrderController implements Initializable {
         refrasOrderDetails();
     }
 
+    //Add Item Discount Button Action
     public void addItemDiscount(String id, float qnt, VBox vbox) {
         for (int i = 0; i < cartItemList.size(); i++) {
             if (cartItemList.get(i).getID() == id) {
@@ -319,6 +325,7 @@ public class PlaceOrderController implements Initializable {
         refrasOrderDetails();
     }
 
+    //Delete Item Button Action
     public void deleteItem(String id, VBox vbox) {
         for (int i = 0; i < cartItemList.size(); i++) {
             if (cartItemList.get(i).getID() == id) {
@@ -326,13 +333,13 @@ public class PlaceOrderController implements Initializable {
                 break; 
             }
         }
-        Refresh(vbox);
+        CreateCartItems(vbox);
         refrasOrderDetails();
-        
     }
 
+    //Refresh Order Details
     public void refrasOrderDetails(){
-        orderDetails.setInvoiceID(invoiceIDLabel.getText().substring(1));
+        // orderDetails.setInvoiceID(invoiceIDLabel.getText().substring(1));
 
         float subTotal = 0;
         for(Cart_list item:cartItemList){
@@ -375,10 +382,9 @@ public class PlaceOrderController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            cartItemList.clear();
-            Refresh(rightSceneVBox);
-            refrasOrderDetails();
-            setInvoiceID(null);
+            
+            //reset place order
+            resetPlaceOrder();
         }
     }
 
@@ -390,7 +396,6 @@ public class PlaceOrderController implements Initializable {
             addCustomerStage.initModality(Modality.APPLICATION_MODAL);
             addCustomerStage.initStyle(StageStyle.UNDECORATED);
             addCustomerStage.initStyle(StageStyle.TRANSPARENT);
-
 
             double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
             double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
@@ -415,13 +420,19 @@ public class PlaceOrderController implements Initializable {
         }  
     }
 
-    public void refreshPlaceOrder() throws SQLException {
-        Refresh(rightSceneVBox);
+    //Place Order Reset 
+    public void resetPlaceOrder() {
+        cartItemList.clear();
+        CreateCartItems(rightSceneVBox);
+        orderDetails.setCustomerID("");
+        orderDetails.setCustomerName("");
+        orderDetails.setTables(new ArrayList<String>());
         refrasOrderDetails();
         setInvoiceID(null);
+        removeSetCustomer(orderCusPane, addCusBtn);
     }
 
-    //set invoice id
+    //Set Invoice ID
     public void setInvoiceID(String invoiceNum){
         if (invoiceNum == null) {
             try (Statement statement = DBConnect.connectToDB().createStatement()) {
@@ -431,20 +442,22 @@ public class PlaceOrderController implements Initializable {
                     int maxInvoiceID = resultSet.getInt(1);
                     if (resultSet.wasNull()) {
                         invoiceIDLabel.setText("#1");
+                        orderDetails.setInvoiceID("1");
                     } else {
                         invoiceIDLabel.setText("#"+(maxInvoiceID + 1));
+                        orderDetails.setInvoiceID(String.valueOf(maxInvoiceID + 1));
                     }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }  
         }else{
-            invoiceIDLabel.setText(invoiceNum);
+            invoiceIDLabel.setText("#"+invoiceNum);
             orderDetails.setInvoiceID(invoiceNum);
         }
-        
     }
 
+    //Hold Order Process
     public void HoldOrderProcess(String invoiceNum) {
         try (Statement statement = DBConnect.connectToDB().createStatement()) {
             //get invoice products
@@ -455,18 +468,12 @@ public class PlaceOrderController implements Initializable {
                 PlaceOrderController itemObj = new PlaceOrderController();
                 itemObj.setItem(resultSet.getString("Product_ID"), resultSet.getString("ProductName"), resultSet.getString("Cost"), resultSet.getString("Price"), resultSet.getString("Qnt"), resultSet.getString("Discount"), rightSceneVBox);
             }
-            refrasOrderDetails();
-            setInvoiceID(invoiceNum);
-            // statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
-            // statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
-
 
             //set customer
             statement.execute("Select CustomerID, CustomerName from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
-
             resultSet = statement.getResultSet();
-            if (resultSet.next()) {
-                System.out.println(resultSet.getString("CustomerID"));
+            resultSet.next();
+            if (!resultSet.getString("CustomerID").equals("")) {
                 setCustomer(orderCusPane, orderCusName, orderCusID, addCusBtn, resultSet.getString("CustomerID"), resultSet.getString("CustomerName"));
             }
             orderDetails.setCustomerID(resultSet.getString("CustomerID"));
@@ -480,6 +487,11 @@ public class PlaceOrderController implements Initializable {
                 ArrayList<String> tableList = new ArrayList<String>(Arrays.asList(resultSet.getString("Tables").substring(1, resultSet.getString("Tables").length() - 1).split(",")));
                 orderDetails.setTables(tableList);
             }
+            
+            refrasOrderDetails();
+            setInvoiceID(invoiceNum);
+            statement.execute("Delete from Hold_Order_Invoice where InvoiceID = '"+invoiceNum+"'");
+            statement.execute("Delete from Hold_Order_Product where InvoiceID = '"+invoiceNum+"'");
 
         } catch (SQLException e) {
             e.printStackTrace();

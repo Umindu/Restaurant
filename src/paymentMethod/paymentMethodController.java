@@ -372,10 +372,9 @@ public class paymentMethodController implements Initializable {
         orderDetails.setQrPayAmount("0.00");
         orderDetails.setBalance("0.00");
         orderDetails.setTables(new ArrayList<String>());
-        cartItemList.clear();
 
         //refresh plase order page
-        placeOrderController.refreshPlaceOrder();
+        placeOrderController.resetPlaceOrder();
 
     }
 }

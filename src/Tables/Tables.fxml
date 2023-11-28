@@ -18,22 +18,22 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <Button mnemonicParsing="false" styleClass="table-category-button" text="All Tables">
+            <Button mnemonicParsing="false" onAction="#AllTables" styleClass="table-category-button" text="All Tables">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" styleClass="table-category-button" text="Vacant">
+            <Button mnemonicParsing="false" onAction="#VacantTables" styleClass="table-category-button" text="Vacant">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" styleClass="table-category-button" text="Occupied">
+            <Button mnemonicParsing="false" onAction="#OccupiedTables" styleClass="table-category-button" text="Occupied">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" styleClass="table-category-button" text="Disabled">
+            <Button mnemonicParsing="false" onAction="#DisabledTables" styleClass="table-category-button" text="Disabled">
                <font>
                   <Font name="Arial Bold" size="13.0" />
                </font>

@@ -58,7 +58,28 @@
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
                   </Label>
+                  <Button alignment="CENTER" cache="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#resetPlaceOrder" prefHeight="40.0" prefWidth="39.0" styleClass="sub-button" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/refresh.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets bottom="6.0" left="10.0" right="10.0" top="6.0" />
