@@ -63,9 +63,6 @@ public class TableTempController {
         }
         
         if (selectTables.contains(table.getTableID())) {
-            System.out.println(selectTables+"##");
-        }
-        if (selectTables.contains(table.getTableID())) {
             this.pane.setStyle("-fx-effect: dropshadow(three-pass-box, #09aa29, 4, 4, 0, 0);");
         }        
     }
