@@ -50,10 +50,10 @@ public class HoldOrderTempController {
         }else{
             cusName.setText(hold_invoice_list.getCusName());
         }
-        if (hold_invoice_list.getTableNum().equals("[]")) {
+        if (hold_invoice_list.getTableNum().equals("")) {
             tableNum.setText("Take Away");
         }else{
-            tableNum.setText(hold_invoice_list.getTableNum().substring(1, hold_invoice_list.getTableNum().length()-1));
+            tableNum.setText(hold_invoice_list.getTableNum());
         }
         date.setText(hold_invoice_list.getDate());
         setItems(hold_invoice_list.getInvoiceNum());

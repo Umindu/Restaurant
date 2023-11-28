@@ -44,9 +44,11 @@ public class TablesController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         //allready selected tables load
         selectTables = orderDetails.getTables();
-    
-        if(selectTables.isEmpty()){
+        
+
+        if(selectTables.isEmpty() || selectTables.toString().equals("[]")){
             selectTablesLabel.setText("Not Selected");
+            selectTables.clear();
         }else{
             selectTablesLabel.setText(selectTables.toString().substring(1, selectTables.toString().length()-1));
         }

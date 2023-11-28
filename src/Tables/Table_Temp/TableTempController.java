@@ -31,8 +31,6 @@ public class TableTempController {
         tableNum.setText(table.getTableName());
         tableSheetCount.setText(table.getTableSheetsCount());
 
-        
-
         switch (table.getTablestates()) {
             case "Vacant":
                 pane.setStyle("-fx-effect: dropshadow(three-pass-box, #09aa29, 0, 0, 0, 4);");
@@ -62,6 +60,10 @@ public class TableTempController {
         
             default:
                 break;
+        }
+        
+        if (selectTables.contains(table.getTableID())) {
+            System.out.println(selectTables+"##");
         }
         if (selectTables.contains(table.getTableID())) {
             this.pane.setStyle("-fx-effect: dropshadow(three-pass-box, #09aa29, 4, 4, 0, 0);");
