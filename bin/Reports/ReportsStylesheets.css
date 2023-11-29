@@ -1,0 +1,13 @@
+.topbar-pane{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}
+
+.chart-pane{
+    -fx-background-color : #fff; 
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+    -fx-border-color : transparent;
+}

@@ -18,7 +18,7 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="900.0" stylesheets="@EmployeeStylesheet.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manage.Employees.EmployeeController">
    <children>
-      <VBox fx:id="allEmployeesPane" layoutX="10.0" layoutY="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="allEmployeesPane" layoutX="10.0" layoutY="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -69,7 +69,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="addEmployeePane" layoutX="20.0" layoutY="30.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox fx:id="addEmployeePane" layoutX="20.0" layoutY="30.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="top-bar">
                <children>
@@ -87,74 +87,76 @@
                <children>
                   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                      <children>
-                        <TextField alignment="CENTER_RIGHT" layoutX="278.0" layoutY="40.0" prefHeight="40.0" prefWidth="130.0" promptText="#0000001" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="40.0" />
-                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="52.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                        <TextField fx:id="employeeIDTextField" alignment="CENTER_RIGHT" layoutX="278.0" layoutY="40.0" prefHeight="40.0" prefWidth="130.0" promptText="#0000001" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="40.0" />
+                        <ImageView fx:id="addProImg" fitHeight="200.0" fitWidth="200.0" layoutX="52.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <image>
-                              <Image url="@../../../img/1.jpg" />
+                              <Image url="@../../employees_img/Temp.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="278.0" layoutY="20.0" text="Employee ID" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="20.0">
+                        <Label layoutX="278.0" layoutY="20.0" text="Employee ID *" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="20.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="278.19999999999993" layoutY="122.0" prefHeight="40.0" prefWidth="600.0" promptText="Cheese kottu (L)" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="115.0" />
-                        <Label layoutX="278.0" layoutY="102.0" text="Name" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="95.0">
+                        <TextField fx:id="employeeNameTextField" layoutX="278.19999999999993" layoutY="122.0" prefHeight="40.0" prefWidth="600.0" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="115.0" />
+                        <Label layoutX="278.0" layoutY="102.0" text="Employee Name *" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="95.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="278.0" layoutY="190.0" text="Category Name" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="170.0">
+                        <Label layoutX="20.0" layoutY="317.0" text="Job Role *" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="320.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="278.0" layoutY="210.0" prefHeight="40.0" prefWidth="240.0" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="190.0" />
-                        <Button layoutX="820.0" layoutY="595.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" styleClass="main-button" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <ComboBox fx:id="employeeJobRoleCombo" layoutX="20.0" layoutY="337.0" prefHeight="40.0" prefWidth="240.0" styleClass="text-fields" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="340.0" />
+                        <Button layoutX="820.0" layoutY="595.0" mnemonicParsing="false" onAction="#saveEmployee" prefHeight="40.0" prefWidth="140.0" styleClass="main-button" text="Save" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="606.0" layoutY="574.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" styleClass="secondary-button" text="Cancel" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="190.0">
+                        <Button layoutX="606.0" layoutY="574.0" mnemonicParsing="false" onAction="#cancelEmployee" prefHeight="40.0" prefWidth="140.0" styleClass="secondary-button" text="Cancel" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="190.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Label layoutX="28.0" layoutY="231.0" text="Cost" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="245.0">
+                        <Label layoutX="280.0" layoutY="172.0" text="Employee Email" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="170.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER_RIGHT" layoutX="27.0" layoutY="266.0" prefHeight="40.0" prefWidth="240.0" promptText="Rs. 00.00" styleClass="text-fields" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="265.0" />
-                        <Label layoutX="27.0" layoutY="314.0" text="Price" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="320.0">
+                        <TextField fx:id="employeeEmailTextField" layoutX="280.0" layoutY="192.0" prefHeight="40.0" prefWidth="240.0" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="190.0" />
+                        <Label layoutX="545.0" layoutY="170.0" text="Employee Phone *" AnchorPane.leftAnchor="545.0" AnchorPane.topAnchor="170.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER_RIGHT" layoutX="27.0" layoutY="333.0" prefHeight="40.0" prefWidth="240.0" promptText="Rs. 00.00" styleClass="text-fields" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="340.0" />
-                        <Label layoutX="289.0" layoutY="314.0" text="Discount (%)" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="320.0">
+                        <TextField fx:id="employeePhoneTextField" layoutX="545.0" layoutY="190.0" prefHeight="40.0" prefWidth="240.0" styleClass="text-fields" AnchorPane.leftAnchor="545.0" AnchorPane.topAnchor="190.0" />
+                        <Label layoutX="20.0" layoutY="246.0" text="Address" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="245.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER_RIGHT" layoutX="285.0" layoutY="333.0" prefHeight="40.0" prefWidth="240.0" promptText="00.0%" styleClass="text-fields" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="340.0" />
+                        <TextField fx:id="employeeAddressTextField" layoutX="20.0" layoutY="266.0" prefHeight="40.0" prefWidth="857.0" styleClass="text-fields" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="265.0" />
                         <Label layoutX="22.0" layoutY="400.0" text="Description" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="395.0">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextArea layoutX="28.0" layoutY="450.0" prefHeight="86.0" prefWidth="499.0" promptText="Add Descripion..." styleClass="text-area" text="&#10;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="415.0" />
-                        <Label layoutX="579.0" layoutY="253.0" text="Add something extra" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="245.0">
+                        <TextArea fx:id="employeeDescriptionTextField" layoutX="28.0" layoutY="450.0" prefHeight="86.0" prefWidth="499.0" promptText="Add Descripion..." styleClass="text-area" text="&#10;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="415.0" />
+                        <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#chooseImage" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="Choose image">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
-                        </Label>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="579.0" layoutY="311.0" prefHeight="187.0" styleClass="scroll-Pane" AnchorPane.leftAnchor="550.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="315.0" />
-                        <ComboBox layoutX="539.0" layoutY="265.0" prefHeight="40.0" prefWidth="233.0" styleClass="text-fields" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="265.0" />
-                        <Button layoutX="795.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" styleClass="secondary-button" text="Add" AnchorPane.topAnchor="265.0">
-                           <font>
-                              <Font name="Arial Bold" size="14.0" />
-                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                   </AnchorPane>
