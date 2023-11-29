@@ -378,7 +378,7 @@ public class PlaceOrderController implements Initializable {
                 for (Cart_list cart_list : cartItemList) {
                     statement.execute("INSERT INTO Hold_Order_Product VALUES ('"+orderDetails.getInvoiceID()+"', '"+cart_list.getID()+"', '"+cart_list.getName()+"', '"+cart_list.getQnt()+"', '"+cart_list.getCost()+"', '"+cart_list.getPrice()+"', '"+cart_list.getDiscount()+"', '"+cart_list.getProductTotalPrice()+"')");
                 }
-                statement.execute("INSERT INTO Hold_Order_Invoice VALUES ('"+orderDetails.getInvoiceID()+"', '"+formattedDate+"', '"+orderDetails.getCustomerID()+"', '"+orderDetails.getCustomerName()+"', '"+ (orderDetails.getTables().toString().length() == 2 ?  "" : orderDetails.getTables().toString().substring(1, orderDetails.getTables().toString().length() - 1)) +"')");
+                statement.execute("INSERT INTO Hold_Order_Invoice VALUES ('"+orderDetails.getInvoiceID()+"', '"+formattedDate+"', '"+orderDetails.getCustomerID()+"', '"+orderDetails.getCustomerName()+"', '"+ (orderDetails.getTables().toString().length() == 2 ?  "" : orderDetails.getTables().toString().substring(1, orderDetails.getTables().toString().length() - 1)) +"', ' ')");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
