@@ -12,6 +12,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -94,7 +96,6 @@ public class CashierController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         LocalDate currentDate = LocalDate.now();
-        LocalDate incrementedDate = currentDate.plusDays(1);
 
         //Check and Insert Daily Summary
         try (Statement statement = DBConnect.connectToDB().createStatement()) {
@@ -106,27 +107,14 @@ public class CashierController implements Initializable {
                 }
                 else{
                     statement.execute("INSERT INTO DailySummary (Date, OpeningDrawerAmount, ExpectedDrawerAmount) VALUES ('"+currentDate+"', 0, 0)");
-                    openingDrawerAmountTextField.setText("0");
-                    expectedDrawerAmountTextField.setText("0");
+                    openingDrawerAmountTextField.setText("0.0");
+                    expectedDrawerAmountTextField.setText("0.0");
                 }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        //Get Daily Summary
-        try (Statement statement = DBConnect.connectToDB().createStatement()) {
-                statement.execute("SELECT SUM(CashPayAmount) AS CashPayAmount, SUM(CardPayAmount) AS CardPayAmount, SUM(QRPayAmount) AS QRPayAmount, SUM(Balance) AS Balance FROM Order_Invoice WHERE Date >= '"+currentDate+" 00:00:00' AND Date < '"+incrementedDate+" 00:00:00'");
-                ResultSet resultSet = statement.getResultSet();
-                if (resultSet.next()) {
-                    DailyCashAmountLabel.setText("Rs. "+resultSet.getString("CashPayAmount"));
-                    DailyOtherMethodAmountLabel.setText("Rs. "+resultSet.getFloat("CardPayAmount")+resultSet.getFloat("QRPayAmount")+"");
-                    DailyCreditAmountLabel.setText("Rs. "+resultSet.getString("Balance"));
-                    DailySummaryDifferenceCalculation();
-                }
-
-                } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        DailySummaryDifferenceCalculation();
 
         //select all text when click
         openingDrawerAmountTextField.setOnMouseClicked(event -> {
@@ -236,14 +224,16 @@ public class CashierController implements Initializable {
             statement.execute("SELECT SUM(CashPayAmount) AS CashPayAmount, SUM(CardPayAmount) AS CardPayAmount, SUM(QRPayAmount) AS QRPayAmount, SUM(Balance) AS Balance FROM Order_Invoice WHERE Date >= '"+LocalDate.now()+" 00:00:00' AND Date < '"+LocalDate.now().plusDays(1)+" 00:00:00'");
             ResultSet resultSet = statement.getResultSet();
             if (resultSet.next()) {
-                DailyDifferenceLabel.setText("Rs. "+(Float.parseFloat(expectedDrawerAmountTextField.getText()) - (resultSet.getFloat("CashPayAmount") + Float.parseFloat(openingDrawerAmountTextField.getText()))));
+                DailyCashAmountLabel.setText("Rs. "+(resultSet.getString("CashPayAmount") == null ? "0.00" : new BigDecimal(resultSet.getFloat("CashPayAmount")).setScale(2, RoundingMode.HALF_UP)));
+                DailyOtherMethodAmountLabel.setText("Rs. "+new BigDecimal(resultSet.getFloat("CardPayAmount")+resultSet.getFloat("QRPayAmount")).setScale(2, RoundingMode.HALF_UP));
+                DailyCreditAmountLabel.setText("Rs. "+(resultSet.getString("Balance") == null ? "0.00" : new BigDecimal(resultSet.getFloat("Balance")).setScale(2, RoundingMode.HALF_UP)));
+                DailyDifferenceLabel.setText("Rs. "+new BigDecimal(Float.parseFloat(expectedDrawerAmountTextField.getText()) - (resultSet.getFloat("CashPayAmount") + Float.parseFloat(openingDrawerAmountTextField.getText()))).setScale(2, RoundingMode.HALF_UP));
                 
                 statement.execute("UPDATE DailySummary SET CashPaymentAmount = '"+resultSet.getFloat("CashPayAmount")+"', CreditAmount = '"+resultSet.getFloat("Balance")+"', OtherPaymentsAmount = '"+((resultSet.getFloat("CardPayAmount"))+resultSet.getFloat("QRPayAmount"))+"', Difference = '"+(Float.parseFloat(expectedDrawerAmountTextField.getText()) - (resultSet.getFloat("CashPayAmount") + Float.parseFloat(openingDrawerAmountTextField.getText())))+"'  WHERE Date = '"+LocalDate.now()+"'");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
     }
 
     //Close Drawer
@@ -288,7 +278,6 @@ public class CashierController implements Initializable {
 
                 invoiceList.add(new InvoiceDetails(date, invoiceID, cashPayment, otherPayment, totalSale, note));
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }
